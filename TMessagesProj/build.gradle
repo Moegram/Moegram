@@ -82,7 +82,7 @@ android {
     buildToolsVersion '32.1.0-rc1'
     ndkVersion "21.4.7075529"
 
-    defaultConfig.applicationId = "com.exteragram.messenger"
+    defaultConfig.applicationId = "exterax.messenger"
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
@@ -95,6 +95,13 @@ android {
     lint {
         checkReleaseBuilds false
         disable 'MissingTranslation', 'ExtraTranslation', 'BlockedPrivateApi'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        resources {
+            excludes += '**'
+        }
     }
 
     compileOptions {
@@ -113,24 +120,7 @@ android {
         }
     }
 
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-    }
-
     buildTypes {
-        debug {
-            debuggable false
-            jniDebuggable true
-            applicationIdSuffix ".beta"
-            signingConfig signingConfigs.release
-            minifyEnabled true
-            shrinkResources true
-            multiDexEnabled true
-            zipAlignEnabled true
-            proguardFiles 'proguard-rules.pro'
-            buildConfigField 'boolean', 'DEBUG_VERSION', 'true'
-        }
-
         release {
             debuggable false
             jniDebuggable false
@@ -141,10 +131,6 @@ android {
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
         }
-    }
-
-    sourceSets.debug {
-        manifest.srcFile 'config/debug/AndroidManifest.xml'
     }
 
     sourceSets.release {
@@ -162,39 +148,23 @@ android {
                 abiVersionCode = 1
             }
         }
-        x86 {
-            ndk {
-                abiFilters "x86"
-            }
-            ext {
-                abiVersionCode = 2
-            }
-        }
         arm64 {
             ndk {
                 abiFilters "arm64-v8a"
             }
             ext {
-                abiVersionCode = 3
-            }
-        }
-        x64 {
-            ndk {
-                abiFilters "x86_64"
-            }
-            ext {
-                abiVersionCode = 4
+                abiVersionCode = 2
             }
         }
         afat {
             ndk {
-                abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+                abiFilters "armeabi-v7a", "arm64-v8a"
             }
             sourceSets.release {
                 manifest.srcFile 'config/release/AndroidManifest.xml'
             }
             ext {
-                abiVersionCode = 5
+                abiVersionCode = 3
             }
         }
         beta {
@@ -205,7 +175,7 @@ android {
                 manifest.srcFile 'config/debug/AndroidManifest.xml'
             }
             ext {
-                abiVersionCode = 6
+                abiVersionCode = 4
             }
         }
     }
@@ -214,14 +184,10 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def buildType = variant.productFlavors[0].name
-            if (variant.productFlavors[0].name != "beta") {
-                buildType = "release"
-            }
             def date = new Date()
             def formattedDate = date.format('ddMMyyyy')
 
-            outputFileName = "exteragram-${buildType}-${formattedDate}.apk"
+            outputFileName = "exterax-${formattedDate}.apk"
             output.versionCodeOverride = defaultConfig.versionCode * 10 + variant.productFlavors.get(0).abiVersionCode
         }
     }

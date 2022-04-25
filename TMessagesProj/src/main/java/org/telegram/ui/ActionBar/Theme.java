@@ -927,13 +927,13 @@ public class Theme {
                         key = "Dark Blue";
                         break;
                     case 2:
+                    default:
                         key = "Arctic Blue";
                         break;
                     case 3:
                         key = "Day";
                         break;
                     case 4:
-                    default:
                         key = "Night";
                         break;
                 }
@@ -4998,8 +4998,6 @@ public class Theme {
         themeInfo.previewBackgroundColor = 0xff95beec;
         themeInfo.previewInColor = 0xffffffff;
         themeInfo.previewOutColor = 0xffd0e6ff;
-        themeInfo.firstAccentIsDefault = true;
-        themeInfo.currentAccentId = DEFALT_THEME_ACCENT_ID;
         themeInfo.sortIndex = 1;
         themeInfo.setAccentColorOptions(
                 new int[]    { 0xFF5890C5,                     0xFF239853,                    0xFFCE5E82,                    0xFF7F63C3,                    0xFF2491AD,                    0xFF299C2F,                    0xFF8854B4,                    0xFF328ACF,                    0xFF43ACC7,                    0xFF52AC44,                    0xFFCD5F93,                    0xFFD28036,                    0xFF8366CC,                    0xFFCE4E57,                    0xFFD3AE40,                    0xFF7B88AB,                    monetAccent,                            },
@@ -5024,6 +5022,8 @@ public class Theme {
         themeInfo.previewBackgroundColor = 0xff5f6e82;
         themeInfo.previewInColor = 0xff76869c;
         themeInfo.previewOutColor = 0xff82a8e3;
+        themeInfo.firstAccentIsDefault = true;
+        themeInfo.currentAccentId = DEFALT_THEME_ACCENT_ID;
         themeInfo.sortIndex = 3;
         themeInfo.setAccentColorOptions(
                 new int[]    {                    0xFF927BD4,                    0xFF698AFB,                    0xFF23A7F0,                    0xFF7B71D1,                    0xFF69B955,                    0xFF2990EA,                    0xFF7082E9,                    0xFF66BAED,                    0xff3685fa,                    0xff46c8ed,                    0xff64AC5F,                    0xffeb7cb1,                    0xffee902a,                    0xffa281f0,                    0xffd34324,                    0xffeebd34,                    0xff7f8fab,                    0xff3581e3,                    darkMonetAccent,                            },
@@ -6842,13 +6842,13 @@ public class Theme {
                         key = "Dark Blue";
                         break;
                     case 2:
+                    default:
                         key = "Arctic Blue";
                         break;
                     case 3:
                         key = "Day";
                         break;
                     case 4:
-                    default:
                         key = "Night";
                         break;
                 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- exteraGram's Main Strings -->
-    <string name="exteraAppName">exteraGram</string>
-    <string name="exteraAppNameBeta">exteraGram β</string>
+    <string name="exteraAppName">extera X</string>
+    <string name="exteraAppNameBeta">extera X β</string>
     <string name="exteraDebugMenu">¯\\_(ツ)_/¯</string>
     <string name="MutualContact">mutual contact</string>
     <string name="ToBeginning">To beginning</string>

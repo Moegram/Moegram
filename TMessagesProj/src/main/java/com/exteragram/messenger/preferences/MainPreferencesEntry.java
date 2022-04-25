@@ -92,11 +92,11 @@ public class MainPreferencesEntry extends BaseFragment {
             if (position == aboutExteraRow) {
                 Browser.openUrl(getParentActivity(), "https://exterasquad.github.io/");
             } else if (position == sourceCodeRow) {
-                Browser.openUrl(getParentActivity(), "https://github.com/exteraSquad/exteraGram");
+                Browser.openUrl(getParentActivity(), "https://github.com/Attorelle/exteraX");
             } else if (position == channelRow) {
-                MessagesController.getInstance(currentAccount).openByUserName(("exteragram"), this, 1);
+                MessagesController.getInstance(currentAccount).openByUserName(("exterax"), this, 1);
             } else if (position == groupRow) {
-                MessagesController.getInstance(currentAccount).openByUserName(("exterachat"), this, 1);
+                MessagesController.getInstance(currentAccount).openByUserName(("exteraxchat"), this, 1);
             } else if (position == appearanceRow) {
                 presentFragment(new AppearancePreferencesEntry());
             } else if (position == chatsRow) {
@@ -191,9 +191,9 @@ public class MainPreferencesEntry extends BaseFragment {
                     textDetailCell.setMultilineDetail(true);
                     if (position == aboutExteraRow) {
                         if (BuildVars.isBetaApp()) {
-                            textDetailCell.setTextAndValueAndIcon("exteraGram β | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("AboutExteraDescription", R.string.AboutExteraDescription), R.drawable.ic_logo_foreground, false);
+                            textDetailCell.setTextAndValueAndIcon("extera X β | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("AboutExteraDescription", R.string.AboutExteraDescription), R.drawable.ic_logo_foreground, false);
                         } else {
-                            textDetailCell.setTextAndValueAndIcon("exteraGram | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("AboutExteraDescription", R.string.AboutExteraDescription), R.drawable.ic_logo_foreground, false);
+                            textDetailCell.setTextAndValueAndIcon("extera X | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("AboutExteraDescription", R.string.AboutExteraDescription), R.drawable.ic_logo_foreground, false);
                         }
                     }
                     break;
