@@ -3508,10 +3508,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 lockIconDrawable.setColorFilter(ColorUtils.blendARGB(Theme.getColor(Theme.key_chat_lockIcon), Color.WHITE, value), PorterDuff.Mode.MULTIPLY);
             }
 
-            if (arrowDrawable != null) {
-                arrowDrawable.setColorFilter(ColorUtils.blendARGB(Theme.getColor(Theme.key_chats_verifiedBackground), Color.WHITE, value), PorterDuff.Mode.MULTIPLY);
-            }
-
             if (verifiedCrossfadeDrawable != null) {
                 verifiedCrossfadeDrawable.setProgress(value);
             }
@@ -4276,12 +4272,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 verifiedDrawable.setColorFilter(AndroidUtilities.getOffsetColor(color1, color2, value, 1.0f), PorterDuff.Mode.MULTIPLY);
             }
 
-            if (arrowDrawable != null) {
-                color1 = Theme.getColor(Theme.key_profile_verifiedBackground);
-                color2 = Theme.getColor(Theme.key_player_actionBarTitle);
-                arrowDrawable.setColorFilter(AndroidUtilities.getOffsetColor(color1, color2, value, 1.0f), PorterDuff.Mode.MULTIPLY);
-            }
-
             if (verifiedCheckDrawable != null) {
                 color1 = Theme.getColor(Theme.key_profile_verifiedCheck);
                 color2 = Theme.getColor(Theme.key_windowBackgroundWhite);
@@ -4818,9 +4808,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                 if (scamDrawable != null) {
                     scamDrawable.setColor(ColorUtils.blendARGB(Theme.getColor(Theme.key_avatar_subtitleInProfileBlue), Color.argb(179, 255, 255, 255), animationProgress));
-                }
-                if (arrowDrawable != null) {
-                    arrowDrawable.setColorFilter(ColorUtils.blendARGB(Theme.getColor(Theme.key_chats_verifiedBackground), Color.WHITE, animationProgress), PorterDuff.Mode.MULTIPLY);
                 }
                 if (lockIconDrawable != null) {
                     lockIconDrawable.setColorFilter(ColorUtils.blendARGB(Theme.getColor(Theme.key_chat_lockIcon), Color.WHITE, animationProgress), PorterDuff.Mode.MULTIPLY);
@@ -6155,14 +6142,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         return scamDrawable;
     }
 
-    private Drawable getArrowDrawable() {
-        if (arrowDrawable == null) {
-            arrowDrawable = Theme.profile_outlineArrowDrawable.getConstantState().newDrawable().mutate();
-            arrowDrawable.setColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground), PorterDuff.Mode.MULTIPLY);
-        }
-        return arrowDrawable;
-    }
-
     private Drawable getLockIconDrawable() {
         if (lockIconDrawable == null) {
             lockIconDrawable = Theme.chat_lockIconDrawable.getConstantState().newDrawable().mutate();
@@ -6275,8 +6254,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     rightIcon = getScamDrawable(user.scam ? 0 : 1);
                 } else if (user.verified) {
                     rightIcon = getVerifiedCrossfadeDrawable();
-                } else if (ExteraConfig.isExteraDev(user)){
-                    rightIcon = getArrowDrawable();
                 }
                 nameTextView[a].setLeftDrawable(leftIcon);
                 nameTextView[a].setRightDrawable(rightIcon);
@@ -6369,8 +6346,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         nameTextView[a].setRightDrawable(getScamDrawable(chat.scam ? 0 : 1));
                     } else if (chat.verified) {
                         nameTextView[a].setRightDrawable(getVerifiedCrossfadeDrawable());
-                    } else if (ExteraConfig.isExtera(chat)){
-                        nameTextView[a].setRightDrawable(getArrowDrawable());
                     } else {
                         nameTextView[a].setRightDrawable(null);
                     }
@@ -8580,9 +8555,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (lockIconDrawable != null) {
                     lockIconDrawable.setColorFilter(Theme.getColor(Theme.key_chat_lockIcon), PorterDuff.Mode.MULTIPLY);
-                }
-                if (arrowDrawable != null) {
-                    arrowDrawable.setColorFilter(Theme.getColor(Theme.key_chats_verifiedBackground), PorterDuff.Mode.MULTIPLY);
                 }
                 if (scamDrawable != null) {
                     scamDrawable.setColor(Theme.getColor(Theme.key_avatar_subtitleInProfileBlue));
