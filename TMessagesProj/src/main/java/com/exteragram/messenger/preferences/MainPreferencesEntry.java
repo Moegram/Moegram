@@ -159,9 +159,9 @@ public class MainPreferencesEntry extends BaseFragment {
                     if (position == sourceCodeRow) {
                         textCell.setTextAndValueAndIcon(LocaleController.getString("SourceCode", R.string.SourceCode), "Github", R.drawable.msg_report_spam, false);
                     } else if (position == channelRow) {
-                        textCell.setTextAndValueAndIcon(LocaleController.getString("Channel", R.string.Channel), "@exteragram", R.drawable.msg_channel, true);
+                        textCell.setTextAndValueAndIcon(LocaleController.getString("Channel", R.string.Channel), "@exterax", R.drawable.msg_channel, true);
                     } else if (position == groupRow) {
-                        textCell.setTextAndValueAndIcon(LocaleController.getString("Chats", R.string.Chats), "@exterachat", R.drawable.menu_groups, true);
+                        textCell.setTextAndValueAndIcon(LocaleController.getString("Chats", R.string.Chats), "@exteraxchat", R.drawable.menu_groups, true);
                     } else if (position == appearanceRow) {
                         textCell.setTextAndIcon(LocaleController.getString("Appearance", R.string.Appearance), R.drawable.msg_theme, true);
                     } else if (position == chatsRow) {

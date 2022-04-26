@@ -429,8 +429,10 @@ public class AppearancePreferencesEntry extends BaseFragment {
                     break;
                 case 5:
                     TextCell textCell = (TextCell) holder.itemView;
+                    String value;
+                    value = LocaleController.getString("NotificationsCustomize", R.string.NotificationsCustomize);
                     if (position == drawerSettingsRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("Drawer", R.string.Drawer), R.drawable.msg_list, false);
+                        textCell.setTextAndValue(LocaleController.getString("Drawer", R.string.Drawer), value, false);
                     }
                     break;
             }
