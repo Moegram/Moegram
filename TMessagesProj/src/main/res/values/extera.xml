@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="exteraAppName">extera X</string>
     <string name="exteraAppNameBeta">extera X β</string>
     <string name="exteraDebugMenu">¯\\_(ツ)_/¯</string>
@@ -15,7 +15,7 @@
     <string name="Channel">Channel</string>
     <string name="Chats">Chats</string>
 
-    <string name="Preferences">exteraGram Preferences</string>
+    <string name="Preferences">extera X Preferences</string>
     <string name="RestartRequired">Restart the app to take effect.</string>
 
     <string name="Categories">Categories</string>
@@ -30,7 +30,7 @@
     <string name="HideProxySponsor">Hide proxy sponsor</string>
     <string name="HidePhoneNumber">Hide phone number</string>
     <string name="ShowID">Show ID in Profile</string>
-    <string name="ChatsOnTitle">\"Chats\" instead of \"exteraGram\"</string>
+    <string name="ChatsOnTitle">\"Chats\" instead of \"extera X\"</string>
     <string name="DisableVibration">Disable vibration</string>
     <string name="ForceTabletMode">Force tablet mode</string>
 
@@ -57,7 +57,7 @@
     <string name="DisableCamera">Disable instant camera</string>
     <string name="DisableProximityEvents">Disable proximity events</string>
     <string name="PauseOnMinimize">Autopause</string>
-    <string name="POMDescription">Pauses a video playback when device is locked or exteraGram is minimized</string>
+    <string name="POMDescription">Pauses a video playback when device is locked or extera X is minimized</string>
     <string name="DisablePlayback">Disable playback</string>
     <string name="DPDescription">Disables playback when volume button is pressed</string>
 

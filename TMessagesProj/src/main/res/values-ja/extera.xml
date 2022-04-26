@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="MutualContact">相互の連絡先</string>
     <string name="ToBeginning">To beginning</string>
 
@@ -8,12 +8,12 @@
     <string name="Links">リンク</string>
     <string name="AboutExteraDescription">公式のTelegramのソースに基づいて実験的なTelegramクライアント！</string>
     <string name="Website">外部分隊メンバー</string>
-    <string name="Github">exteraGramのソース コード</string>
+    <string name="Github">extera Xのソース コード</string>
     <string name="Channel">Telegram チャンネル</string>
     <string name="Chat">\? Telegramチャット</string>
     <string name="languageEnglish">日本語</string>
     <string name="languageRussian">ロシア語</string>
-    <string name="Preferences">exteraGram の設定</string>
+    <string name="Preferences">extera X の設定</string>
     <string name="RestartRequired">有効にするには、AirDroidを再起動してください。</string>
     <string name="Categories">カテゴリー</string>
     <string name="Chats">チャット</string>
@@ -23,7 +23,7 @@
     <string name="SystemEmoji">システムの絵文字を使う</string>
     <string name="HideAllChats">「すべてのチャット」タブを隠す</string>
     <string name="HidePhoneNumber">電話番号</string>
-    <string name="ChatsOnTitle">\"exteraGram\" の代わりに \"チャット\"</string>
+    <string name="ChatsOnTitle">\"extera X\" の代わりに \"チャット\"</string>
     <string name="ShowID">一般プロファイルを表示</string>
     <string name="SB">透明なステータス バー</string>
     <string name="SBDescription">Android 6以降のみ</string>

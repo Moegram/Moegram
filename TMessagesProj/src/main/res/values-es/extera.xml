@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="MutualContact">contacto mutuo</string>
     <string name="ToBeginning">Saltar al inicio</string>
 
@@ -8,13 +8,13 @@
     <string name="Links">Enlaces</string>
     <string name="AboutExteraDescription">¡Cliente experimental de Telegram basado en fuentes oficiales de Telegram!</string>
     <string name="Website">Miembros de exteraSquad</string>
-    <string name="Github">Código fuente de exteraGram</string>
+    <string name="Github">Código fuente de extera X</string>
     <string name="Channel">Canal de Telegram</string>
     <string name="Chat">Chat de Telegram</string>
     <string name="languageEnglish">Inglés</string>
     <string name="languageRussian">Ruso</string>
 
-    <string name="Preferences">Preferencias de exteraGram</string>
+    <string name="Preferences">Preferencias de extera X</string>
     <string name="RestartRequired">Reinicie la aplicación para que tenga efecto.</string>
 
     <string name="Categories">Categorías</string>
@@ -27,7 +27,7 @@
 
     <string name="HideAllChats">Ocultar la carpeta \"Todos\"</string>
     <string name="HidePhoneNumber">Ocultar mi número de teléfono</string>
-    <string name="ChatsOnTitle">\"Chats\" en lugar de \"exteraGram\"</string>
+    <string name="ChatsOnTitle">\"Chats\" en lugar de \"extera X\"</string>
     <string name="ShowID">Mostrar ID en el perfil</string>
     <string name="SB">Barra de estado transparente</string>
     <string name="SBDescription">solo para Android 6+</string>
@@ -54,7 +54,7 @@
     <string name="HQVoiceMessage">Mensajes de voz en HQ</string>
     <string name="RearVideoMessages">Usar cámara trasera en videomensajes</string>
     <string name="Autopause">Pausar automáticamente</string>
-    <string name="AutopauseDescription">Pausa la reproducción de video cuando el dispositivo está bloqueado o exteraGram se minimiza</string>
+    <string name="AutopauseDescription">Pausa la reproducción de video cuando el dispositivo está bloqueado o extera X se minimiza</string>
     <string name="DisablePlayback">Desactivar reproducción</string>
     <string name="DisablePlaybackDescription">Desactiva la reproducción cuando se presiona el botón de volumen</string>
 

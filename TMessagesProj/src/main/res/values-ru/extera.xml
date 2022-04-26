@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="MutualContact">взаимный контакт</string>
     <string name="ToBeginning">В начало</string>
     <string name="SaveMessage">Сохранить сообщение</string>
@@ -12,7 +12,7 @@
     <string name="Channel">Канал в Telegram</string>
     <string name="Chats">Чаты</string>
 
-    <string name="Preferences">Настройки exteraGram</string>
+    <string name="Preferences">Настройки extera X</string>
     <string name="RestartRequired">Перезагрузите приложение, чтобы изменения вступили в силу.</string>
 
     <string name="Categories">Категории</string>
@@ -27,7 +27,7 @@
     <string name="HideProxySponsor">Скрыть спонсора прокси</string>
     <string name="HidePhoneNumber">Скрыть номер телефона</string>
     <string name="ShowID">Показывать ID в профиле</string>
-    <string name="ChatsOnTitle">\"Чаты\" вместо \"exteraGram\"</string>
+    <string name="ChatsOnTitle">\"Чаты\" вместо \"extera X\"</string>
     <string name="DisableVibration">Отключить вибрацию</string>
     <string name="ForceTabletMode">Планшетный режим</string>
 

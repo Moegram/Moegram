@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="MutualContact">wzajemny kontakt</string>
     <string name="ToBeginning">To beginning</string>
 
@@ -13,7 +13,7 @@
     <string name="Chat">Telegram</string>
     <string name="languageEnglish">Angielski</string>
     <string name="languageRussian">Rosyjski</string>
-    <string name="Preferences">preferencje exteraGram</string>
+    <string name="Preferences">Preferencje extera X</string>
     <string name="RestartRequired">Zrestartuj AirDroid\'a, aby wprowadzić zmiany.</string>
     <string name="Categories">Kategorie</string>
     <string name="Chats">Czaty</string>
@@ -23,7 +23,7 @@
     <string name="SystemEmoji">Używaj emoji systemu</string>
     <string name="HideAllChats">Ukryj zakładkę \"Wszystkie czaty\"</string>
     <string name="HidePhoneNumber">Numer telefonu</string>
-    <string name="ChatsOnTitle">\"Czaty\" zamiast \"exteraGram\"</string>
+    <string name="ChatsOnTitle">\"Czaty\" zamiast \"extera X\"</string>
     <string name="ShowID">Pokaż ID w profilu</string>
     <string name="SB">Przezroczysty pasek stanu</string>
     <string name="SBDescription">tylko dla Androida 6+</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- exteraGram's Main Strings -->
+    <!-- extera X's Main Strings -->
     <string name="MutualContact">gegenseitiger Kontakt</string>
     <string name="ToBeginning">Am Anfang</string>
     <string name="SaveMessage">Nachricht speichern</string>
@@ -12,7 +12,7 @@
     <string name="Channel">Kanal</string>
     <string name="Chats">Chats</string>
 
-    <string name="Preferences">exteraGram Einstellungen</string>
+    <string name="Preferences">extera X Einstellungen</string>
     <string name="RestartRequired">App neu starten, damit es wirksam wird.</string>
 
     <string name="Categories">Kategorien</string>
@@ -26,7 +26,7 @@
     <string name="HideAllChats">Tab \"Alle Chats\" ausblenden</string>
     <string name="HidePhoneNumber">Meine Telefonnummer ausblenden</string>
     <string name="ShowID">ID im Profil anzeigen</string>
-    <string name="ChatsOnTitle">\"Chats\" statt \"exteraGram\"</string>
+    <string name="ChatsOnTitle">\"Chats\" statt \"extera X\"</string>
     <string name="ForceTabletMode">Tablet-Modus erzwingen</string>
 
     <!-- Chats -->
@@ -46,7 +46,7 @@
     <string name="RearVideoMessages">Hintere Kamera für Videonachrichten</string>
     <string name="DisableCamera">Deaktivieren Sie die Kamera im Fotoauswahlmenü</string>
     <string name="PauseOnMinimize">Autopause</string>
-    <string name="POMDescription">Pausiert eine Videowiedergabe, wenn das Gerät gesperrt ist oder exteraGram minimiert wird</string>
+    <string name="POMDescription">Pausiert eine Videowiedergabe, wenn das Gerät gesperrt ist oder extera X minimiert wird</string>
     <string name="DisablePlayback">Player öffnen</string>
     <string name="DPDescription">Deaktiviert die Wiedergabe bei Lautstärketasten</string>
 
