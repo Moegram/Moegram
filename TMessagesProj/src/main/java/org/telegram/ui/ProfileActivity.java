@@ -4154,7 +4154,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         if (view instanceof AboutLinkCell) {
                             AboutLinkCell aboutLinkCell = (AboutLinkCell) view;
                             if (clickableBio != null) {
-                                aboutLinkCell.setTextAndValue(clickableBio, channelInfoRow != -1 ? null:LocaleController.getString("UserBio", R.string.UserBio), true, true);
+                                aboutLinkCell.setTextAndValue(clickableBio, channelInfoRow != -1 ? null:LocaleController.getString("UserBio", R.string.UserBio), true);
                                 currentBio = clickableBio;
                                 clickableBio = null;
                             }
@@ -7549,10 +7549,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             if (clickableBio != null) {
                                 value = currentBio;
                             }
-                            aboutLinkCell.setTextAndValue(value, LocaleController.getString("UserBio", R.string.UserBio), true, true);
+                            aboutLinkCell.setTextAndValue(value, LocaleController.getString("UserBio", R.string.UserBio), true);
                             currentBio = userInfo != null ? userInfo.about : null;
                         } else {
-                            aboutLinkCell.setTextAndValue( LocaleController.getString("UserBioDetail", R.string.UserBioDetail), LocaleController.getString("UserBio", R.string.UserBio), true, true);
+                            aboutLinkCell.setTextAndValue( LocaleController.getString("UserBioDetail", R.string.UserBioDetail), LocaleController.getString("UserBio", R.string.UserBio), true);
                             currentBio = null;
                         }
                     } else if (position == userInfoRow) {
@@ -7560,7 +7560,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         if (clickableBio != null) {
                             about = currentBio;
                         }
-                        aboutLinkCell.setTextAndValue(about, LocaleController.getString("UserBio", R.string.UserBio), true, true);
+                        aboutLinkCell.setTextAndValue(about, LocaleController.getString("UserBio", R.string.UserBio), true);
                     } else if (position == channelInfoRow) {
                         String text = chatInfo.about;
                         while (text.contains("\n\n\n")) {
@@ -7569,7 +7569,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         if (clickableBio != null) {
                             text = currentBio;
                         }
-                        aboutLinkCell.setText(text, true, true);
+                        aboutLinkCell.setText(text, true);
                     }
                     aboutLinkCell.setOnClickListener(e -> processOnClickOrPress(position, aboutLinkCell));
                     aboutLinkCell.setOnLongClickListener(e -> {
