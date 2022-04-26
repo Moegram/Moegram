@@ -7548,13 +7548,6 @@ public class ChatActivityEnterView extends BlurredFrameLayout implements Notific
             }
             setStickersExpanded(false, true, false);
 
-            if (ExteraConfig.sendMessageBeforeSendSticker) {
-                if (Emoji.isValidEmoji(messageEditText.getText().toString())) {
-                    messageEditText.setText("");
-                }
-                sendMessage();
-            }
-
             SendMessagesHelper.getInstance(currentAccount).sendSticker(sticker, query, dialog_id, replyingMessageObject, getThreadMessage(), parent, sendAnimationData, notify, scheduleDate);
             if (delegate != null) {
                 delegate.onMessageSend(null, true, scheduleDate);

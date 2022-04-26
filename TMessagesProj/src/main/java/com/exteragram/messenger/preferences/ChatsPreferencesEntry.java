@@ -54,7 +54,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
     private int stickersHeaderRow;
     private int hideStickerTimeRow;
     private int unlimitedRecentStickersRow;
-    private int sendMessageBeforeSendStickerRow;
     private int stickersDividerRow;
 
     private int chatHeaderRow;
@@ -233,11 +232,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(ExteraConfig.unlimitedRecentStickers);
                 }
-            } else if (position == sendMessageBeforeSendStickerRow) {
-                ExteraConfig.toggleSendMessageBeforeSendSticker();
-                if (view instanceof TextCheckCell) {
-                    ((TextCheckCell) view).setChecked(ExteraConfig.sendMessageBeforeSendSticker);
-                }
             } else if (position == hideSendAsChannelRow) {
                 ExteraConfig.toggleHideSendAsChannel();
                 if (view instanceof TextCheckCell) {
@@ -329,7 +323,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
         stickersHeaderRow = rowCount++;
         hideStickerTimeRow = rowCount++;
         unlimitedRecentStickersRow = rowCount++;
-        sendMessageBeforeSendStickerRow = rowCount++;
         stickersDividerRow = rowCount++;
 
         chatHeaderRow = rowCount++;
@@ -402,8 +395,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("StickerTime", R.string.StickerTime), ExteraConfig.hideStickerTime, true);
                     } else if (position == unlimitedRecentStickersRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("UnlimitedRecentStickers", R.string.UnlimitedRecentStickers), ExteraConfig.unlimitedRecentStickers, true);
-                    } else if (position == sendMessageBeforeSendStickerRow) {
-                        textCheckCell.setTextAndCheck(LocaleController.getString("SendMessageBeforeSendSticker", R.string.SendMessageBeforeSendSticker), ExteraConfig.sendMessageBeforeSendSticker, false);
                     } else if (position == hideSendAsChannelRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HideSendAsChannel", R.string.HideSendAsChannel), ExteraConfig.hideSendAsChannel, true);
                     } else if (position == hideKeyboardOnScrollRow) {
@@ -472,12 +463,11 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 return 1;
             } else if (position == stickerSizeHeaderRow || position == stickersHeaderRow || position == chatHeaderRow || position == mediaHeaderRow) {
                 return 2;
-            } else if (position == hideStickerTimeRow || position == unlimitedRecentStickersRow || position == sendMessageBeforeSendStickerRow ||
-                    position == hideSendAsChannelRow || position == hideKeyboardOnScrollRow || position == disableReactionsRow ||
-                    position == disableGreetingStickerRow || position == disableJumpToNextChannelRow || position == archiveOnPullRow ||
-                    position == dateOfForwardedMsgRow || position == showMessageIDRow || position == rearVideoMessagesRow ||
-                    position == disableCameraRow || position == disableProximityEventsRow || position == pauseOnMinimizeRow ||
-                    position == disablePlaybackRow) {
+            } else if (position == hideStickerTimeRow || position == unlimitedRecentStickersRow || position == hideSendAsChannelRow ||
+                    position == hideKeyboardOnScrollRow || position == disableReactionsRow || position == disableGreetingStickerRow ||
+                    position == disableJumpToNextChannelRow || position == archiveOnPullRow || position == dateOfForwardedMsgRow ||
+                    position == showMessageIDRow || position == rearVideoMessagesRow || position == disableCameraRow ||
+                    position == disableProximityEventsRow || position == pauseOnMinimizeRow || position == disablePlaybackRow) {
                 return 3;
             } else if (position == stickerSizeRow) {
                 return 4;
