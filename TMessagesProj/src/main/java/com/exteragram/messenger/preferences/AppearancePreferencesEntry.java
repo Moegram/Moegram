@@ -26,7 +26,9 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
+import org.telegram.ui.Cells.TextCell;
 import org.telegram.ui.Cells.TextCheckCell;
+import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 import org.telegram.ui.Components.UndoView;
@@ -46,6 +48,11 @@ public class AppearancePreferencesEntry extends BaseFragment {
     private int blurForAllThemesRow;
     private int applicationDividerRow;
 
+    private int drawerHeaderRow;
+    private int eventChooserRow;
+    private int drawerSettingsRow;
+    private int drawerDividerRow;
+
     private int generalHeaderRow;
     private int hideAllChatsRow;
     private int hidePhoneNumberRow;
@@ -54,6 +61,20 @@ public class AppearancePreferencesEntry extends BaseFragment {
     private int disableVibrationRow;
     private int forceTabletModeRow;
     private int generalDividerRow;
+
+    // Icons
+    private int newGroupIcon;
+    private int newSecretIcon;
+    private int newChannelIcon;
+    private int contactsIcon;
+    private int callsIcon;
+    private int archiveIcon;
+    private int savedIcon;
+    private int settingsIcon;
+    private int scanQrIcon;
+    private int inviteIcon;
+    private int helpIcon;
+    private int peopleNearbyIcon;
 
     private UndoView restartTooltip;
 
@@ -148,6 +169,40 @@ public class AppearancePreferencesEntry extends BaseFragment {
                     ((TextCheckCell) view).setChecked(ExteraConfig.blurForAllThemes);
                 }
                 restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
+            } else if (position == eventChooserRow) {
+                if (getParentActivity() == null) {
+                    return;
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setTitle(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack));
+                builder.setItems(new CharSequence[]{
+                        LocaleController.getString("Default", R.string.Default),
+                        LocaleController.getString("NewYear", R.string.NewYear),
+                        LocaleController.getString("ValentinesDay", R.string.ValentinesDay),
+                        LocaleController.getString("Halloween", R.string.Halloween)
+                }, (dialog, which) -> {
+                    ExteraConfig.setEventType(which);
+                    RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(eventChooserRow);
+                    if (holder != null) {
+                        listAdapter.onBindViewHolder(holder, eventChooserRow);
+                    }
+                    Parcelable recyclerViewState = null;
+
+                    if (listView.getLayoutManager() != null) {
+                        recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
+                    }
+
+                    AlertDialog progressDialog = new AlertDialog(context, 3);
+                    progressDialog.show();
+                    AndroidUtilities.runOnUIThread(progressDialog::dismiss, 500);
+
+                    parentLayout.rebuildAllFragmentViews(true, true);
+                    listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                });
+                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                showDialog(builder.create());
+            } else if (position == drawerSettingsRow) {
+                presentFragment(new DrawerPreferencesEntry());
             } else if (position == hideAllChatsRow) {
                 ExteraConfig.toggleHideAllChats();
                 if (view instanceof TextCheckCell) {
@@ -197,6 +252,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
             }
         });
+
         restartTooltip = new UndoView(context);
         restartTooltip.setInfoText(LocaleController.formatString("RestartRequired", R.string.RestartRequired));
         frameLayout.addView(restartTooltip, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 8, 0, 8, 8));
@@ -213,6 +269,11 @@ public class AppearancePreferencesEntry extends BaseFragment {
         transparentStatusBarRow = rowCount++;
         blurForAllThemesRow = rowCount++;
         applicationDividerRow = rowCount++;
+
+        drawerHeaderRow = rowCount++;
+        eventChooserRow = rowCount++;
+        drawerSettingsRow = rowCount++;
+        drawerDividerRow = rowCount++;
 
         generalHeaderRow = rowCount++;
         hideAllChatsRow = rowCount++;
@@ -251,6 +312,66 @@ public class AppearancePreferencesEntry extends BaseFragment {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            switch (ExteraConfig.eventType) {
+                case 1:
+                    newGroupIcon = R.drawable.menu_groups_ny;
+                    newSecretIcon = R.drawable.menu_secret_ny;
+                    newChannelIcon = R.drawable.menu_channel_ny;
+                    contactsIcon = R.drawable.menu_contacts_ny;
+                    callsIcon = R.drawable.menu_calls_ny;
+                    archiveIcon = R.drawable.msg_archive;
+                    savedIcon = R.drawable.menu_bookmarks_ny;
+                    settingsIcon = R.drawable.menu_settings_ny;
+                    archiveIcon = R.drawable.chats_archive;
+                    scanQrIcon = R.drawable.msg_qrcode;
+                    inviteIcon = R.drawable.menu_invite_ny;
+                    helpIcon = R.drawable.menu_help_ny;
+                    peopleNearbyIcon = R.drawable.menu_nearby_ny;
+                    break;
+                case 2:
+                    newGroupIcon = R.drawable.menu_groups_14;
+                    newSecretIcon = R.drawable.menu_secret_14;
+                    newChannelIcon = R.drawable.menu_broadcast_14;
+                    contactsIcon = R.drawable.menu_contacts_14;
+                    callsIcon = R.drawable.menu_calls_14;
+                    archiveIcon = R.drawable.msg_archive;
+                    savedIcon = R.drawable.menu_bookmarks_14;
+                    settingsIcon = R.drawable.menu_settings_14;
+                    scanQrIcon = R.drawable.msg_qrcode;
+                    inviteIcon = R.drawable.menu_secret_ny;
+                    helpIcon = R.drawable.menu_help;
+                    peopleNearbyIcon = R.drawable.menu_secret_14;
+                    break;
+                case 3:
+                    newGroupIcon = R.drawable.menu_groups_hw;
+                    newSecretIcon = R.drawable.menu_secret_hw;
+                    newChannelIcon = R.drawable.menu_broadcast_hw;
+                    contactsIcon = R.drawable.menu_contacts_hw;
+                    callsIcon = R.drawable.menu_calls_hw;
+                    archiveIcon = R.drawable.msg_archive;
+                    savedIcon = R.drawable.menu_bookmarks_hw;
+                    settingsIcon = R.drawable.menu_settings_hw;
+                    scanQrIcon = R.drawable.msg_qrcode;
+                    inviteIcon = R.drawable.menu_invite_hw;
+                    helpIcon = R.drawable.menu_help_hw;
+                    peopleNearbyIcon = R.drawable.menu_secret_hw;
+                    break;
+                default:
+                    newGroupIcon = R.drawable.menu_groups;
+                    newSecretIcon = R.drawable.menu_secret;
+                    newChannelIcon = R.drawable.menu_broadcast;
+                    contactsIcon = R.drawable.menu_contacts;
+                    callsIcon = R.drawable.menu_calls;
+                    archiveIcon = R.drawable.msg_archive;
+                    savedIcon = R.drawable.menu_saved;
+                    settingsIcon = R.drawable.menu_settings;
+                    scanQrIcon = R.drawable.msg_qrcode;
+                    inviteIcon = R.drawable.menu_invite;
+                    helpIcon = R.drawable.menu_help;
+                    peopleNearbyIcon = R.drawable.menu_nearby;
+                    break;
+            }
+
             switch (holder.getItemViewType()) {
                 case 1:
                     holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
@@ -259,6 +380,8 @@ public class AppearancePreferencesEntry extends BaseFragment {
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == applicationHeaderRow) {
                         headerCell.setText(LocaleController.getString("Appearance", R.string.Appearance));
+                    } else if (position == drawerHeaderRow){
+                        headerCell.setText(LocaleController.getString("DrawerOptions", R.string.DrawerOptions));
                     } else if (position == generalHeaderRow) {
                         headerCell.setText(LocaleController.getString("General", R.string.General));
                     }
@@ -288,6 +411,28 @@ public class AppearancePreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ForceTabletMode", R.string.ForceTabletMode), ExteraConfig.forceTabletMode, false);
                     }
                     break;
+                case 4:
+                    TextSettingsCell textSettingsCell = (TextSettingsCell) holder.itemView;
+                    if (position == eventChooserRow) {
+                        String value;
+                        if (ExteraConfig.eventType == 1) {
+                            value = LocaleController.getString("NewYear", R.string.NewYear);
+                        } else if (ExteraConfig.eventType == 2) {
+                            value = LocaleController.getString("ValentinesDay", R.string.ValentinesDay);
+                        } else if (ExteraConfig.eventType == 3) {
+                            value = LocaleController.getString("Halloween", R.string.Halloween);
+                        } else {
+                            value = LocaleController.getString("Default", R.string.Default);
+                        }
+                        textSettingsCell.setTextAndValue(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack), value, true);
+                    }
+                    break;
+                case 5:
+                    TextCell textCell = (TextCell) holder.itemView;
+                    if (position == drawerSettingsRow) {
+                        textCell.setTextAndIcon(LocaleController.getString("Drawer", R.string.Drawer), R.drawable.msg_list, false);
+                    }
+                    break;
             }
         }
 
@@ -310,6 +455,14 @@ public class AppearancePreferencesEntry extends BaseFragment {
                     view = new TextCheckCell(mContext);
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
+                case 4:
+                    view = new TextSettingsCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
+                case 5:
+                    view = new TextCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
                 default:
                     view = new ShadowSectionCell(mContext);
                     break;
@@ -320,15 +473,19 @@ public class AppearancePreferencesEntry extends BaseFragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (position == applicationDividerRow || position == generalDividerRow) {
+            if (position == applicationDividerRow || position == drawerDividerRow || position == generalDividerRow) {
                 return 1;
-            } else if (position == applicationHeaderRow || position == generalHeaderRow) {
+            } else if (position == applicationHeaderRow || position == drawerHeaderRow || position == generalHeaderRow) {
                 return 2;
             } else if (position == useSystemFontsRow || position == useSystemEmojiRow || position == transparentStatusBarRow ||
                        position == blurForAllThemesRow || position == hideAllChatsRow || position == hidePhoneNumberRow ||
                        position == showIDRow || position == chatsOnTitleRow || position == disableVibrationRow ||
                        position == forceTabletModeRow) {
                 return 3;
+            } else if (position == eventChooserRow) {
+                return 4;
+            } else if (position == drawerSettingsRow) {
+                return 5;
             }
             return 1;
         }

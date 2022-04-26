@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -21,13 +20,9 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
-import org.telegram.ui.Cells.TextCheckCell;
-import org.telegram.ui.Cells.TextSettingsCell;
-import org.telegram.ui.Cells.TextDetailSettingsCell;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 import org.telegram.ui.Components.UndoView;
-import org.telegram.ui.ActionBar.AlertDialog;
 
 import com.exteragram.messenger.ExteraConfig;
 import com.exteragram.messenger.preferences.cells.TextCheckWithIconCell;
@@ -36,10 +31,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
 
     private int rowCount;
     private ListAdapter listAdapter;
-    
-    private int iconsHeaderRow;
-    private int eventChooserRow;
-    private int iconsDividerRow;
 
     private int drawerHeaderRow;
     private int newGroupRow;
@@ -189,38 +180,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
                 }
 
                 parentLayout.rebuildAllFragmentViews(false, false);
-            } else if (position == eventChooserRow) {
-                if (getParentActivity() == null) {
-                    return;
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack));
-                builder.setItems(new CharSequence[]{
-                        LocaleController.getString("Default", R.string.Default),
-                        LocaleController.getString("NewYear", R.string.NewYear),
-                        LocaleController.getString("ValentinesDay", R.string.ValentinesDay),
-                        LocaleController.getString("Halloween", R.string.Halloween)
-                }, (dialog, which) -> {
-                    ExteraConfig.setEventType(which);
-                    RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(eventChooserRow);
-                    if (holder != null) {
-                        listAdapter.onBindViewHolder(holder, eventChooserRow);
-                    }
-                    Parcelable recyclerViewState = null;
-
-                    if (listView.getLayoutManager() != null) {
-                        recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
-                    }
-
-                    AlertDialog progressDialog = new AlertDialog(context, 3);
-                    progressDialog.show();
-                    AndroidUtilities.runOnUIThread(progressDialog::dismiss, 2000);
-
-                    parentLayout.rebuildAllFragmentViews(true, true);
-                    listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-                });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                showDialog(builder.create());
             }
         });
         restartTooltip = new UndoView(context);
@@ -232,10 +191,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
     @SuppressLint("NotifyDataSetChanged")
     private void updateRowsId(boolean notify) {
         rowCount = 0;
-
-        iconsHeaderRow = rowCount++;
-        eventChooserRow = rowCount++;
-        iconsDividerRow = rowCount++;
     
         drawerHeaderRow = rowCount++;
         newGroupRow = rowCount++;
@@ -337,8 +292,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == drawerHeaderRow) {
                         headerCell.setText(LocaleController.getString("DrawerElements", R.string.DrawerElements));
-                    } else if (position == iconsHeaderRow) {
-                        headerCell.setText(LocaleController.getString("DrawerOptions", R.string.DrawerOptions));
                     }
                     break;
                 case 3:
@@ -368,21 +321,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
                         textCheckWithIconCell.setTextAndCheckAndIcon(LocaleController.getString("TelegramFeatures", R.string.TelegramFeatures), helpIcon, ExteraConfig.telegramFeatures, false);
                     }
                     break;
-                case 4:
-                    TextSettingsCell textSettingsCell = (TextSettingsCell) holder.itemView;
-                    if (position == eventChooserRow) {
-                        String value;
-                        if (ExteraConfig.eventType == 1) {
-                            value = LocaleController.getString("NewYear", R.string.NewYear);
-                        } else if (ExteraConfig.eventType == 2) {
-                            value = LocaleController.getString("ValentinesDay", R.string.ValentinesDay);
-                        } else if (ExteraConfig.eventType == 3) {
-                            value = LocaleController.getString("Halloween", R.string.Halloween);
-                        } else {
-                            value = LocaleController.getString("Default", R.string.Default);
-                        }
-                        textSettingsCell.setTextAndValue(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack), value, false);
-                    }
             }
         }
 
@@ -405,10 +343,6 @@ public class DrawerPreferencesEntry extends BaseFragment {
                     view = new TextCheckWithIconCell(mContext);
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
-                case 4:
-                    view = new TextSettingsCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-                    break;
                 default:
                     view = new ShadowSectionCell(mContext);
                     break;
@@ -419,17 +353,15 @@ public class DrawerPreferencesEntry extends BaseFragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (position == drawerDividerRow || position == iconsDividerRow) {
+            if (position == drawerDividerRow) {
                 return 1;
-            } else if (position == drawerHeaderRow || position == iconsHeaderRow) {
+            } else if (position == drawerHeaderRow) {
                 return 2;
             } else if (position == newGroupRow || position == newSecretChatRow || position == newChannelRow ||
                        position == contactsRow || position == callsRow || position == peopleNearbyRow ||
-                       position == archivedChatsRow || position == savedMessagesRow ||
-                       position == scanQrRow || position == telegramFeaturesRow || position == inviteFriendsRow) {
+                       position == archivedChatsRow || position == savedMessagesRow || position == scanQrRow ||
+                       position == telegramFeaturesRow || position == inviteFriendsRow) {
                 return 3;
-            } else if (position == eventChooserRow) {
-                return 4;
             }
             return 1;
         }

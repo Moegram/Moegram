@@ -35,11 +35,9 @@ public class MainPreferencesEntry extends BaseFragment {
     private int categoryHeaderRow;
     private int appearanceRow;
     private int chatsRow;
-    private int drawerRow;
-
     private int dividerInfoRow;
-    private int dividerExteraInfoRow;
 
+    private int dividerExteraInfoRow;
     private int infoHeaderRow;
     private int aboutExteraRow;
     private int sourceCodeRow;
@@ -101,8 +99,6 @@ public class MainPreferencesEntry extends BaseFragment {
                 presentFragment(new AppearancePreferencesEntry());
             } else if (position == chatsRow) {
                 presentFragment(new ChatsPreferencesEntry());
-            } else if (position == drawerRow) {
-                presentFragment(new DrawerPreferencesEntry());
             }
         });
         return fragmentView;
@@ -115,14 +111,11 @@ public class MainPreferencesEntry extends BaseFragment {
         aboutExteraRow = rowCount++;
         
         dividerExteraInfoRow = rowCount++;
-
         categoryHeaderRow = rowCount++;
         appearanceRow = rowCount++;
         chatsRow = rowCount++;
-        drawerRow = rowCount++;
 
         dividerInfoRow = rowCount++;
-
         infoHeaderRow = rowCount++;
         channelRow = rowCount++;
         groupRow = rowCount++;
@@ -172,9 +165,7 @@ public class MainPreferencesEntry extends BaseFragment {
                     } else if (position == appearanceRow) {
                         textCell.setTextAndIcon(LocaleController.getString("Appearance", R.string.Appearance), R.drawable.msg_theme, true);
                     } else if (position == chatsRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("Chats", R.string.Chats), R.drawable.menu_chats, true);
-                    } else if (position == drawerRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("Drawer", R.string.Drawer), R.drawable.msg_list, false);
+                        textCell.setTextAndIcon(LocaleController.getString("Chats", R.string.Chats), R.drawable.menu_chats, false);
                     }
                     textCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                     break;
@@ -234,8 +225,8 @@ public class MainPreferencesEntry extends BaseFragment {
         public int getItemViewType(int position) {
             if (position == dividerInfoRow || position == dividerExteraInfoRow) {
                 return 1;
-            } else if (position == appearanceRow || position == chatsRow || position == drawerRow ||
-                       position == channelRow || position == groupRow || position == sourceCodeRow) {
+            } else if (position == appearanceRow || position == chatsRow || position == channelRow ||
+                       position == groupRow || position == sourceCodeRow) {
                 return 2;
             } else if (position == infoHeaderRow || position == categoryHeaderRow) {
                 return 3;
