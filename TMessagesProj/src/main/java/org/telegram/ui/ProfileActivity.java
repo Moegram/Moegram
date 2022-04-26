@@ -7392,8 +7392,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 }
                                 break;
                         }
-                        if (BuildVars.isBetaApp()) cell.setText("exteraGram β | v" + BuildConfig.VERSION_NAME);
-                            else cell.setText("exteraGram | v" + BuildConfig.VERSION_NAME);
+                        if (BuildVars.isBetaApp()) cell.setText("extera X β | v" + BuildConfig.VERSION_NAME);
+                            else cell.setText("extera X | v" + BuildConfig.VERSION_NAME);
                     } catch (Exception e) {
                         FileLog.e(e);
                     }
