@@ -617,9 +617,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
             raiseToSpeakRow = rowCount++;
             sendByEnterRow = rowCount++;
             saveToGalleryRow = rowCount++;
-            if (SharedConfig.canBlurChat()) {
-                chatBlurRow = rowCount++;
-            }
+            chatBlurRow = rowCount++;
             distanceRow = rowCount++;
             reactionsDoubleTapRow = rowCount++;
             settings2Row = rowCount++;
