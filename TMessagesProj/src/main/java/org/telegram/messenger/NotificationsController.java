@@ -3698,7 +3698,7 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(0xff11acfa);
+                    .setColor(0xFF4D4343);
 
             long[] vibrationPattern = null;
             Uri sound = null;
