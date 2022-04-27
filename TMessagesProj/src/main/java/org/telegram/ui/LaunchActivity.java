@@ -168,6 +168,7 @@ import java.util.regex.Pattern;
 
 import com.exteragram.messenger.preferences.MainPreferencesEntry;
 import com.exteragram.messenger.ExteraConfig;
+import com.exteragram.messenger.extras.MonetHelper;
 
 public class LaunchActivity extends BasePermissionsActivity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate {
     public static boolean isResumed;
@@ -923,6 +924,9 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                 AlertsCreator.createBackgroundActivityDialog(this).show();
                 SharedConfig.BackgroundActivityPrefs.setLastCheckedBackgroundActivity(System.currentTimeMillis());
             }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            MonetHelper.registerReceiver(this);
         }
     }
 
@@ -4503,6 +4507,9 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
 
     @Override
     protected void onDestroy() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            MonetHelper.unregisterReceiver(this);
+        }
         if (PhotoViewer.getPipInstance() != null) {
             PhotoViewer.getPipInstance().destroyPhotoViewer();
         }
