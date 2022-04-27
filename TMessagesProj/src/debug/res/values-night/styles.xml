@@ -13,8 +13,8 @@
 
     <style name="Theme.TMessages.Start" parent="@android:style/Theme.Material">
         <item name="android:actionBarStyle">@style/ActionBar.Transparent.TMessages.Start</item>
-        <item name="android:colorBackground">#6c6464</item>
-        <item name="android:windowBackground">#6c6464</item>
+        <item name="android:colorBackground">#688691</item>
+        <item name="android:windowBackground">#688691</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorPrimaryDark">#1c242e</item>
         <item name="android:colorPrimary">#232d3a</item>
