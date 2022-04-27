@@ -21,6 +21,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -3698,7 +3699,7 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(0xFF4D4343);
+                    .setColor(setNotificationColor());
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -4418,7 +4419,7 @@ public class NotificationsController extends BaseController {
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(messageObjects.size())
-                    .setColor(0xff11acfa)
+                    .setColor(setNotificationColor())
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)
@@ -4856,5 +4857,18 @@ public class NotificationsController extends BaseController {
             }
             updateServerNotificationsSettings(dialog_id);
         }
+    }
+
+    private int setNotificationColor() {
+        Configuration configuration = ApplicationLoader.applicationContext.getResources().getConfiguration();
+        int nightModeFlags = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return 0xffffffff;
+            case Configuration.UI_MODE_NIGHT_NO:
+                return 0xff4d4343;
+        }
+        return 0xff4d4343;
     }
 }
