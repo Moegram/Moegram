@@ -36,4 +36,4 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 - [exteraGram](https://github.com/exteraSquad/exteraGram)
 - [Catogram](https://github.com/Catogram/Catogram) and [Catogram X](https://github.com/CatogramX/CatogramX)
 - [Nekogram](https://gitlab.com/Nekogram/Nekogram) and [Nekogram X](https://github.com/NekoX-Dev/NekoX)
-- [OwlGram](https://gitlab.com/OwlGramDev/OwlGram)
+- [OwlGram](https://github.com/OwlGramDev/OwlGram)
