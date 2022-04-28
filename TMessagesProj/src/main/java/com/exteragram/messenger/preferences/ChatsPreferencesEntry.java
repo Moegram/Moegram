@@ -53,6 +53,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
 
     private int stickersHeaderRow;
     private int hideStickerTimeRow;
+    private int disableGreetingStickerRow;
     private int unlimitedRecentStickersRow;
     private int stickersDividerRow;
 
@@ -60,7 +61,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
     private int hideSendAsChannelRow;
     private int hideKeyboardOnScrollRow;
     private int disableReactionsRow;
-    private int disableGreetingStickerRow;
     private int disableJumpToNextChannelRow;
     private int archiveOnPullRow;
     private int dateOfForwardedMsgRow;
@@ -227,6 +227,13 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(ExteraConfig.hideStickerTime);
                 }
+            } else if (position == disableGreetingStickerRow) {
+                ExteraConfig.toggleDisableGreetingSticker();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(ExteraConfig.disableGreetingSticker);
+                }
+
+                parentLayout.rebuildAllFragmentViews(false, false);
             } else if (position == unlimitedRecentStickersRow) {
                 ExteraConfig.toggleUnlimitedRecentStickers();
                 if (view instanceof TextCheckCell) {
@@ -246,13 +253,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 ExteraConfig.toggleDisableReactions();
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(ExteraConfig.disableReactions);
-                }
-
-                parentLayout.rebuildAllFragmentViews(false, false);
-            } else if (position == disableGreetingStickerRow) {
-                ExteraConfig.toggleDisableGreetingSticker();
-                if (view instanceof TextCheckCell) {
-                    ((TextCheckCell) view).setChecked(ExteraConfig.disableGreetingSticker);
                 }
 
                 parentLayout.rebuildAllFragmentViews(false, false);
@@ -322,6 +322,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
 
         stickersHeaderRow = rowCount++;
         hideStickerTimeRow = rowCount++;
+        disableGreetingStickerRow = rowCount++;
         unlimitedRecentStickersRow = rowCount++;
         stickersDividerRow = rowCount++;
 
@@ -329,7 +330,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
         hideSendAsChannelRow = rowCount++;
         hideKeyboardOnScrollRow = rowCount++;
         disableReactionsRow = rowCount++;
-        disableGreetingStickerRow = rowCount++;
         disableJumpToNextChannelRow = rowCount++;
         archiveOnPullRow = rowCount++;
         dateOfForwardedMsgRow = rowCount++;
@@ -393,6 +393,8 @@ public class ChatsPreferencesEntry extends BaseFragment {
                     textCheckCell.setEnabled(true, null);
                     if (position == hideStickerTimeRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("StickerTime", R.string.StickerTime), ExteraConfig.hideStickerTime, true);
+                    } else if (position == disableGreetingStickerRow) {
+                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableGreetingSticker", R.string.DisableGreetingSticker), ExteraConfig.disableGreetingSticker, true);
                     } else if (position == unlimitedRecentStickersRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("UnlimitedRecentStickers", R.string.UnlimitedRecentStickers), ExteraConfig.unlimitedRecentStickers, true);
                     } else if (position == hideSendAsChannelRow) {
@@ -401,8 +403,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HideKeyboardOnScroll", R.string.HideKeyboardOnScroll), ExteraConfig.hideKeyboardOnScroll, true);
                     } else if (position == disableReactionsRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("DisableReactions", R.string.DisableReactions), ExteraConfig.disableReactions, true);
-                    } else if (position == disableGreetingStickerRow) {
-                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableGreetingSticker", R.string.DisableGreetingSticker), ExteraConfig.disableGreetingSticker, true);
                     } else if (position == disableJumpToNextChannelRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("DisableJumpToNextChannel", R.string.DisableJumpToNextChannel), ExteraConfig.disableJumpToNextChannel, true);
                     } else if (position == archiveOnPullRow) {
@@ -463,8 +463,8 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 return 1;
             } else if (position == stickerSizeHeaderRow || position == stickersHeaderRow || position == chatHeaderRow || position == mediaHeaderRow) {
                 return 2;
-            } else if (position == hideStickerTimeRow || position == unlimitedRecentStickersRow || position == hideSendAsChannelRow ||
-                    position == hideKeyboardOnScrollRow || position == disableReactionsRow || position == disableGreetingStickerRow ||
+            } else if (position == hideStickerTimeRow || position == disableGreetingStickerRow || position == unlimitedRecentStickersRow ||
+                    position == hideSendAsChannelRow || position == hideKeyboardOnScrollRow || position == disableReactionsRow ||
                     position == disableJumpToNextChannelRow || position == archiveOnPullRow || position == dateOfForwardedMsgRow ||
                     position == showMessageIDRow || position == rearVideoMessagesRow || position == disableCameraRow ||
                     position == disableProximityEventsRow || position == pauseOnMinimizeRow || position == disablePlaybackRow) {
