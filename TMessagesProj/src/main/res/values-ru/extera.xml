@@ -9,13 +9,14 @@
     <string name="Links">Ссылки</string>
     <string name="AboutExteraDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде Telegram!</string>
     <string name="SourceCode">Исходный код</string>
-    <string name="Channel">Канал в Telegram</string>
-    <string name="Chats">Чаты</string>
+    <string name="Channel">Канал</string>
+    <string name="Chat">Чат</string>
 
     <string name="Preferences">Настройки extera X</string>
     <string name="RestartRequired">Перезагрузите приложение, чтобы изменения вступили в силу.</string>
 
     <string name="Categories">Категории</string>
+    <string name="Chats">Чаты</string>
 
     <!-- Appearance -->
     <string name="UseSystemFonts">Системные шрифты</string>

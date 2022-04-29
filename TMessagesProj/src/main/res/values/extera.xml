@@ -13,12 +13,13 @@
     <string name="AboutExteraDescription">Experimental Telegram client based on official Telegram sources!</string>
     <string name="SourceCode">Source code</string>
     <string name="Channel">Channel</string>
-    <string name="Chats">Chats</string>
+    <string name="Chat">Chat</string>
 
     <string name="Preferences">extera X Preferences</string>
     <string name="RestartRequired">Restart the app to take effect.</string>
 
     <string name="Categories">Categories</string>
+    <string name="Chats">Chats</string>
 
     <!-- Appearance -->
     <string name="UseSystemFonts">Use system fonts</string>

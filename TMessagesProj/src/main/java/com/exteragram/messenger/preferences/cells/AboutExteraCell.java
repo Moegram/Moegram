@@ -22,15 +22,15 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 
-public class InfoSettingsCell extends FrameLayout {
+public class AboutExteraCell extends FrameLayout {
 
-    private TextView textView;
-    private TextView valueTextView;
-    private ImageView imageView;
+    private final TextView textView;
+    private final TextView valueTextView;
+    private final ImageView imageView;
     private boolean needDivider;
     private boolean multiline;
 
-    public InfoSettingsCell(Context context) {
+    public AboutExteraCell(Context context) {
         super(context);
 
         textView = new TextView(context);
@@ -56,7 +56,6 @@ public class InfoSettingsCell extends FrameLayout {
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         imageView.setColorFilter(new PorterDuffColorFilter(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText), PorterDuff.Mode.MULTIPLY));
         addView(imageView, LayoutHelper.createFrame(108, 108, Gravity.CENTER | Gravity.TOP, 0, 20, 0, 0));
-
     }
 
     @Override
