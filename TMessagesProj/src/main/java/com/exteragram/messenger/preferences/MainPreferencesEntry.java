@@ -26,23 +26,25 @@ import org.telegram.ui.Cells.TextCell;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 
-import com.exteragram.messenger.preferences.cells.InfoSettingsCell;
+import com.exteragram.messenger.preferences.cells.AboutExteraCell;
 
 public class MainPreferencesEntry extends BaseFragment {
     private int rowCount;
     private ListAdapter listAdapter;
 
+    private int aboutExteraRow;
+    private int aboutExteraDividerRow;
+
     private int categoryHeaderRow;
     private int appearanceRow;
     private int chatsRow;
-    private int dividerInfoRow;
+    private int categoryDividerRow;
 
-    private int dividerExteraInfoRow;
-    private int infoHeaderRow;
-    private int aboutExteraRow;
+    private int linksHeaderRow;
     private int sourceCodeRow;
     private int channelRow;
     private int groupRow;
+    private int linksDividerRow;
 
     @Override
     public boolean onFragmentCreate() {
@@ -89,16 +91,16 @@ public class MainPreferencesEntry extends BaseFragment {
         listView.setOnItemClickListener((view, position, x, y) -> {
             if (position == aboutExteraRow) {
                 Browser.openUrl(getParentActivity(), "https://exterasquad.github.io/");
-            } else if (position == sourceCodeRow) {
-                Browser.openUrl(getParentActivity(), "https://github.com/Attorelle/exteraX");
-            } else if (position == channelRow) {
-                MessagesController.getInstance(currentAccount).openByUserName(("exterax"), this, 1);
-            } else if (position == groupRow) {
-                MessagesController.getInstance(currentAccount).openByUserName(("exteraxchat"), this, 1);
             } else if (position == appearanceRow) {
                 presentFragment(new AppearancePreferencesEntry());
             } else if (position == chatsRow) {
                 presentFragment(new ChatsPreferencesEntry());
+            } else if (position == channelRow) {
+                MessagesController.getInstance(currentAccount).openByUserName(("exterax"), this, 1);
+            } else if (position == groupRow) {
+                MessagesController.getInstance(currentAccount).openByUserName(("exteraxchat"), this, 1);
+            } else if (position == sourceCodeRow) {
+                Browser.openUrl(getParentActivity(), "https://github.com/Attorelle/exteraX");
             }
         });
         return fragmentView;
@@ -107,20 +109,20 @@ public class MainPreferencesEntry extends BaseFragment {
     @SuppressLint("NotifyDataSetChanged")
     private void updateRowsId() {
         rowCount = 0;
-        
+
         aboutExteraRow = rowCount++;
-        
-        dividerExteraInfoRow = rowCount++;
+        aboutExteraDividerRow = rowCount++;
+
         categoryHeaderRow = rowCount++;
         appearanceRow = rowCount++;
         chatsRow = rowCount++;
+        categoryDividerRow = rowCount++;
 
-        dividerInfoRow = rowCount++;
-        infoHeaderRow = rowCount++;
+        linksHeaderRow = rowCount++;
         channelRow = rowCount++;
         groupRow = rowCount++;
         sourceCodeRow = rowCount++;
-
+        linksDividerRow = rowCount++;
 
         if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
@@ -155,13 +157,21 @@ public class MainPreferencesEntry extends BaseFragment {
                     holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
                     break;
                 case 2:
+                    HeaderCell headerCell = (HeaderCell) holder.itemView;
+                    if (position == categoryHeaderRow) {
+                        headerCell.setText(LocaleController.getString("Categories", R.string.Categories));
+                    } else if (position == linksHeaderRow) {
+                        headerCell.setText(LocaleController.getString("Links", R.string.Links));
+                    }
+                    break;
+                case 3:
                     TextCell textCell = (TextCell) holder.itemView;
                     if (position == sourceCodeRow) {
                         textCell.setTextAndValueAndIcon(LocaleController.getString("SourceCode", R.string.SourceCode), "Github", R.drawable.msg_report_spam, false);
                     } else if (position == channelRow) {
                         textCell.setTextAndValueAndIcon(LocaleController.getString("Channel", R.string.Channel), "@exterax", R.drawable.msg_channel, true);
                     } else if (position == groupRow) {
-                        textCell.setTextAndValueAndIcon(LocaleController.getString("Chats", R.string.Chats), "@exteraxchat", R.drawable.menu_groups, true);
+                        textCell.setTextAndValueAndIcon(LocaleController.getString("Chat", R.string.Chat), "@exteraxchat", R.drawable.menu_groups, true);
                     } else if (position == appearanceRow) {
                         textCell.setTextAndIcon(LocaleController.getString("Appearance", R.string.Appearance), R.drawable.msg_theme, true);
                     } else if (position == chatsRow) {
@@ -169,16 +179,8 @@ public class MainPreferencesEntry extends BaseFragment {
                     }
                     textCell.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
                     break;
-                case 3:
-                    HeaderCell headerCell = (HeaderCell) holder.itemView;
-                    if (position == categoryHeaderRow) {
-                        headerCell.setText(LocaleController.getString("Categories", R.string.Categories));
-                    } else if (position == infoHeaderRow){
-                        headerCell.setText(LocaleController.getString("Links", R.string.Links));
-                    }
-                    break;
                 case 4:
-                    InfoSettingsCell textDetailCell = (InfoSettingsCell) holder.itemView;
+                    AboutExteraCell textDetailCell = (AboutExteraCell) holder.itemView;
                     textDetailCell.setMultilineDetail(true);
                     if (position == aboutExteraRow) {
                         if (BuildVars.isBetaApp()) {
@@ -194,7 +196,7 @@ public class MainPreferencesEntry extends BaseFragment {
         @Override
         public boolean isEnabled(RecyclerView.ViewHolder holder) {
             int type = holder.getItemViewType();
-            return type == 2 || type == 4;
+            return type == 3 || type == 4;
         }
 
         @NonNull
@@ -203,15 +205,15 @@ public class MainPreferencesEntry extends BaseFragment {
             View view;
             switch (viewType) {
                 case 2:
-                    view = new TextCell(mContext);
-                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
-                    break;
-                case 3:
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
+                case 3:
+                    view = new TextCell(mContext);
+                    view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
+                    break;
                 case 4:
-                    view = new InfoSettingsCell(mContext);
+                    view = new AboutExteraCell(mContext);
                     view.setBackgroundColor(Theme.getColor(Theme.key_windowBackgroundWhite));
                     break;
                 default:
@@ -223,12 +225,12 @@ public class MainPreferencesEntry extends BaseFragment {
         }
         @Override
         public int getItemViewType(int position) {
-            if (position == dividerInfoRow || position == dividerExteraInfoRow) {
+            if (position == aboutExteraDividerRow || position == categoryDividerRow || position == linksDividerRow) {
                 return 1;
-            } else if (position == appearanceRow || position == chatsRow || position == channelRow ||
-                       position == groupRow || position == sourceCodeRow) {
+            } else if (position == categoryHeaderRow || position == linksHeaderRow) {
                 return 2;
-            } else if (position == infoHeaderRow || position == categoryHeaderRow) {
+            } else if (position == appearanceRow || position == chatsRow ||
+                       position == channelRow || position == groupRow || position == sourceCodeRow) {
                 return 3;
             } else if (position == aboutExteraRow) {
                 return 4;
