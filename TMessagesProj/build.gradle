@@ -133,10 +133,6 @@ android {
         }
     }
 
-    sourceSets.release {
-        manifest.srcFile 'config/release/AndroidManifest.xml'
-    }
-
     flavorDimensions "minApi"
 
     productFlavors {
@@ -189,16 +185,6 @@ android {
 
             outputFileName = "exterax-${formattedDate}.apk"
             output.versionCodeOverride = defaultConfig.versionCode * 10 + variant.productFlavors.get(0).abiVersionCode
-        }
-    }
-
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        if (variant.buildType.name != "release" && !names.contains("beta")) {
-            setIgnore(true)
-        }
-        if (variant.buildType.name != "debug" && names.contains("beta")) {
-            setIgnore(true)
         }
     }
 
