@@ -31,6 +31,9 @@ MAPS_V2_API = abcdef01234567-abcdef012345678910111213
 ./gradlew assembleAfatRelease
 ```
 
+## extera X Localization
+Since **extera X** is a fork of **Telegram for Android** and most localizations follow translations of **Telegram for Android**, check it out [here](https://translations.telegram.org/en/android/). As for specialized strings for **extera X**, we use **Crowdin** to translate **extera X**. Join the project at [Crowdin](https://exterax.crowdin.com/exterax)!
+
  ## Thanks to:
 - [Telegram](https://github.com/DrKLO/Telegram)
 - [exteraGram](https://github.com/exteraSquad/exteraGram)
