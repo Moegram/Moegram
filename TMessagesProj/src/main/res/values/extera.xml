@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- extera X's Main Strings -->
-    <string name="exteraAppName">extera X</string>
-    <string name="exteraAppNameBeta">extera X β</string>
-    <string name="exteraDebugMenu">¯\\_(ツ)_/¯</string>
+    <string name="exteraAppName" translatable="false">extera X</string>
+    <string name="exteraAppNameBeta" translatable="false">extera X β</string>
+    <string name="exteraDebugMenu" translatable="false">¯\\_(ツ)_/¯</string>
     <string name="MutualContact">mutual contact</string>
     <string name="ToBeginning">To beginning</string>
     <string name="SaveMessage">Save message</string>
