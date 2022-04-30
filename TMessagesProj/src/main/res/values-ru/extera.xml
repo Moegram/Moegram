@@ -5,6 +5,9 @@
     <string name="ToBeginning">В начало</string>
     <string name="SaveMessage">Сохранить сообщение</string>
 
+    <string name="Enabled">Включено</string>
+    <string name="Disabled">Выключено</string>
+
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
     <string name="AboutExteraDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде Telegram!</string>

@@ -1955,7 +1955,7 @@ public class AndroidUtilities {
     }
 
     public static boolean isTablet() {
-        if (ExteraConfig.forceTabletMode) isTablet = true;
+        if (ExteraConfig.forceTabletMode != ExteraConfig.TABLET_AUTO) return ExteraConfig.forceTabletMode == ExteraConfig.TABLET_ENABLE;
         if (isTablet == null) {
             isTablet = ApplicationLoader.applicationContext != null && ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
         }
