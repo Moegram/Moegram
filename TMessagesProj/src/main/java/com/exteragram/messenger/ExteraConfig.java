@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.UserConfig;
-
-import java.util.Arrays;
 
 public class ExteraConfig {
 
@@ -23,7 +20,7 @@ public class ExteraConfig {
     public static boolean hidePhoneNumber;
     public static boolean showID;
     public static boolean chatsOnTitle;
-    public static boolean forceTabletMode;
+    public static int forceTabletMode;
 
     public static float stickerSize = 14.0f;
     public static boolean hideStickerTime;
@@ -57,6 +54,10 @@ public class ExteraConfig {
     public static boolean telegramFeatures;
     public static int eventType;
 
+    public static final int TABLET_AUTO = 0;
+    public static final int TABLET_ENABLE = 1;
+    public static final int TABLET_DISABLE = 2;
+
     public static long channelToSave = UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId();
 
     private static boolean configLoaded;
@@ -83,7 +84,7 @@ public class ExteraConfig {
             hidePhoneNumber = preferences.getBoolean("hidePhoneNumber", false);
             showID = preferences.getBoolean("showID", false);
             chatsOnTitle = preferences.getBoolean("chatsOnTitle", true);
-            forceTabletMode = preferences.getBoolean("forceTabletMode", false);
+            forceTabletMode = preferences.getInt("forceTabletMode", TABLET_AUTO);
 
             stickerSize = preferences.getFloat("stickerSize", 14.0f);
             hideStickerTime = preferences.getBoolean("hideStickerTime", false);
@@ -179,11 +180,11 @@ public class ExteraConfig {
         editor.apply();
     }
 
-    public static void toggleForceTabletMode() {
-        forceTabletMode = !forceTabletMode;
+    public static void setForceTabletMode(int mode) {
+        forceTabletMode = mode;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("forceTabletMode", forceTabletMode);
+        editor.putInt("forceTabletMode", forceTabletMode);
         editor.apply();
     }
 

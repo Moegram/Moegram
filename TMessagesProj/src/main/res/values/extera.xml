@@ -8,6 +8,9 @@
     <string name="ToBeginning">To beginning</string>
     <string name="SaveMessage">Save message</string>
 
+    <string name="Enabled">Enabled</string>
+    <string name="Disabled">Disabled</string>
+
     <!-- Main Menu (about) -->
     <string name="Links">Links</string>
     <string name="AboutExteraDescription">Experimental Telegram client based on official Telegram sources!</string>
