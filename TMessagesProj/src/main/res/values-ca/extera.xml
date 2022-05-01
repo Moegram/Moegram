@@ -6,6 +6,7 @@
     <string name="SaveMessage">Save message</string>
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>
+    <string name="SuggestionMessage">Subscribe to our channel to stay informed and receive new updates!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Links</string>
     <string name="AboutExteraDescription">Experimental Telegram client based on official Telegram sources!</string>
@@ -21,23 +22,31 @@
     <string name="UseSystemEmoji">Use system emoji</string>
     <string name="TransparentStatusBar">Transparent status bar</string>
     <string name="BlurForAllThemes">Blur for all themes</string>
+    <!-- Drawer -->
+    <string name="Drawer">Drawer</string>
+    <string name="DrawerElements">Drawer elements</string>
+    <string name="DrawerOptions">Drawer settings</string>
+    <string name="DrawerIconPack">Icon pack</string>
+    <string name="NewYear">New Year</string>
+    <string name="ValentinesDay">Valentine\'s Day</string>
+    <string name="Halloween">Halloween</string>
     <string name="HideAllChats">Hide \"All Chats\" tab</string>
-    <string name="HideProxySponsor">Hide proxy sponsor</string>
     <string name="HidePhoneNumber">Hide phone number</string>
     <string name="ShowID">Show ID in Profile</string>
     <string name="ChatsOnTitle">\"Chats\" instead of \"extera X\"</string>
     <string name="DisableVibration">Disable vibration</string>
-    <string name="ForceTabletMode">Force tablet mode</string>
+    <string name="ForceTabletMode">Tablet mode</string>
     <!-- Chats -->
     <string name="StickerSize">Stickers size</string>
     <string name="StickerTime">Hide time under stickers</string>
+    <string name="HideGroupStickers">Hide group stickers</string>
+    <string name="DisableGreetingSticker">Disable greeting sticker</string>
     <string name="UnlimitedRecentStickers">Unlimited recent stickers</string>
-    <string name="StickerSizeDialogMessageReplyTo">meowmeow</string>
-    <string name="StickerSizeDialogMessage">woah, he is so cute!</string>
+    <string name="StickerSizeDialogMessageReplyTo">woof</string>
+    <string name="StickerSizeDialogMessage">wow, it\'s Mars (@mars_cat)!</string>
     <string name="HideSendAsChannel">Hide \"Send as Channel\"</string>
     <string name="HideKeyboardOnScroll">Hide keyboard on scrolling</string>
     <string name="DisableReactions">Disable reactions</string>
-    <string name="DisableGreetingSticker">Disable greeting sticker</string>
     <string name="DisableJumpToNextChannel">Disable \"Jump to next channel\"</string>
     <string name="ArchiveOnPull">Open archive on pulldown</string>
     <string name="DateOfForwardedMsg">Show date of forwarded message</string>
@@ -50,14 +59,6 @@
     <string name="POMDescription">Pauses a video playback when device is locked or extera X is minimized</string>
     <string name="DisablePlayback">Disable playback</string>
     <string name="DPDescription">Disables playback when volume button is pressed</string>
-    <!-- Drawer -->
-    <string name="Drawer">Drawer</string>
-    <string name="DrawerElements">Drawer elements</string>
-    <string name="DrawerOptions">Drawer settings</string>
-    <string name="DrawerIconPack">Icon pack</string>
-    <string name="NewYear">New Year</string>
-    <string name="ValentinesDay">Valentine\'s Day</string>
-    <string name="Halloween">Halloween</string>
     <!-- Other -->
     <string name="EnterID">Enter the ID</string>
     <string name="TrackSaved">Track Saved</string>
