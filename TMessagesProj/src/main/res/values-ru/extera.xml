@@ -6,6 +6,7 @@
     <string name="SaveMessage">Сохранить сообщение</string>
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>
+    <string name="SuggestionMessage">Subscribe to our channel to stay informed and receive new updates!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
     <string name="AboutExteraDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде Telegram!</string>
@@ -21,23 +22,31 @@
     <string name="UseSystemEmoji">Системные эмодзи</string>
     <string name="TransparentStatusBar">Прозрачная строка состояния</string>
     <string name="BlurForAllThemes">Размытие во всех темах</string>
+    <!-- Drawer -->
+    <string name="Drawer">Боковое меню</string>
+    <string name="DrawerElements">Элементы бокового меню</string>
+    <string name="DrawerOptions">Настройки бокового меню</string>
+    <string name="DrawerIconPack">Выбор стиля</string>
+    <string name="NewYear">Новый год</string>
+    <string name="ValentinesDay">День святого Валентина</string>
+    <string name="Halloween">Хэллоуин</string>
     <string name="HideAllChats">Скрыть \"Все чаты\"</string>
-    <string name="HideProxySponsor">Скрыть спонсора прокси</string>
     <string name="HidePhoneNumber">Скрыть номер телефона</string>
     <string name="ShowID">Показывать ID в профиле</string>
     <string name="ChatsOnTitle">\"Чаты\" вместо \"extera X\"</string>
     <string name="DisableVibration">Отключить вибрацию</string>
-    <string name="ForceTabletMode">Планшетный режим</string>
+    <string name="ForceTabletMode">Tablet mode</string>
     <!-- Chats -->
     <string name="StickerSize">Размер стикера</string>
     <string name="StickerTime">Скрыть время под стикером</string>
+    <string name="HideGroupStickers">Hide group stickers</string>
+    <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
-    <string name="StickerSizeDialogMessageReplyTo">мяу</string>
-    <string name="StickerSizeDialogMessage">ооо, ну какой же он милашкин!</string>
+    <string name="StickerSizeDialogMessageReplyTo">woof</string>
+    <string name="StickerSizeDialogMessage">wow, it\'s Mars (@mars_cat)!</string>
     <string name="HideSendAsChannel">Скрыть \"Написать от имени…\"</string>
     <string name="HideKeyboardOnScroll">Скрыть клавиатуру при пролистывании</string>
     <string name="DisableReactions">Отключить реакции</string>
-    <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="DisableJumpToNextChannel">Отключить \"Перейти в новый канал\"</string>
     <string name="ArchiveOnPull">Открыть архив при вытягивании</string>
     <string name="DateOfForwardedMsg">Дата пересланного сообщения</string>
@@ -50,14 +59,6 @@
     <string name="POMDescription">Останавливает видео, когда девайс блокируется или приложение сворачивается</string>
     <string name="DisablePlayback">Отключить проигрывание</string>
     <string name="DPDescription">Отключает автоматическое проигрывание видео при нажатии на кнопку громкости</string>
-    <!-- Drawer -->
-    <string name="Drawer">Боковое меню</string>
-    <string name="DrawerElements">Элементы бокового меню</string>
-    <string name="DrawerOptions">Настройки бокового меню</string>
-    <string name="DrawerIconPack">Выбор стиля</string>
-    <string name="NewYear">Новый год</string>
-    <string name="ValentinesDay">День святого Валентина</string>
-    <string name="Halloween">Хэллоуин</string>
     <!-- Other -->
     <string name="EnterID">Введите ID</string>
     <string name="TrackSaved">Трек сохранен</string>
