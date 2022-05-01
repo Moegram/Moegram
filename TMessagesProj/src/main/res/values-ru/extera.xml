@@ -40,6 +40,7 @@
     <!-- Chats -->
     <string name="StickerSize">Размер стикера</string>
     <string name="StickerTime">Скрыть время под стикером</string>
+    <string name="HideGroupStickers">Скрыть стикеры группы</string>
     <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
 
     <string name="StickerSizeDialogMessageReplyTo">гав</string>

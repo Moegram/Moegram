@@ -24,6 +24,7 @@ public class ExteraConfig {
 
     public static float stickerSize = 14.0f;
     public static boolean hideStickerTime;
+    public static boolean hideGroupStickers;
     public static boolean unlimitedRecentStickers;
 
     public static boolean hideSendAsChannel;
@@ -88,6 +89,7 @@ public class ExteraConfig {
 
             stickerSize = preferences.getFloat("stickerSize", 14.0f);
             hideStickerTime = preferences.getBoolean("hideStickerTime", false);
+            hideGroupStickers = preferences.getBoolean("hideGroupStickers", false);
             unlimitedRecentStickers = preferences.getBoolean("unlimitedRecentStickers", false);
 
             hideSendAsChannel = preferences.getBoolean("hideSendAsChannel", false);
@@ -201,6 +203,14 @@ public class ExteraConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideStickerTime", hideStickerTime);
+        editor.apply();
+    }
+
+    public static void toggleHideGroupStickers() {
+        hideGroupStickers = !hideGroupStickers;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("hideGroupStickers", hideGroupStickers);
         editor.apply();
     }
 
