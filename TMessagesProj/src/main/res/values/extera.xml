@@ -43,6 +43,7 @@
     <!-- Chats -->
     <string name="StickerSize">Stickers size</string>
     <string name="StickerTime">Hide time under stickers</string>
+    <string name="HideGroupStickers">Hide group stickers</string>
     <string name="UnlimitedRecentStickers">Unlimited recent stickers</string>
 
     <string name="StickerSizeDialogMessageReplyTo">woof</string>
