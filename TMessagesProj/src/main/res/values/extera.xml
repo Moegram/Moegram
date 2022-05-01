@@ -11,6 +11,8 @@
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>
 
+    <string name="SuggestionMessage">Subscribe to our channel to stay informed and receive new updates!</string>
+
     <!-- Main Menu (about) -->
     <string name="Links">Links</string>
     <string name="AboutExteraDescription">Experimental Telegram client based on official Telegram sources!</string>
@@ -43,8 +45,8 @@
     <string name="StickerTime">Hide time under stickers</string>
     <string name="UnlimitedRecentStickers">Unlimited recent stickers</string>
 
-    <string name="StickerSizeDialogMessageReplyTo">meowmeow</string>
-    <string name="StickerSizeDialogMessage">woah, he is so cute!</string>
+    <string name="StickerSizeDialogMessageReplyTo">woof</string>
+    <string name="StickerSizeDialogMessage">wow, it\'s Mars! (@mars_cat)</string>
 
     <string name="HideSendAsChannel">Hide \"Send as Channel\"</string>
     <string name="HideKeyboardOnScroll">Hide keyboard on scrolling</string>
