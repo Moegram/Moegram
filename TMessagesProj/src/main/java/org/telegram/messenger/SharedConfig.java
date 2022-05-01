@@ -131,7 +131,7 @@ public class SharedConfig {
     public static boolean allowBigEmoji;
     public static boolean useSystemEmoji;
     public static int fontSize = 16;
-    public static int bubbleRadius = 5;
+    public static int bubbleRadius = 17;
     public static int ivFontSize = 16;
     public static int messageSeenHintCount;
     public static int emojiInteractionsHintCount;
@@ -363,7 +363,7 @@ public class SharedConfig {
             roundCamera16to9 = true;//preferences.getBoolean("roundCamera16to9", false);
             repeatMode = preferences.getInt("repeatMode", 0);
             fontSize = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
-            bubbleRadius = preferences.getInt("bubbleRadius", 5);
+            bubbleRadius = preferences.getInt("bubbleRadius", 17);
             ivFontSize = preferences.getInt("iv_font_size", fontSize);
             allowBigEmoji = preferences.getBoolean("allowBigEmoji", true);
             useSystemEmoji = preferences.getBoolean("useSystemEmoji", false);
