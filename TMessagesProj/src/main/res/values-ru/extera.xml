@@ -29,8 +29,16 @@
     <string name="TransparentStatusBar">Прозрачная строка состояния</string>
     <string name="BlurForAllThemes">Размытие во всех темах</string>
 
+    <!-- Drawer -->
+    <string name="Drawer">Боковое меню</string>
+    <string name="DrawerElements">Элементы бокового меню</string>
+    <string name="DrawerOptions">Настройки бокового меню</string>
+    <string name="DrawerIconPack">Выбор стиля</string>
+    <string name="NewYear">Новый год</string>
+    <string name="ValentinesDay">День святого Валентина</string>
+    <string name="Halloween">Хэллоуин</string>
+
     <string name="HideAllChats">Скрыть \"Все чаты\"</string>
-    <string name="HideProxySponsor">Скрыть спонсора прокси</string>
     <string name="HidePhoneNumber">Скрыть номер телефона</string>
     <string name="ShowID">Показывать ID в профиле</string>
     <string name="ChatsOnTitle">\"Чаты\" вместо \"extera X\"</string>
@@ -41,14 +49,14 @@
     <string name="StickerSize">Размер стикера</string>
     <string name="StickerTime">Скрыть время под стикером</string>
     <string name="HideGroupStickers">Скрыть стикеры группы</string>
+    <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
 
     <string name="StickerSizeDialogMessageReplyTo">гав</string>
-    <string name="StickerSizeDialogMessage">ого, это же марс! (@mars_cat)</string>
+    <string name="StickerSizeDialogMessage">ого, это же марс (@mars_cat)!</string>
 
     <string name="HideSendAsChannel">Скрыть \"Написать от имени…\"</string>
     <string name="HideKeyboardOnScroll">Скрыть клавиатуру при пролистывании</string>
-    <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="DisableJumpToNextChannel">Отключить \"Перейти в новый канал\"</string>
     <string name="DisableReactions">Отключить реакции</string>
     <string name="ArchiveOnPull">Открыть архив при вытягивании</string>
@@ -63,15 +71,6 @@
     <string name="POMDescription">Останавливает видео, когда девайс блокируется или приложение сворачивается</string>
     <string name="DisablePlayback">Отключить проигрывание</string>
     <string name="DPDescription">Отключает автоматическое проигрывание видео при нажатии на кнопку громкости</string>
-
-    <!-- Drawer -->
-    <string name="Drawer">Боковое меню</string>
-    <string name="DrawerElements">Элементы бокового меню</string>
-    <string name="DrawerOptions">Настройки бокового меню</string>
-    <string name="DrawerIconPack">Выбор стиля</string>
-    <string name="NewYear">Новый год</string>
-    <string name="ValentinesDay">День святого Валентина</string>
-    <string name="Halloween">Хэллоуин</string>
 
     <!-- Other -->
     <string name="EnterID">Введите ID</string>
