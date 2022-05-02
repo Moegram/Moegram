@@ -56,7 +56,7 @@
     <string name="UnlimitedRecentStickers">Unlimited recent stickers</string>
 
     <string name="StickerSizeDialogMessageReplyTo">woof</string>
-    <string name="StickerSizeDialogMessage">wow, it\'s Mars (@mars_cat)!</string>
+    <string name="StickerSizeDialogMessage">wow, it\'s Mars! (@mars_cat)</string>
 
     <string name="HideSendAsChannel">Hide \"Send as Channel\"</string>
     <string name="HideKeyboardOnScroll">Hide keyboard on scrolling</string>
