@@ -43,7 +43,7 @@
     <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
     <string name="StickerSizeDialogMessageReplyTo">woof</string>
-    <string name="StickerSizeDialogMessage">wow, it\'s Mars (@mars_cat)!</string>
+    <string name="StickerSizeDialogMessage">wow, it\'s Mars! (@mars_cat)</string>
     <string name="HideSendAsChannel">Скрыть \"Написать от имени…\"</string>
     <string name="HideKeyboardOnScroll">Скрыть клавиатуру при пролистывании</string>
     <string name="DisableReactions">Отключить реакции</string>
