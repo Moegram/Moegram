@@ -6,7 +6,7 @@
     <string name="SaveMessage">Сохранить сообщение</string>
     <string name="Enabled">Включено</string>
     <string name="Disabled">Отключено</string>
-    <string name="SuggestionMessage">Subscribe to our channel to stay informed and receive new updates!</string>
+    <string name="SuggestionMessage">Подпишитесь на наш канал, чтобы оставаться в курсе событий и получать новые обновления!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
     <string name="AboutExteraDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде Telegram!</string>
@@ -35,15 +35,15 @@
     <string name="ShowID">Показывать ID в профиле</string>
     <string name="ChatsOnTitle">\"Чаты\" вместо \"extera X\"</string>
     <string name="DisableVibration">Отключить вибрацию</string>
-    <string name="ForceTabletMode">Tablet mode</string>
+    <string name="ForceTabletMode">Режим планшета</string>
     <!-- Chats -->
     <string name="StickerSize">Размер стикера</string>
     <string name="StickerTime">Скрыть время под стикером</string>
-    <string name="HideGroupStickers">Hide group stickers</string>
+    <string name="HideGroupStickers">Скрыть стикеры группы</string>
     <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
     <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
-    <string name="StickerSizeDialogMessageReplyTo">woof</string>
-    <string name="StickerSizeDialogMessage">wow, it\'s Mars! (@mars_cat)</string>
+    <string name="StickerSizeDialogMessageReplyTo">гав</string>
+    <string name="StickerSizeDialogMessage">вау, это же Марс! (@mars_cat)</string>
     <string name="HideSendAsChannel">Скрыть \"Написать от имени…\"</string>
     <string name="HideKeyboardOnScroll">Скрыть клавиатуру при пролистывании</string>
     <string name="DisableReactions">Отключить реакции</string>
