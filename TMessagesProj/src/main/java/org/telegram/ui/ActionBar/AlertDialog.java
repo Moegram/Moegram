@@ -139,7 +139,7 @@ public class AlertDialog extends Dialog implements Drawable.Callback {
     private ArrayList<AlertDialogCell> itemViews = new ArrayList<>();
     private float aspectRatio;
     private boolean dimEnabled = true;
-    private float dimAlpha = 0.6f;
+    private float dimAlpha = 0.33f;
     private final Theme.ResourcesProvider resourcesProvider;
     private boolean topAnimationAutoRepeat = true;
 
