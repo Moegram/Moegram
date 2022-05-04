@@ -6,7 +6,7 @@
     <string name="SaveMessage">保存消息</string>
     <string name="Enabled">已启用</string>
     <string name="Disabled">已禁用</string>
-    <string name="SuggestionMessage">加入我们的频道以查看与接收新的更新！</string>
+    <string name="SuggestionMessage">加入我们的频道以查看与接收应用更新！</string>
     <!-- Main Menu (about) -->
     <string name="Links">链接</string>
     <string name="AboutExteraDescription">基于官方Telegram源代码制作的第三方实验性客户端</string>
@@ -34,7 +34,7 @@
     <string name="HidePhoneNumber">隐藏手机号码</string>
     <string name="ShowID">个人资料页显示 ID</string>
     <string name="ChatsOnTitle">主标题显示为“对话”</string>
-    <string name="DisableVibration">禁用应用振动</string>
+    <string name="DisableVibration">禁用应用内震动</string>
     <string name="ForceTabletMode">平板模式</string>
     <!-- Chats -->
     <string name="StickerSize">贴纸大小</string>
@@ -45,24 +45,24 @@
     <string name="StickerSizeDialogMessageReplyTo">哦呼</string>
     <string name="StickerSizeDialogMessage">哇，是Mars！ (@mars_cat)</string>
     <string name="HideSendAsChannel">隐藏“以频道身份发言”</string>
-    <string name="HideKeyboardOnScroll">Hide keyboard on scrolling</string>
-    <string name="DisableReactions">Disable reactions</string>
-    <string name="DisableJumpToNextChannel">Disable \"Jump to next channel\"</string>
-    <string name="ArchiveOnPull">Open archive on pulldown</string>
-    <string name="DateOfForwardedMsg">Show date of forwarded message</string>
-    <string name="ShowMessageID">Show message ID</string>
-    <string name="Media">Media</string>
-    <string name="RearVideoMessages">Rear camera in video messages</string>
-    <string name="DisableCamera">Disable instant camera</string>
-    <string name="DisableProximityEvents">Disable proximity events</string>
-    <string name="PauseOnMinimize">Autopause</string>
-    <string name="POMDescription">Pauses a video playback when device is locked or extera X is minimized</string>
-    <string name="DisablePlayback">Disable playback</string>
-    <string name="DPDescription">Disables playback when volume button is pressed</string>
+    <string name="HideKeyboardOnScroll">滚动浏览对话时隐藏键盘</string>
+    <string name="DisableReactions">禁用表情回应</string>
+    <string name="DisableJumpToNextChannel">禁用“滑动到下一个频道”</string>
+    <string name="ArchiveOnPull">下拉打开已归档对话</string>
+    <string name="DateOfForwardedMsg">显示被转发原消息所发送的时间</string>
+    <string name="ShowMessageID">显示消息ID编号</string>
+    <string name="Media">媒体</string>
+    <string name="RearVideoMessages">视频留言默认使用后置摄像头</string>
+    <string name="DisableCamera">禁用即时相机预览</string>
+    <string name="DisableProximityEvents">禁用距离传感器</string>
+    <string name="PauseOnMinimize">自动暂停视频播放</string>
+    <string name="POMDescription">当锁定屏幕/切换到后台时，自动暂停视频播放</string>
+    <string name="DisablePlayback">禁用视频声音外放</string>
+    <string name="DPDescription">按下音量键时禁用视频声音外放</string>
     <!-- Other -->
-    <string name="EnterID">Enter the ID</string>
-    <string name="TrackSaved">Track Saved</string>
-    <string name="ChannelToSaveDescription">Enter the ID of the channel/chat/user where the tracks will be saved</string>
-    <string name="ConfirmCall">Confirm call</string>
-    <string name="CallTo">Call to **%1$s**?</string>
+    <string name="EnterID">输入ID编号</string>
+    <string name="TrackSaved">已保存此ID对应的超链接</string>
+    <string name="ChannelToSaveDescription">输入频道/群组/用户的ID编号，以保存相应的超链接入口</string>
+    <string name="ConfirmCall">呼叫前确认</string>
+    <string name="CallTo">是否呼叫**%1$s**</string>
 </resources>
