@@ -2947,7 +2947,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 BuildVars.DEBUG_PRIVATE_VERSION || BuildVars.isStandaloneApp() ? LocaleController.getString("DebugMenuCheckAppUpdate", R.string.DebugMenuCheckAppUpdate) : null,
                                 LocaleController.getString("DebugMenuReadAllDialogs", R.string.DebugMenuReadAllDialogs),
                                 SharedConfig.pauseMusicOnRecord ? LocaleController.getString("DebugMenuDisablePauseMusic", R.string.DebugMenuDisablePauseMusic) : LocaleController.getString("DebugMenuEnablePauseMusic", R.string.DebugMenuEnablePauseMusic),
-                                BuildVars.DEBUG_VERSION && !AndroidUtilities.isTablet() && Build.VERSION.SDK_INT >= 23 ? (SharedConfig.smoothKeyboard ? LocaleController.getString("DebugMenuDisableSmoothKeyboard", R.string.DebugMenuDisableSmoothKeyboard) : LocaleController.getString("DebugMenuEnableSmoothKeyboard", R.string.DebugMenuEnableSmoothKeyboard)) : null,
+                                SharedConfig.smoothKeyboard ? LocaleController.getString("DebugMenuDisableSmoothKeyboard", R.string.DebugMenuDisableSmoothKeyboard) : LocaleController.getString("DebugMenuEnableSmoothKeyboard", R.string.DebugMenuEnableSmoothKeyboard),
                                 BuildVars.DEBUG_PRIVATE_VERSION ? (SharedConfig.disableVoiceAudioEffects ? "Enable voip audio effects" : "Disable voip audio effects") : null,
                                 Build.VERSION.SDK_INT >= 21 ? (SharedConfig.noStatusBar ? "Show status bar background" : "Hide status bar background") : null,
                                 BuildVars.DEBUG_PRIVATE_VERSION ? "Clean app update" : null,
@@ -7368,32 +7368,23 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String abi = "";
                         switch (pInfo.versionCode % 10) {
                             case 1:
-                            case 3:
-                                abi = "arm-v7a";
-                                break;
-                            case 2:
-                            case 4:
-                                abi = "x86";
-                                break;
-                            case 5:
-                            case 7:
                                 abi = "arm64-v8a";
                                 break;
-                            case 6:
-                            case 8:
+                            case 2:
+                                abi = "arm-v7a";
+                                break;
+                            case 3:
+                                abi = "x86";
+                                break;
+                            case 4:
                                 abi = "x86_64";
                                 break;
-                            case 0:
                             case 9:
-                                if (BuildVars.isStandaloneApp()) {
-                                    abi = "direct " + Build.CPU_ABI + " " + Build.CPU_ABI2;
-                                } else {
-                                    abi = "universal " + Build.CPU_ABI + " " + Build.CPU_ABI2;
-                                }
+                                abi = "universal";
                                 break;
                         }
-                        if (BuildVars.isBetaApp()) cell.setText("extera X β | v" + BuildConfig.VERSION_NAME);
-                            else cell.setText("extera X | v" + BuildConfig.VERSION_NAME);
+                        if (BuildVars.isBetaApp()) cell.setText("extera X β | v" + BuildVars.BUILD_VERSION_STRING + " (" + BuildVars.BUILD_VERSION + ")" + "\n" + abi);
+                            else cell.setText("extera X | v" + BuildVars.BUILD_VERSION_STRING + " (" + BuildVars.BUILD_VERSION + ")" + "\n" + abi);
                     } catch (Exception e) {
                         FileLog.e(e);
                     }

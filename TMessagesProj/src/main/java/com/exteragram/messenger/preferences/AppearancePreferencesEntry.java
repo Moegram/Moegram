@@ -245,11 +245,33 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 }
                 restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
             } else if (position == forceTabletModeRow) {
-                ExteraConfig.toggleForceTabletMode();
-                if (view instanceof TextCheckCell) {
-                    ((TextCheckCell) view).setChecked(ExteraConfig.forceTabletMode);
+                if (getParentActivity() == null) {
+                    return;
                 }
-                restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setTitle(LocaleController.getString("ForceTabletMode", R.string.ForceTabletMode));
+                builder.setItems(new CharSequence[]{
+                        LocaleController.getString("Default", R.string.Default),
+                        LocaleController.getString("Enable", R.string.Enable),
+                        LocaleController.getString("Disable", R.string.Disable)
+                }, (dialog, which) -> {
+                    ExteraConfig.setForceTabletMode(which);
+                    RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(forceTabletModeRow);
+                    if (holder != null) {
+                        listAdapter.onBindViewHolder(holder, forceTabletModeRow);
+                    }
+                    Parcelable recyclerViewState = null;
+
+                    if (listView.getLayoutManager() != null) {
+                        recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
+                    }
+
+                    restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
+                    listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                });
+                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                showDialog(builder.create());
+
             }
         });
 
@@ -407,8 +429,6 @@ public class AppearancePreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ChatsOnTitle", R.string.ChatsOnTitle), ExteraConfig.chatsOnTitle, true);
                     } else if (position == disableVibrationRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("DisableVibration", R.string.DisableVibration), ExteraConfig.disableVibration, true);
-                    } else if (position == forceTabletModeRow) {
-                        textCheckCell.setTextAndCheck(LocaleController.getString("ForceTabletMode", R.string.ForceTabletMode), ExteraConfig.forceTabletMode, false);
                     }
                     break;
                 case 4:
@@ -425,6 +445,16 @@ public class AppearancePreferencesEntry extends BaseFragment {
                             value = LocaleController.getString("Default", R.string.Default);
                         }
                         textSettingsCell.setTextAndValue(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack), value, true);
+                    } else if (position == forceTabletModeRow) {
+                        String value;
+                        if (ExteraConfig.forceTabletMode == 1) {
+                            value = LocaleController.getString("Enabled", R.string.Enabled);
+                        } else if (ExteraConfig.forceTabletMode == 2) {
+                            value = LocaleController.getString("Disabled", R.string.Disabled);
+                        } else {
+                            value = LocaleController.getString("DistanceUnitsAutomatic", R.string.DistanceUnitsAutomatic);
+                        }
+                        textSettingsCell.setTextAndValue(LocaleController.getString("ForceTabletMode", R.string.ForceTabletMode), value, false);
                     }
                     break;
                 case 5:
@@ -481,10 +511,9 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 return 2;
             } else if (position == useSystemFontsRow || position == useSystemEmojiRow || position == transparentStatusBarRow ||
                        position == blurForAllThemesRow || position == hideAllChatsRow || position == hidePhoneNumberRow ||
-                       position == showIDRow || position == chatsOnTitleRow || position == disableVibrationRow ||
-                       position == forceTabletModeRow) {
+                       position == showIDRow || position == chatsOnTitleRow || position == disableVibrationRow) {
                 return 3;
-            } else if (position == eventChooserRow) {
+            } else if (position == eventChooserRow || position == forceTabletModeRow) {
                 return 4;
             } else if (position == drawerSettingsRow) {
                 return 5;

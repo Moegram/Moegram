@@ -280,8 +280,7 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
             lt = (1f - Math.max(CLIP_PROGRESS, transitionProgress));
         }
         rect.set(getPaddingLeft() + (getWidth() - getPaddingRight()) * lt, getPaddingTop() + recyclerListView.getMeasuredHeight() * (1f - otherViewsScale), (getWidth() - getPaddingRight()) * rt, getHeight() - getPaddingBottom());
-        //radius = rect.height() / 2f;
-        radius = AndroidUtilities.dp(6);
+        radius = rect.height() / 2f;
         shadow.setBounds((int) (getPaddingLeft() + (getWidth() - getPaddingRight() + shadowPad.right) * lt - shadowPad.left), getPaddingTop() - shadowPad.top, (int) ((getWidth() - getPaddingRight() + shadowPad.right) * rt), getHeight() - getPaddingBottom() + shadowPad.bottom);
         shadow.draw(canvas);
         canvas.restoreToCount(s);
@@ -343,16 +342,16 @@ public class ReactionsContainerLayout extends FrameLayout implements Notificatio
         canvas.clipRect(0, rect.bottom, getMeasuredWidth(), getMeasuredHeight());
         float cx = LocaleController.isRTL ? bigCircleOffset : getWidth() - bigCircleOffset, cy = getHeight() - getPaddingBottom();
         int sPad = AndroidUtilities.dp(3);
-        /*shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
+        shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
         shadow.draw(canvas);
-        canvas.drawCircle(cx, cy, br, bgPaint);*/
+        canvas.drawCircle(cx, cy, br, bgPaint);
 
         cx = LocaleController.isRTL ? bigCircleOffset - bigCircleRadius : getWidth() - bigCircleOffset + bigCircleRadius;
         cy = getHeight() - smallCircleRadius - sPad;
         sPad = -AndroidUtilities.dp(1);
-        /*shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
+        shadow.setBounds((int) (cx - br - sPad * cPr), (int) (cy - br - sPad * cPr), (int) (cx + br + sPad * cPr), (int) (cy + br + sPad * cPr));
         shadow.draw(canvas);
-        canvas.drawCircle(cx, cy, sr, bgPaint);*/
+        canvas.drawCircle(cx, cy, sr, bgPaint);
         canvas.restore();
     }
 

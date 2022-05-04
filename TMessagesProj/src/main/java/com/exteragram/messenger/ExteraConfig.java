@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.UserConfig;
-
-import java.util.Arrays;
 
 public class ExteraConfig {
 
@@ -16,33 +13,7 @@ public class ExteraConfig {
     public static boolean scrollablePreview;
 
     public static boolean useSystemFonts;
-    public static boolean disableVibration;
     public static boolean blurForAllThemes;
-
-    public static boolean hideAllChats;
-    public static boolean hidePhoneNumber;
-    public static boolean showID;
-    public static boolean chatsOnTitle;
-    public static boolean forceTabletMode;
-
-    public static float stickerSize = 14.0f;
-    public static boolean hideStickerTime;
-    public static boolean unlimitedRecentStickers;
-
-    public static boolean hideSendAsChannel;
-    public static boolean hideKeyboardOnScroll;
-    public static boolean disableReactions;
-    public static boolean disableGreetingSticker;
-    public static boolean disableJumpToNextChannel;
-    public static boolean archiveOnPull;
-    public static boolean dateOfForwardedMsg;
-    public static boolean showMessageID;
-
-    public static boolean rearVideoMessages;
-    public static boolean disableCamera;
-    public static boolean pauseOnMinimize;
-    public static boolean disablePlayback;
-    public static boolean disableProximityEvents;
 
     public static boolean newGroup;
     public static boolean newSecretChat;
@@ -56,6 +27,37 @@ public class ExteraConfig {
     public static boolean inviteFriends;
     public static boolean telegramFeatures;
     public static int eventType;
+
+    public static boolean hideAllChats;
+    public static boolean hidePhoneNumber;
+    public static boolean showID;
+    public static boolean chatsOnTitle;
+    public static boolean disableVibration;
+    public static int forceTabletMode;
+
+    public static float stickerSize = 14.0f;
+    public static boolean hideStickerTime;
+    public static boolean hideGroupStickers;
+    public static boolean disableGreetingSticker;
+    public static boolean unlimitedRecentStickers;
+
+    public static boolean hideSendAsChannel;
+    public static boolean hideKeyboardOnScroll;
+    public static boolean disableReactions;
+    public static boolean disableJumpToNextChannel;
+    public static boolean archiveOnPull;
+    public static boolean dateOfForwardedMsg;
+    public static boolean showMessageID;
+
+    public static boolean rearVideoMessages;
+    public static boolean disableCamera;
+    public static boolean pauseOnMinimize;
+    public static boolean disablePlayback;
+    public static boolean disableProximityEvents;
+
+    public static final int TABLET_AUTO = 0;
+    public static final int TABLET_ENABLE = 1;
+    public static final int TABLET_DISABLE = 2;
 
     public static long channelToSave = UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId();
 
@@ -76,33 +78,7 @@ public class ExteraConfig {
             scrollablePreview = preferences.getBoolean("scrollablePreview", true);
 
             useSystemFonts = preferences.getBoolean("useSystemFonts", false);
-            disableVibration = preferences.getBoolean("disableVibration", false);
             blurForAllThemes = preferences.getBoolean("blurForAllThemes", true);
-
-            hideAllChats = preferences.getBoolean("hideAllChats", false);
-            hidePhoneNumber = preferences.getBoolean("hidePhoneNumber", false);
-            showID = preferences.getBoolean("showID", false);
-            chatsOnTitle = preferences.getBoolean("chatsOnTitle", true);
-            forceTabletMode = preferences.getBoolean("forceTabletMode", false);
-
-            stickerSize = preferences.getFloat("stickerSize", 14.0f);
-            hideStickerTime = preferences.getBoolean("hideStickerTime", false);
-            unlimitedRecentStickers = preferences.getBoolean("unlimitedRecentStickers", false);
-
-            hideSendAsChannel = preferences.getBoolean("hideSendAsChannel", false);
-            hideKeyboardOnScroll = preferences.getBoolean("hideKeyboardOnScroll", true);
-            disableReactions = preferences.getBoolean("disableReactions", false);
-            disableJumpToNextChannel = preferences.getBoolean("disableJumpToNextChannel", false);
-            disableGreetingSticker = preferences.getBoolean("disableGreetingSticker", false);
-            archiveOnPull = preferences.getBoolean("archiveOnPull", true);
-            dateOfForwardedMsg = preferences.getBoolean("dateOfForwardedMsg", false);
-            showMessageID = preferences.getBoolean("showMessageID", false);
-
-            rearVideoMessages = preferences.getBoolean("rearVideoMessages", false);
-            disableCamera = preferences.getBoolean("disableCamera", false);
-            disableProximityEvents = preferences.getBoolean("disableProximityEvents", false);
-            pauseOnMinimize = preferences.getBoolean("pauseOnMinimize", true);
-            disablePlayback = preferences.getBoolean("disablePlayback", true);
 
             newGroup = preferences.getBoolean("newGroup", true);
             newSecretChat = preferences.getBoolean("newSecretChat", false);
@@ -116,6 +92,33 @@ public class ExteraConfig {
             inviteFriends = preferences.getBoolean("inviteFriends", false);
             telegramFeatures = preferences.getBoolean("telegramFeatures", true);
             eventType = preferences.getInt("eventType", 0);
+
+            hideAllChats = preferences.getBoolean("hideAllChats", false);
+            hidePhoneNumber = preferences.getBoolean("hidePhoneNumber", false);
+            showID = preferences.getBoolean("showID", false);
+            chatsOnTitle = preferences.getBoolean("chatsOnTitle", true);
+            disableVibration = preferences.getBoolean("disableVibration", false);
+            forceTabletMode = preferences.getInt("forceTabletMode", TABLET_AUTO);
+
+            stickerSize = preferences.getFloat("stickerSize", 14.0f);
+            hideStickerTime = preferences.getBoolean("hideStickerTime", false);
+            hideGroupStickers = preferences.getBoolean("hideGroupStickers", false);
+            disableGreetingSticker = preferences.getBoolean("disableGreetingSticker", false);
+            unlimitedRecentStickers = preferences.getBoolean("unlimitedRecentStickers", false);
+
+            hideSendAsChannel = preferences.getBoolean("hideSendAsChannel", false);
+            hideKeyboardOnScroll = preferences.getBoolean("hideKeyboardOnScroll", true);
+            disableReactions = preferences.getBoolean("disableReactions", false);
+            disableJumpToNextChannel = preferences.getBoolean("disableJumpToNextChannel", false);
+            archiveOnPull = preferences.getBoolean("archiveOnPull", true);
+            dateOfForwardedMsg = preferences.getBoolean("dateOfForwardedMsg", false);
+            showMessageID = preferences.getBoolean("showMessageID", false);
+
+            rearVideoMessages = preferences.getBoolean("rearVideoMessages", false);
+            disableCamera = preferences.getBoolean("disableCamera", false);
+            disableProximityEvents = preferences.getBoolean("disableProximityEvents", false);
+            pauseOnMinimize = preferences.getBoolean("pauseOnMinimize", true);
+            disablePlayback = preferences.getBoolean("disablePlayback", true);
 
             channelToSave = preferences.getLong("channelToSave", UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId());
 
@@ -179,11 +182,11 @@ public class ExteraConfig {
         editor.apply();
     }
 
-    public static void toggleForceTabletMode() {
-        forceTabletMode = !forceTabletMode;
+    public static void setForceTabletMode(int mode) {
+        forceTabletMode = mode;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("forceTabletMode", forceTabletMode);
+        editor.putInt("forceTabletMode", forceTabletMode);
         editor.apply();
     }
 
@@ -200,6 +203,14 @@ public class ExteraConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hideStickerTime", hideStickerTime);
+        editor.apply();
+    }
+
+    public static void toggleHideGroupStickers() {
+        hideGroupStickers = !hideGroupStickers;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("hideGroupStickers", hideGroupStickers);
         editor.apply();
     }
 
