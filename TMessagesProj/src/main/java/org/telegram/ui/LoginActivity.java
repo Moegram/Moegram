@@ -2402,11 +2402,11 @@ public class LoginActivity extends BaseFragment {
                     testBackendCheckBox.setChecked(true, true);
                 }
             }
-            boolean testBackend = /* BuildVars.DEBUG_PRIVATE_VERSION && */ getConnectionsManager().isTestBackend();
             if (testBackend != LoginActivity.this.testBackend) {
                 getConnectionsManager().switchBackend(false);
                 testBackend = LoginActivity.this.testBackend;
             }
+            boolean testBackend = BuildVars.DEBUG_PRIVATE_VERSION && getConnectionsManager().isTestBackend();
             if (getParentActivity() instanceof LaunchActivity) {
                 for (int a = 0; a < UserConfig.MAX_ACCOUNT_COUNT; a++) {
                     UserConfig userConfig = UserConfig.getInstance(a);
@@ -4783,8 +4783,8 @@ public class LoginActivity extends BaseFragment {
                 codeField[a].setPadding(padding, padding, padding, padding);
                 if (stage == 0) {
                     codeField[a].setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    codeField[a].setTransformationMethod(PasswordTransformationMethod.getInstance());
                 }
+                codeField[a].setTransformationMethod(PasswordTransformationMethod.getInstance());
                 codeField[a].setTypeface(Typeface.DEFAULT);
                 codeField[a].setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
 
