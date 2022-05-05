@@ -421,8 +421,8 @@ public class ExteraConfig {
         editor.apply();
     }
 
-    public static void setEventType(int event) {
-        eventType = event;
+    public static void setEventType(int type) {
+        eventType = type;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("eventType", eventType);
