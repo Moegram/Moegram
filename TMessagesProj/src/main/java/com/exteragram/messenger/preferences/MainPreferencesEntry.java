@@ -49,7 +49,7 @@ public class MainPreferencesEntry extends BaseFragment {
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        updateRowsId();
+        updateRows();
         return true;
     }
 
@@ -107,7 +107,7 @@ public class MainPreferencesEntry extends BaseFragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void updateRowsId() {
+    private void updateRows() {
         rowCount = 0;
 
         aboutExteraRow = rowCount++;

@@ -83,7 +83,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        updateRowsId(true);
+        updateRows();
         return true;
     }
 
@@ -311,7 +311,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void updateRowsId(boolean notify) {
+    private void updateRows() {
         rowCount = 0;
 
         applicationHeaderRow = rowCount++;
@@ -335,7 +335,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
         forceTabletModeRow = rowCount++;
         generalDividerRow = rowCount++;
 
-        if (listAdapter != null && notify) {
+        if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
     }

@@ -81,7 +81,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        updateRowsId(true);
+        updateRows();
         return true;
     }
 
@@ -319,7 +319,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void updateRowsId(boolean notify) {
+    private void updateRows() {
         rowCount = 0;
 
         stickerSizeHeaderRow = rowCount++;
@@ -351,7 +351,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
         disablePlaybackRow = rowCount++;
         mediaDividerRow = rowCount++;
 
-        if (listAdapter != null && notify) {
+        if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
     }

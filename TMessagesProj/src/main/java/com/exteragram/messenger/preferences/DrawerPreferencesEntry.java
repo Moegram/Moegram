@@ -64,7 +64,7 @@ public class DrawerPreferencesEntry extends BaseFragment {
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        updateRowsId(true);
+        updateRows();
         return true;
     }
 
@@ -189,7 +189,7 @@ public class DrawerPreferencesEntry extends BaseFragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void updateRowsId(boolean notify) {
+    private void updateRows() {
         rowCount = 0;
     
         drawerHeaderRow = rowCount++;
@@ -206,7 +206,7 @@ public class DrawerPreferencesEntry extends BaseFragment {
         telegramFeaturesRow = rowCount++;
         drawerDividerRow = rowCount++;
 
-        if (listAdapter != null && notify) {
+        if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
     }
