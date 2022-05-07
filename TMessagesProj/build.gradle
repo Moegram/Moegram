@@ -1,3 +1,5 @@
+import org.eclipse.jgit.internal.storage.file.FileRepository
+
 plugins {
     id 'kotlin-android'
     id 'com.android.application'
@@ -21,7 +23,7 @@ dependencies {
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "androidx.sharetarget:sharetarget:1.2.0-rc01"
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'com.google.android.gms:play-services-measurement:20.1.2'
 
     compileOnly 'org.checkerframework:checker-qual:3.21.3'
@@ -49,6 +51,8 @@ dependencies {
 }
 
 ext.abiCodes = ['armeabi-v7a':1, 'arm64-v8a':2, x86:3, 'x86_64':4, 'universal':9]
+
+def commitId = new FileRepository(rootProject.file(".git")).getRefDatabase().exactRef("HEAD").getObjectId().name()
 
 static def getAppID() {
     Properties properties = new Properties()
@@ -140,6 +144,7 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
+            buildConfigField("String","COMMIT_ID","\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppName"
             manifestPlaceholders = [
@@ -158,6 +163,7 @@ android {
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
             buildConfigField 'boolean', 'DEBUG_VERSION', 'true'
+            buildConfigField("String","COMMIT_ID","\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppNameBeta"
             manifestPlaceholders = [

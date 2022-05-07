@@ -3,6 +3,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '6.1.0.202203080745-r'
+    }
 }
 
 plugins {
