@@ -472,7 +472,7 @@
             </intent-filter>
         </service>
 
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/MAPS_V2_API" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCPeUu6qB-xOTy23zmsChmHwwy4R3ttUD0" />
 
         <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
         <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
