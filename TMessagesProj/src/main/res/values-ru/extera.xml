@@ -32,6 +32,7 @@
     <string name="Halloween">Хэллоуин</string>
     <string name="HideAllChats">Скрыть \"Все чаты\"</string>
     <string name="HidePhoneNumber">Скрыть номер телефона</string>
+    <string name="DisableRounding">Disable rounding</string>
     <string name="ShowID">Показывать ID в профиле</string>
     <string name="ChatsOnTitle">\"Чаты\" вместо \"extera X\"</string>
     <string name="DisableVibration">Отключить вибрацию</string>
