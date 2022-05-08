@@ -58,6 +58,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     private int generalHeaderRow;
     private int hideAllChatsRow;
     private int hidePhoneNumberRow;
+    private int disableRoundingRow;
     private int showIDRow;
     private int chatsOnTitleRow;
     private int disableVibrationRow;
@@ -235,6 +236,13 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 }
                 parentLayout.rebuildAllFragmentViews(false, false);
                 getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
+            } else if (position == disableRoundingRow) {
+                ExteraConfig.toggleDisableRounding();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(ExteraConfig.disableRounding);
+                }
+                parentLayout.rebuildAllFragmentViews(false, false);
+                getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
             } else if (position == showIDRow) {
                 ExteraConfig.toggleShowID();
                 if (view instanceof TextCheckCell) {
@@ -329,6 +337,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
         generalHeaderRow = rowCount++;
         hideAllChatsRow = rowCount++;
         hidePhoneNumberRow = rowCount++;
+        disableRoundingRow = rowCount++;
         showIDRow = rowCount++;
         chatsOnTitleRow = rowCount++;
         disableVibrationRow = rowCount++;
@@ -452,6 +461,8 @@ public class AppearancePreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HideAllChats", R.string.HideAllChats), ExteraConfig.hideAllChats, true);
                     } else if (position == hidePhoneNumberRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HidePhoneNumber", R.string.HidePhoneNumber), ExteraConfig.hidePhoneNumber, true);
+                    } else if (position == disableRoundingRow) {
+                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableRounding", R.string.DisableRounding), ExteraConfig.disableRounding, true);
                     } else if (position == showIDRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ShowID", R.string.ShowID), ExteraConfig.showID, true);
                     } else if (position == chatsOnTitleRow) {
@@ -540,7 +551,8 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 return 2;
             } else if (position == useSystemFontsRow || position == useSystemEmojiRow || position == transparentStatusBarRow ||
                        position == blurForAllThemesRow || position == hideAllChatsRow || position == hidePhoneNumberRow ||
-                       position == showIDRow || position == chatsOnTitleRow || position == disableVibrationRow) {
+                       position == disableRoundingRow || position == showIDRow || position == chatsOnTitleRow ||
+                       position == disableVibrationRow) {
                 return 3;
             } else if (position == eventChooserRow || position == forceTabletModeRow) {
                 return 4;
