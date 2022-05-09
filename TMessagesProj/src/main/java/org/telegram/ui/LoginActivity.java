@@ -79,6 +79,7 @@ import android.widget.ViewSwitcher;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 
 import org.telegram.PhoneFormat.PhoneFormat;
@@ -116,6 +117,7 @@ import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.Bulletin;
 import org.telegram.ui.Components.BulletinFactory;
+import org.telegram.ui.Components.ColoredImageSpan;
 import org.telegram.ui.Components.CombinedDrawable;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.CustomPhoneKeyboardView;
@@ -1921,7 +1923,11 @@ public class LoginActivity extends BaseFragment {
             proxySettings.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             proxySettings.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
-            proxySettings.setText(LocaleController.getString("ProxySettings", R.string.ProxySettings));
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+            spannableStringBuilder.append(".  ").append(LocaleController.getString("ProxySettings", R.string.ProxySettings));
+            spannableStringBuilder.setSpan(new ColoredImageSpan(ContextCompat.getDrawable(getContext(), R.drawable.proxy_off)), 0, 1, 0);
+            proxySettings.setText(spannableStringBuilder);
+
             proxySettings.setTextColor(Theme.getColor(Theme.key_featuredStickers_buttonText));
             proxySettings.setBackgroundDrawable(Theme.createSimpleSelectorRoundRectDrawable(AndroidUtilities.dp(6), Theme.getColor(Theme.key_featuredStickers_addButton), Theme.getColor(Theme.key_featuredStickers_addButtonPressed)));
 
