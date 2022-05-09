@@ -59,8 +59,6 @@ android {
     buildToolsVersion '32.1.0-rc1'
     ndkVersion "21.4.7075529"
 
-    defaultConfig.applicationId = "exterax.messenger"
-
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
     externalNativeBuild {
@@ -116,7 +114,7 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
-            buildConfigField("String","COMMIT_ID","\"${commitId}\"")
+            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppName"
             manifestPlaceholders = [
@@ -135,7 +133,7 @@ android {
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
             buildConfigField 'boolean', 'DEBUG_PRIVATE_VERSION', 'true'
-            buildConfigField("String","COMMIT_ID","\"${commitId}\"")
+            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppNameBeta"
             manifestPlaceholders = [
@@ -143,8 +141,6 @@ android {
             ]
         }
     }
-
-    defaultConfig.versionCode = 2638
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
@@ -164,6 +160,9 @@ android {
         minSdkVersion 21
         targetSdkVersion 32
         versionName "8.7.4"
+        versionCode = 2638
+
+        applicationId "exterax.messenger"
 
         externalNativeBuild {
             cmake {
