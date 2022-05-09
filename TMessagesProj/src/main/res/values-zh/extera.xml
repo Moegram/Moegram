@@ -32,7 +32,7 @@
     <string name="Halloween">万圣节</string>
     <string name="HideAllChats">隐藏“全部对话”栏</string>
     <string name="HidePhoneNumber">隐藏手机号码</string>
-    <string name="DisableRounding">Disable rounding</string>
+    <string name="DisableRounding">禁用数学舍入</string>
     <string name="ShowID">个人资料页显示 ID</string>
     <string name="ChatsOnTitle">主标题显示为“对话”</string>
     <string name="DisableVibration">禁用应用内震动</string>
