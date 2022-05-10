@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- extera X's Main Strings -->
-    <string name="MutualContact">mutual contact</string>
+    <string name="MutualContact">contacto mutuo</string>
     <string name="ToBeginning">To beginning</string>
     <string name="SaveMessage">Save message</string>
     <string name="Enabled">Enabled</string>
