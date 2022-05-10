@@ -141,7 +141,7 @@ android {
             ]
         }
     }
-
+    
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def abi = output.getFilter('ABI')
