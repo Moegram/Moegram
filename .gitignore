@@ -8,7 +8,7 @@ obj/
 output-metadata.json
 local.properties
 extera.jks
-API_KEYS
+Extra.java
 
 *.hprof
 *.iml

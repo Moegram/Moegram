@@ -12,11 +12,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 
+import com.exteragram.messenger.Extra;
+
 public class BuildVars {
 
-    public static boolean DEBUG_VERSION = BuildConfig.BUILD_TYPE.equals("debug");
-    public static boolean LOGS_ENABLED = BuildConfig.BUILD_TYPE.equals("debug");
-    public static boolean DEBUG_PRIVATE_VERSION = BuildConfig.BUILD_TYPE.equals("debug");
+    public static boolean DEBUG_VERSION = false;
+    public static boolean LOGS_ENABLED = false;
+    public static boolean DEBUG_PRIVATE_VERSION = false;
     public static boolean USE_CLOUD_STRINGS = true;
     public static boolean CHECK_UPDATES = false;
     public static boolean NO_SCOPED_STORAGE = Build.VERSION.SDK_INT <= 29;
@@ -29,13 +31,9 @@ public class BuildVars {
     public static String PLAYSTORE_APP_URL = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
 
     static {
-        // Takes from build.config :shrug:
-        BUILD_VERSION = BuildConfig.VERSION_CODE;
-        BUILD_VERSION_STRING = BuildConfig.VERSION_NAME;
-
-        APP_ID = BuildConfig.APP_ID; // Obtain your own APP_ID at https://core.telegram.org/api/obtaining_api_id
-        APP_HASH = BuildConfig.APP_HASH; // Obtain your own APP_HASH at https://core.telegram.org/api/obtaining_api_id
-        SMS_HASH = BuildConfig.SMS_HASH; // Obtain your own SMS_HASH with https://bit.ly/3rxcuTd
+        APP_ID = Extra.APP_ID; // Obtain your own APP_ID at https://core.telegram.org/api/obtaining_api_id
+        APP_HASH = Extra.APP_HASH; // Obtain your own APP_HASH at https://core.telegram.org/api/obtaining_api_id
+        SMS_HASH = Extra.SMS_HASH; // Obtain your own SMS_HASH with https://bit.ly/3rxcuTd
 
         if (ApplicationLoader.applicationContext != null) {
             SharedPreferences sharedPreferences = ApplicationLoader.applicationContext.getSharedPreferences("systemConfig", Context.MODE_PRIVATE);

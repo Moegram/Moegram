@@ -43,6 +43,7 @@
 
     <string name="HideAllChats">Hide \"All Chats\" tab</string>
     <string name="HidePhoneNumber">Hide phone number</string>
+    <string name="DisableRounding">Disable rounding</string>
     <string name="ShowID">Show ID in Profile</string>
     <string name="ChatsOnTitle">\"Chats\" instead of \"extera X\"</string>
     <string name="DisableVibration">Disable vibration</string>

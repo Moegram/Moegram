@@ -87,7 +87,7 @@
 -keepclassmembernames class org.telegram.ui.Cells.* { <fields>; }
 -keepclassmembernames class org.telegram.ui.Components.* { <fields>; }
 
-# Keep OwlConfig fields name
+# Keep extera X config fields name
 -keepnames class com.exteragram.messenger.ExteraConfig { <fields>; }
 
 # Keep all classes of Apache Commons

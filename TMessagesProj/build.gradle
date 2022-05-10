@@ -1,3 +1,5 @@
+import org.eclipse.jgit.internal.storage.file.FileRepository
+
 plugins {
     id 'kotlin-android'
     id 'com.android.application'
@@ -21,7 +23,7 @@ dependencies {
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "androidx.sharetarget:sharetarget:1.2.0-rc01"
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'com.google.android.gms:play-services-measurement:20.1.2'
 
     compileOnly 'org.checkerframework:checker-qual:3.21.3'
@@ -44,46 +46,18 @@ dependencies {
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
 }
 
 ext.abiCodes = ['armeabi-v7a':1, 'arm64-v8a':2, x86:3, 'x86_64':4, 'universal':9]
 
-static def getAppID() {
-    Properties properties = new Properties()
-    properties.load(new FileInputStream("./API_KEYS"))
-
-    return properties.get("APP_ID")
-}
-
-static def getAppHash() {
-    Properties properties = new Properties()
-    properties.load(new FileInputStream("./API_KEYS"))
-
-    return "\"" + properties.get("APP_HASH") + "\""
-}
-
-static def getSmsHash() {
-    Properties properties = new Properties()
-    properties.load(new FileInputStream("./API_KEYS"))
-
-    return "\"" + properties.get("SMS_HASH") + "\""
-}
-
-static def getGoogleMapsAPI() {
-    Properties properties = new Properties()
-    properties.load(new FileInputStream("./API_KEYS"))
-
-    return "\"" + properties.get("MAPS_V2_API") + "\""
-}
+def commitId = new FileRepository(rootProject.file(".git")).getRefDatabase().exactRef("HEAD").getObjectId().name()
 
 android {
     compileSdkVersion 32
     buildToolsVersion '32.1.0-rc1'
     ndkVersion "21.4.7075529"
-
-    defaultConfig.applicationId = "exterax.messenger"
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
@@ -140,6 +114,7 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
+            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppName"
             manifestPlaceholders = [
@@ -157,7 +132,8 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
-            buildConfigField 'boolean', 'DEBUG_VERSION', 'true'
+            buildConfigField 'boolean', 'DEBUG_PRIVATE_VERSION', 'true'
+            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
             resValue "string", "AppNameX", "@string/exteraAppNameBeta"
             manifestPlaceholders = [
@@ -165,9 +141,7 @@ android {
             ]
         }
     }
-
-    defaultConfig.versionCode = 2638
-
+    
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def abi = output.getFilter('ABI')
@@ -186,14 +160,9 @@ android {
         minSdkVersion 21
         targetSdkVersion 32
         versionName "8.7.4"
+        versionCode = 2638
 
-        // Obtain your own keys at:
-        // Telegram: https://core.telegram.org/api/obtaining_api_id
-        buildConfigField 'int', 'APP_ID', getAppID()
-        buildConfigField 'String', 'APP_HASH', getAppHash()
-        buildConfigField 'String', 'SMS_HASH', getSmsHash()
-        // Google Console: https://console.cloud.google.com/google/maps-apis/credentials
-        resValue 'string', 'MAPS_V2_API', getGoogleMapsAPI()
+        applicationId "exterax.messenger"
 
         externalNativeBuild {
             cmake {

@@ -42,6 +42,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import com.exteragram.messenger.ExteraConfig;
+
 public class LocaleController {
 
     static final int QUANTITY_OTHER = 0x0000;
@@ -1896,6 +1898,12 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
+        if (ExteraConfig.disableRounding) {
+            if (rounded != null) {
+                rounded[0] = number;
+            }
+            return String.valueOf(number);
+        }
         StringBuilder K = new StringBuilder();
         int lastDec = 0;
         int KCount = 0;

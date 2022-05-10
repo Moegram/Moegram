@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
@@ -25,6 +26,7 @@ import org.telegram.ui.ActionBar.AlertDialog;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.HeaderCell;
+import org.telegram.ui.Cells.RadioColorCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCell;
 import org.telegram.ui.Cells.TextCheckCell;
@@ -56,6 +58,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     private int generalHeaderRow;
     private int hideAllChatsRow;
     private int hidePhoneNumberRow;
+    private int disableRoundingRow;
     private int showIDRow;
     private int chatsOnTitleRow;
     private int disableVibrationRow;
@@ -81,7 +84,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        updateRowsId(true);
+        updateRows();
         return true;
     }
 
@@ -175,31 +178,43 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle(LocaleController.getString("DrawerIconPack", R.string.DrawerIconPack));
-                builder.setItems(new CharSequence[]{
+                String[] items = new String[]{
                         LocaleController.getString("Default", R.string.Default),
                         LocaleController.getString("NewYear", R.string.NewYear),
                         LocaleController.getString("ValentinesDay", R.string.ValentinesDay),
-                        LocaleController.getString("Halloween", R.string.Halloween)
-                }, (dialog, which) -> {
-                    ExteraConfig.setEventType(which);
-                    RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(eventChooserRow);
-                    if (holder != null) {
-                        listAdapter.onBindViewHolder(holder, eventChooserRow);
-                    }
-                    Parcelable recyclerViewState = null;
+                        LocaleController.getString("Halloween", R.string.Halloween),
+                };
 
-                    if (listView.getLayoutManager() != null) {
-                        recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
-                    }
+                final LinearLayout linearLayout = new LinearLayout(getParentActivity());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                builder.setView(linearLayout);
 
-                    AlertDialog progressDialog = new AlertDialog(context, 3);
-                    progressDialog.show();
-                    AndroidUtilities.runOnUIThread(progressDialog::dismiss, 500);
+                for (int a = 0; a < items.length; a++) {
+                    RadioColorCell cell = new RadioColorCell(getParentActivity());
+                    cell.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
+                    cell.setTag(a);
+                    cell.setCheckColor(Theme.getColor(Theme.key_radioBackground), Theme.getColor(Theme.key_dialogRadioBackgroundChecked));
+                    cell.setTextAndValue(items[a], ExteraConfig.eventType == a);
+                    linearLayout.addView(cell);
+                    cell.setOnClickListener(v -> {
+                        Integer which = (Integer) v.getTag();
+                        ExteraConfig.setEventType(which);
+                        listAdapter.notifyItemChanged(eventChooserRow);
+                        builder.getDismissRunnable().run();
 
-                    parentLayout.rebuildAllFragmentViews(true, true);
-                    listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-                });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        Parcelable recyclerViewState = null;
+                        if (listView.getLayoutManager() != null) {
+                            recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
+                        }
+
+                        AlertDialog progressDialog = new AlertDialog(context, 3);
+                        progressDialog.show();
+                        AndroidUtilities.runOnUIThread(progressDialog::dismiss, 500);
+
+                        parentLayout.rebuildAllFragmentViews(true, true);
+                        listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                    });
+                }
                 showDialog(builder.create());
             } else if (position == drawerSettingsRow) {
                 presentFragment(new DrawerPreferencesEntry());
@@ -218,6 +233,13 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 ExteraConfig.toggleHidePhoneNumber();
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(ExteraConfig.hidePhoneNumber);
+                }
+                parentLayout.rebuildAllFragmentViews(false, false);
+                getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
+            } else if (position == disableRoundingRow) {
+                ExteraConfig.toggleDisableRounding();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(ExteraConfig.disableRounding);
                 }
                 parentLayout.rebuildAllFragmentViews(false, false);
                 getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
@@ -250,28 +272,43 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setTitle(LocaleController.getString("ForceTabletMode", R.string.ForceTabletMode));
-                builder.setItems(new CharSequence[]{
-                        LocaleController.getString("Default", R.string.Default),
+                String[] items = new String[]{
+                        LocaleController.getString("DistanceUnitsAutomatic", R.string.DistanceUnitsAutomatic),
                         LocaleController.getString("Enable", R.string.Enable),
-                        LocaleController.getString("Disable", R.string.Disable)
-                }, (dialog, which) -> {
-                    ExteraConfig.setForceTabletMode(which);
-                    RecyclerView.ViewHolder holder = listView.findViewHolderForAdapterPosition(forceTabletModeRow);
-                    if (holder != null) {
-                        listAdapter.onBindViewHolder(holder, forceTabletModeRow);
-                    }
-                    Parcelable recyclerViewState = null;
+                        LocaleController.getString("Disable", R.string.Disable),
+                };
 
-                    if (listView.getLayoutManager() != null) {
-                        recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
-                    }
+                final LinearLayout linearLayout = new LinearLayout(getParentActivity());
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                builder.setView(linearLayout);
 
-                    restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
-                    listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
-                });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                for (int a = 0; a < items.length; a++) {
+                    RadioColorCell cell = new RadioColorCell(getParentActivity());
+                    cell.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
+                    cell.setTag(a);
+                    cell.setCheckColor(Theme.getColor(Theme.key_radioBackground), Theme.getColor(Theme.key_dialogRadioBackgroundChecked));
+                    cell.setTextAndValue(items[a], ExteraConfig.forceTabletMode == a);
+                    linearLayout.addView(cell);
+                    cell.setOnClickListener(v -> {
+                        Integer which = (Integer) v.getTag();
+                        ExteraConfig.setForceTabletMode(which);
+                        listAdapter.notifyItemChanged(forceTabletModeRow);
+                        builder.getDismissRunnable().run();
+
+                        Parcelable recyclerViewState = null;
+                        if (listView.getLayoutManager() != null) {
+                            recyclerViewState = listView.getLayoutManager().onSaveInstanceState();
+                        }
+
+                        AlertDialog progressDialog = new AlertDialog(context, 3);
+                        progressDialog.show();
+                        AndroidUtilities.runOnUIThread(progressDialog::dismiss, 500);
+
+                        parentLayout.rebuildAllFragmentViews(true, true);
+                        listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+                    });
+                }
                 showDialog(builder.create());
-
             }
         });
 
@@ -282,7 +319,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void updateRowsId(boolean notify) {
+    private void updateRows() {
         rowCount = 0;
 
         applicationHeaderRow = rowCount++;
@@ -300,13 +337,14 @@ public class AppearancePreferencesEntry extends BaseFragment {
         generalHeaderRow = rowCount++;
         hideAllChatsRow = rowCount++;
         hidePhoneNumberRow = rowCount++;
+        disableRoundingRow = rowCount++;
         showIDRow = rowCount++;
         chatsOnTitleRow = rowCount++;
         disableVibrationRow = rowCount++;
         forceTabletModeRow = rowCount++;
         generalDividerRow = rowCount++;
 
-        if (listAdapter != null && notify) {
+        if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
     }
@@ -423,6 +461,8 @@ public class AppearancePreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HideAllChats", R.string.HideAllChats), ExteraConfig.hideAllChats, true);
                     } else if (position == hidePhoneNumberRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("HidePhoneNumber", R.string.HidePhoneNumber), ExteraConfig.hidePhoneNumber, true);
+                    } else if (position == disableRoundingRow) {
+                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableRounding", R.string.DisableRounding), ExteraConfig.disableRounding, true);
                     } else if (position == showIDRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ShowID", R.string.ShowID), ExteraConfig.showID, true);
                     } else if (position == chatsOnTitleRow) {
@@ -511,7 +551,8 @@ public class AppearancePreferencesEntry extends BaseFragment {
                 return 2;
             } else if (position == useSystemFontsRow || position == useSystemEmojiRow || position == transparentStatusBarRow ||
                        position == blurForAllThemesRow || position == hideAllChatsRow || position == hidePhoneNumberRow ||
-                       position == showIDRow || position == chatsOnTitleRow || position == disableVibrationRow) {
+                       position == disableRoundingRow || position == showIDRow || position == chatsOnTitleRow ||
+                       position == disableVibrationRow) {
                 return 3;
             } else if (position == eventChooserRow || position == forceTabletModeRow) {
                 return 4;

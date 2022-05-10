@@ -30,6 +30,7 @@ public class ExteraConfig {
 
     public static boolean hideAllChats;
     public static boolean hidePhoneNumber;
+    public static boolean disableRounding;
     public static boolean showID;
     public static boolean chatsOnTitle;
     public static boolean disableVibration;
@@ -95,6 +96,7 @@ public class ExteraConfig {
 
             hideAllChats = preferences.getBoolean("hideAllChats", false);
             hidePhoneNumber = preferences.getBoolean("hidePhoneNumber", false);
+            disableRounding = preferences.getBoolean("disableRounding", false);
             showID = preferences.getBoolean("showID", false);
             chatsOnTitle = preferences.getBoolean("chatsOnTitle", true);
             disableVibration = preferences.getBoolean("disableVibration", false);
@@ -163,6 +165,14 @@ public class ExteraConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("hidePhoneNumber", hidePhoneNumber);
+        editor.apply();
+    }
+
+    public static void toggleDisableRounding() {
+        disableRounding = !disableRounding;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("disableRounding", disableRounding);
         editor.apply();
     }
 
@@ -421,8 +431,8 @@ public class ExteraConfig {
         editor.apply();
     }
 
-    public static void setEventType(int event) {
-        eventType = event;
+    public static void setEventType(int type) {
+        eventType = type;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("exteraconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("eventType", eventType);
