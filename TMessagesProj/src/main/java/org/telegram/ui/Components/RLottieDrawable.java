@@ -40,7 +40,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class RLottieDrawable extends BitmapDrawable implements Animatable {
 
@@ -1043,8 +1043,8 @@ public class RLottieDrawable extends BitmapDrawable implements Animatable {
             } else if (nextRenderingBitmap != null && (renderingBitmap == null || timeDiff >= timeCheck) && isCurrentParentViewMaster()) {
                 if (vibrationPattern != null && currentParentView != null) {
                     Integer force = vibrationPattern.get(currentFrame - 1);
-                    if (force != null && !ExteraConfig.disableVibration) {
-                        if (!ExteraConfig.disableVibration) currentParentView.performHapticFeedback(force == 1 ? HapticFeedbackConstants.LONG_PRESS : HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (force != null && !MoeConfig.disableVibration) {
+                        if (!MoeConfig.disableVibration) currentParentView.performHapticFeedback(force == 1 ? HapticFeedbackConstants.LONG_PRESS : HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     }
                 }
                 setCurrentFrame(now, timeDiff, timeCheck, false);

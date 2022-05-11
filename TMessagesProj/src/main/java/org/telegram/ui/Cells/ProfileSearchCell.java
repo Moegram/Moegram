@@ -38,7 +38,7 @@ import org.telegram.ui.Components.CheckBox2;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.NotificationsSettingsActivity;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class ProfileSearchCell extends BaseCell {
 
@@ -319,7 +319,7 @@ public class ProfileSearchCell extends BaseCell {
             nameString = nameString2.replace('\n', ' ');
         }
         if (nameString.length() == 0) {
-            if (ExteraConfig.hidePhoneNumber) {
+            if (MoeConfig.hidePhoneNumber) {
                 nameString = LocaleController.getString("MobileHidden", R.string.MobileHidden);
             } else if (user != null && user.phone != null && user.phone.length() != 0) {
                 nameString = PhoneFormat.getInstance().format("+" + user.phone);

@@ -1,0 +1,10 @@
+package com.moegram.messenger;
+
+public class Extra {
+    // Obtain your own APP_ID and API_HASH at https://core.telegram.org/api/obtaining_api_id
+    public static final int APP_ID = 0;
+    public static final String APP_HASH = "";
+
+    // Obtain your own SMS_HASH with https://bit.ly/3rxcuTd
+    public static final String SMS_HASH = "";
+}

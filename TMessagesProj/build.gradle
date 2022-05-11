@@ -116,7 +116,7 @@ android {
             proguardFiles 'proguard-rules.pro'
             buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
-            resValue "string", "AppNameX", "@string/exteraAppName"
+            resValue "string", "AppNameX", "@string/MoeAppName"
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher"
             ]
@@ -135,7 +135,7 @@ android {
             buildConfigField 'boolean', 'DEBUG_PRIVATE_VERSION', 'true'
             buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
 
-            resValue "string", "AppNameX", "@string/exteraAppNameBeta"
+            resValue "string", "AppNameX", "@string/MoeAppNameBeta"
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher_beta"
             ]
@@ -150,7 +150,7 @@ android {
             def date = new Date()
             def formattedDate = date.format('MMddyyyy')
 
-            outputFileName = "exterax-${formattedDate}-${abi}.apk"
+            outputFileName = "Moegram-${formattedDate}-${abi}.apk"
             def abiVersionCode = project.ext.abiCodes.get(abi)
             output.versionCodeOverride = defaultConfig.versionCode * 10 + abiVersionCode
         }
@@ -162,7 +162,7 @@ android {
         versionName "8.7.4"
         versionCode = 2638
 
-        applicationId "exterax.messenger"
+        applicationId "com.moegram.messenger"
 
         externalNativeBuild {
             cmake {

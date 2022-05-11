@@ -248,7 +248,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 @SuppressLint("WrongConstant")
 @SuppressWarnings("unchecked")
@@ -5194,7 +5194,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             int[] location = new int[2];
             view.getLocationInWindow(location);
             sendPopupWindow.showAtLocation(view, Gravity.LEFT | Gravity.TOP, location[0] + view.getMeasuredWidth() - sendPopupLayout.getMeasuredWidth() + AndroidUtilities.dp(14), location[1] - sendPopupLayout.getMeasuredHeight() - AndroidUtilities.dp(18));
-            if (!ExteraConfig.disableVibration) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+            if (!MoeConfig.disableVibration) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
 
             return false;
         });
@@ -13380,7 +13380,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (photoPaintView != null) {
             photoPaintView.onResume();
         }
-        if (pauseOnMinimize && ExteraConfig.pauseOnMinimize && videoPlayer != null && !videoPlayer.isPlaying()) {
+        if (pauseOnMinimize && MoeConfig.pauseOnMinimize && videoPlayer != null && !videoPlayer.isPlaying()) {
             pauseOnMinimize = false;
             videoPlayer.play();
         }
@@ -13399,7 +13399,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (videoPlayer != null && playerLooping) {
             videoPlayer.setLooping(false);
         }
-        if (ExteraConfig.pauseOnMinimize && videoPlayer != null && videoPlayer.isPlaying()) {
+        if (MoeConfig.pauseOnMinimize && videoPlayer != null && videoPlayer.isPlaying()) {
             pauseOnMinimize = true;
             videoPlayer.pause();
         }

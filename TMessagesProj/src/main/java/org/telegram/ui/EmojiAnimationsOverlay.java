@@ -6,8 +6,6 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.exteragram.messenger.ExteraConfig;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
+
+import com.moegram.messenger.MoeConfig;
 
 public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCenterDelegate {
 
@@ -208,7 +208,7 @@ public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCe
         if (bestView != null) {
             chatActivity.restartSticker(bestView);
             if (!EmojiData.hasEmojiSupportVibration(bestView.getMessageObject().getStickerEmoji())) {
-                if (!ExteraConfig.disableVibration) bestView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                if (!MoeConfig.disableVibration) bestView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             }
             showAnimationForCell(bestView, animation, false, true);
         }
@@ -270,7 +270,7 @@ public class EmojiAnimationsOverlay implements NotificationCenter.NotificationCe
         }
         boolean show = showAnimationForCell(view, -1, true, false);
         if (show && !EmojiData.hasEmojiSupportVibration(view.getMessageObject().getStickerEmoji())) {
-            if (!ExteraConfig.disableVibration) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            if (!MoeConfig.disableVibration) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
         }
 
         Integer printingType = MessagesController.getInstance(currentAccount).getPrintingStringType(dialogId, threadMsgId);

@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public abstract class BaseCell extends ViewGroup {
 
@@ -36,7 +36,7 @@ public abstract class BaseCell extends ViewGroup {
             if (checkingForLongPress && getParent() != null && currentPressCount == pressCount) {
                 checkingForLongPress = false;
 
-                if (!ExteraConfig.disableVibration) {
+                if (!MoeConfig.disableVibration) {
                     performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                     if (onLongPress()) {
                         MotionEvent event = MotionEvent.obtain(0, 0, MotionEvent.ACTION_CANCEL, 0, 0, 0);

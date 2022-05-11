@@ -98,11 +98,11 @@ import org.telegram.ui.DialogsActivity;
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.Components.UndoView;
 
-import com.exteragram.messenger.ExteraConfig;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.moegram.messenger.MoeConfig;
 
 public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate, DownloadController.FileDownloadProgressListener {
 
@@ -1067,7 +1067,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             bottomView.addView(likeButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP));
         }
 
-        String ctsId = Long.toString(ExteraConfig.channelToSave);
+        String ctsId = Long.toString(MoeConfig.channelToSave);
         likeButton.setOnLongClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), resourcesProvider);
             builder.setTitle(LocaleController.getString("EnterID", R.string.EnterID));
@@ -1095,18 +1095,18 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), (dialogInterface, i) -> {
                 try {
                     if (Long.valueOf(editEnterID.getText().toString()) == 0) {
-                        ExteraConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
+                        MoeConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
                     } else {
-                        ExteraConfig.changeChannelToSave(Long.valueOf(editEnterID.getText().toString()));
+                        MoeConfig.changeChannelToSave(Long.valueOf(editEnterID.getText().toString()));
                     }
                 } catch (NumberFormatException exception) {
-                    ExteraConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
+                    MoeConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
                     return;
                 }
                 BulletinFactory.of((FrameLayout) containerView, resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString("RestartRequired", R.string.RestartRequired)).show();
             });
             builder.setNeutralButton(LocaleController.getString("Default", R.string.Default), (dialogInterface, i) -> {
-                ExteraConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
+                MoeConfig.changeChannelToSave(UserConfig.getInstance(currentAccount).getClientUserId());
                 BulletinFactory.of((FrameLayout) containerView, resourcesProvider).createSimpleBulletin(R.raw.chats_infotip, LocaleController.getString("RestartRequired", R.string.RestartRequired)).show();
             });
             builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -1132,7 +1132,7 @@ public class AudioPlayerAlert extends BottomSheet implements NotificationCenter.
             v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
             final ArrayList<MessageObject> likedTrack = new ArrayList<>();
             likedTrack.add(MediaController.getInstance().getPlayingMessageObject());
-            SendMessagesHelper.getInstance(currentAccount).sendMessage(likedTrack, ExteraConfig.channelToSave, true, true, false, 0);
+            SendMessagesHelper.getInstance(currentAccount).sendMessage(likedTrack, MoeConfig.channelToSave, true, true, false, 0);
             BulletinFactory.of((FrameLayout) containerView, resourcesProvider).createSimpleBulletin(R.raw.ic_save_to_music, LocaleController.getString("TrackSaved", R.string.TrackSaved)).show();
         });
         

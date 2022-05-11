@@ -20,7 +20,7 @@ import org.telegram.ui.Charts.view_data.LineViewData;
 import org.telegram.ui.Charts.view_data.PieLegendView;
 import org.telegram.ui.Charts.view_data.TransitionParams;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class PieChartView extends StackLinearChartView<PieChartViewData> {
 
@@ -386,7 +386,7 @@ public class PieChartView extends StackLinearChartView<PieChartViewData> {
             pieLegendView.setTranslationX(xl);
             pieLegendView.setTranslationY(yl);
 
-            if (!ExteraConfig.disableVibration) {
+            if (!MoeConfig.disableVibration) {
                 boolean v = false;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
                     v = performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);

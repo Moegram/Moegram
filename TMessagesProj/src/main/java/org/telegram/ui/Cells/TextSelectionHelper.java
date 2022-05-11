@@ -60,7 +60,7 @@ import org.telegram.ui.RestrictedLanguagesSelectActivity;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.SelectableView> {
 
@@ -239,7 +239,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                 textY = maybeTextY;
 
                 selectedView = newView;
-                if (!ExteraConfig.disableVibration) textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                if (!MoeConfig.disableVibration) textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                 showActions();
                 invalidate();
 
@@ -831,7 +831,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
 
                                     if (viewChanged || layoutOld != layoutNew || newSelectionLine != layoutNew.getLineForOffset(selectionStart) && newSelectionLine == nextWhitespaceLine) {
                                         jumpToLine(newSelection, nextWhitespace, viewChanged, layoutBlock.yOffset, oldYoffset, oldSelectedView);
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                             textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                         }
                                         TextSelectionHelper.this.invalidate();
@@ -843,7 +843,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                                             selectionStart = k;
                                             movingHandleStart = false;
                                         }
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                             textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                         }
                                         TextSelectionHelper.this.invalidate();
@@ -894,7 +894,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                                                 selectionStart = k;
                                                 movingHandleStart = false;
                                             }
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                                 textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                             }
                                             TextSelectionHelper.this.invalidate();
@@ -932,7 +932,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
 
                                     if (viewChanged || layoutOld != layoutNew || newSelectionLine != layoutNew.getLineForOffset(selectionEnd) && newSelectionLine == nextWhitespaceLine) {
                                         jumpToLine(newSelection, nextWhitespace, viewChanged, layoutBlock.yOffset, oldYoffset, oldSelectedView);
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                             textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                         }
                                         TextSelectionHelper.this.invalidate();
@@ -944,7 +944,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                                             selectionStart = k;
                                             movingHandleStart = true;
                                         }
-                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                             textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                         }
                                         TextSelectionHelper.this.invalidate();
@@ -976,7 +976,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                                                 selectionStart = k;
                                                 movingHandleStart = true;
                                             }
-                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !ExteraConfig.disableVibration) {
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && !MoeConfig.disableVibration) {
                                                 textSelectionOverlay.performHapticFeedback(HapticFeedbackConstants.TEXT_HANDLE_MOVE);
                                             }
                                             TextSelectionHelper.this.invalidate();

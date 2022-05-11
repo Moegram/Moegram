@@ -79,7 +79,7 @@ import org.telegram.ui.Components.VerticalPositionAutoAnimator;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class TwoStepVerificationActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

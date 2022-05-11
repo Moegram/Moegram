@@ -55,8 +55,8 @@ import org.telegram.ui.Components.LayoutHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.extras.Vibrate;
 
 public class ActionBarLayout extends FrameLayout {
 
@@ -189,14 +189,14 @@ public class ActionBarLayout extends FrameLayout {
 
         @Override
         public boolean dispatchTouchEvent(MotionEvent ev) {
-            boolean previewModeStatus = !ExteraConfig.scrollablePreview && inPreviewMode;
+            boolean previewModeStatus = !MoeConfig.scrollablePreview && inPreviewMode;
             boolean passivePreview = previewModeStatus && previewMenu == null;
 
             if ((passivePreview || transitionAnimationPreviewMode) && (ev.getActionMasked() == MotionEvent.ACTION_DOWN || ev.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN)) {
                 return false;
             }
 
-            if (!ExteraConfig.scrollablePreview && inPreviewMode && previewMenu == null) {
+            if (!MoeConfig.scrollablePreview && inPreviewMode && previewMenu == null) {
                 View view = containerView.getChildAt(0);
                 if (view != null) {
                     int y = (int) (view.getTop() + containerView.getTranslationY());
@@ -704,7 +704,7 @@ public class ActionBarLayout extends FrameLayout {
         View fragmentView = lastFragment.fragmentView;
         if (fragmentView == null) {
             fragmentView = lastFragment.createView(parentActivity);
-            if (ExteraConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
+            if (MoeConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
         }
         ViewGroup parent = (ViewGroup) fragmentView.getParent();
         if (parent != null) {
@@ -1124,7 +1124,7 @@ public class ActionBarLayout extends FrameLayout {
         View fragmentView = fragment.fragmentView;
         if (fragmentView == null) {
             fragmentView = fragment.createView(parentActivity);
-            if (ExteraConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
+            if (MoeConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
         } else {
             ViewGroup parent = (ViewGroup) fragmentView.getParent();
             if (parent != null) {
@@ -1488,7 +1488,7 @@ public class ActionBarLayout extends FrameLayout {
                 }
             });
             animatorSet.start();
-            if (!ExteraConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            if (!MoeConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
 
             fragment.setInPreviewMode(false);
         }
@@ -1534,7 +1534,7 @@ public class ActionBarLayout extends FrameLayout {
             View fragmentView = previousFragment.fragmentView;
             if (fragmentView == null) {
                 fragmentView = previousFragment.createView(parentActivity);
-                if (ExteraConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
+                if (MoeConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
             }
 
             if (!inPreviewMode) {
@@ -1723,7 +1723,7 @@ public class ActionBarLayout extends FrameLayout {
         View fragmentView = previousFragment.fragmentView;
         if (fragmentView == null) {
             fragmentView = previousFragment.createView(parentActivity);
-            if (ExteraConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
+            if (MoeConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
         } else {
             ViewGroup parent = (ViewGroup) fragmentView.getParent();
             if (parent != null) {

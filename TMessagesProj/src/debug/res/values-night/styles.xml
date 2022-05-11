@@ -13,14 +13,14 @@
 
     <style name="Theme.TMessages.Start" parent="@android:style/Theme.Material">
         <item name="android:actionBarStyle">@style/ActionBar.Transparent.TMessages.Start</item>
-        <item name="android:colorBackground">#688691</item>
-        <item name="android:windowBackground">#688691</item>
+        <item name="android:colorBackground">#94B49F</item>
+        <item name="android:windowBackground">#94B49F</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorPrimaryDark">#1c242e</item>
         <item name="android:colorPrimary">#232d3a</item>
         <item name="android:navigationBarColor">#000000</item>
         <item name="android:forceDarkAllowed">false</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/etg_splash</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/moesplash</item>
         <item name="android:windowSplashScreenAnimationDuration">@integer/splash_screen_duration</item>
         <item name="android:windowSplashScreenBackground">?android:windowBackground</item>
     </style>

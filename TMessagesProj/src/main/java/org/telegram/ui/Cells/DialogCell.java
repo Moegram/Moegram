@@ -82,7 +82,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class DialogCell extends BaseCell {
 
@@ -2411,9 +2411,9 @@ public class DialogCell extends BaseCell {
         if (isSliding && !swipeCanceled) {
             boolean prevValue = drawRevealBackground;
             drawRevealBackground = Math.abs(translationX) >= getMeasuredWidth() * 0.45f;
-            if (prevValue != drawRevealBackground && archiveHidden == SharedConfig.archiveHidden && !ExteraConfig.disableVibration) {
+            if (prevValue != drawRevealBackground && archiveHidden == SharedConfig.archiveHidden && !MoeConfig.disableVibration) {
                 try {
-                    if (!ExteraConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!MoeConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 } catch (Exception ignore) {
 
                 }

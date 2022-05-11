@@ -12,7 +12,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 
-import com.exteragram.messenger.Extra;
+import com.moegram.messenger.Extra;
 
 public class BuildVars {
 

@@ -78,7 +78,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 @SuppressWarnings("unchecked")
 public class MediaDataController extends BaseController {
@@ -554,7 +554,7 @@ public class MediaDataController extends BaseController {
     public ArrayList<TLRPC.Document> getRecentStickers(int type) {
         ArrayList<TLRPC.Document> arrayList = recentStickers[type];
 
-        int unlimitedRecentStickers = ExteraConfig.unlimitedRecentStickers ? Integer.MAX_VALUE : 20;
+        int unlimitedRecentStickers = MoeConfig.unlimitedRecentStickers ? Integer.MAX_VALUE : 20;
         return new ArrayList<>(arrayList.subList(0, Math.min(arrayList.size(), unlimitedRecentStickers)));
     }
 

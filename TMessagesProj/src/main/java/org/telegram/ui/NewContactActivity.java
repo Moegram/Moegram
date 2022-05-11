@@ -65,7 +65,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class NewContactActivity extends BaseFragment implements AdapterView.OnItemSelectedListener {
 

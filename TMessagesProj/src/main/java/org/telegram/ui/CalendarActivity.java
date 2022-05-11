@@ -31,8 +31,6 @@ import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.ExteraConfig;
-
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.DownloadController;
 import org.telegram.messenger.FileLoader;
@@ -65,6 +63,8 @@ import org.telegram.ui.Components.SharedMediaLayout;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import com.moegram.messenger.MoeConfig;
 
 public class CalendarActivity extends BaseFragment {
 
@@ -693,7 +693,7 @@ public class CalendarActivity extends BaseFragment {
                     PeriodDay periodDay = getDayAtCoord(e.getX(), e.getY());
 
                     if (periodDay != null) {
-                        if (!ExteraConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                        if (!MoeConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 
                         Bundle bundle = new Bundle();
                         if (dialogId > 0) {

@@ -404,7 +404,7 @@ target_compile_definitions(sqlite PUBLIC
 #voip
 include(${CMAKE_HOME_DIRECTORY}/voip/CMakeLists.txt)
 
-set(NATIVE_LIB "exterax.42")
+set(NATIVE_LIB "moe.42")
 
 #tmessages
 add_library(${NATIVE_LIB} SHARED

@@ -54,7 +54,7 @@ import org.telegram.ui.Components.RLottieImageView;
 import org.telegram.ui.Components.SnowflakesEffect;
 import org.telegram.ui.ThemeActivity;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class DrawerProfileCell extends FrameLayout {
 
@@ -346,7 +346,7 @@ public class DrawerProfileCell extends FrameLayout {
         setArrowState(false);
         nameTextView.setText(UserObject.getUserName(user));
 
-        if (!ExteraConfig.hidePhoneNumber) {
+        if (!MoeConfig.hidePhoneNumber) {
             phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
         } else if (!TextUtils.isEmpty(user.username)) {
             phoneTextView.setText("@" + user.username);

@@ -101,7 +101,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -691,7 +691,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                     PhotoViewer.getInstance().setCaption(parentAlert.getCommentTextView().getText());
                 }
             } else {
-                if (SharedConfig.inappCamera && !ExteraConfig.disableCamera) {
+                if (SharedConfig.inappCamera && !MoeConfig.disableCamera) {
                     openCamera(true);
                 } else {
                     if (parentAlert.delegate != null) {
@@ -1617,7 +1617,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         }
         boolean old = deviceHasGoodCamera;
         boolean old2 = noCameraPermissions;
-        if (!SharedConfig.inappCamera || ExteraConfig.disableCamera) {
+        if (!SharedConfig.inappCamera || MoeConfig.disableCamera) {
             deviceHasGoodCamera = false;
         } else {
             if (Build.VERSION.SDK_INT >= 23) {

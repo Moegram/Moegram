@@ -47,7 +47,7 @@ import org.telegram.ui.Components.NumberTextView;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class ChangeBioActivity extends BaseFragment {
 

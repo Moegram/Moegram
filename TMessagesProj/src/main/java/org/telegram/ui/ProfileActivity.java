@@ -189,8 +189,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.preferences.MainPreferencesEntry;
+import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.preferences.MainPreferencesEntry;
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, SharedMediaLayout.SharedMediaPreloaderDelegate, ImageUpdater.ImageUpdaterDelegate, SharedMediaLayout.Delegate {
 
@@ -399,7 +399,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int passwordSuggestionRow;
     private int settingsSectionRow;
     private int settingsSectionRow2;
-    private int exteraRow;
+    private int moeRow;
     private int notificationRow;
     private int languageRow;
     private int privacyRow;
@@ -2868,7 +2868,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 ChatUsersActivity fragment = new ChatUsersActivity(args);
                 fragment.setInfo(chatInfo);
                 presentFragment(fragment);
-            } else if (position == exteraRow) {
+            } else if (position == moeRow) {
                 presentFragment(new MainPreferencesEntry());
             } else if (position == notificationRow) {
                 presentFragment(new NotificationsSettingsActivity());
@@ -3042,7 +3042,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         showDialog(builder.create());
                     } else {
                         try {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("exteraDebugMenu", R.string.exteraDebugMenu), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getParentActivity(), "¯\\_(ツ)_/¯", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             FileLog.e(e);
                         }
@@ -4070,7 +4070,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         } else if (position == phoneRow || position == numberRow) {
             final TLRPC.User user = getMessagesController().getUser(userId);
             if (user == null || user.phone == null || user.phone.length() == 0 || getParentActivity() == null ||
-                    (ExteraConfig.hidePhoneNumber && user.id == UserConfig.getInstance(currentAccount).getClientUserId())) {
+                    (MoeConfig.hidePhoneNumber && user.id == UserConfig.getInstance(currentAccount).getClientUserId())) {
                 return false;
             }
 
@@ -5835,7 +5835,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         passwordSuggestionRow = -1;
         settingsSectionRow = -1;
         settingsSectionRow2 = -1;
-        exteraRow = -1;
+        moeRow = -1;
         notificationRow = -1;
         languageRow = -1;
         privacyRow = -1;
@@ -5919,7 +5919,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 setUsernameRow = rowCount++;
                 bioRow = rowCount++;
 
-                if (ExteraConfig.showID) idRow = rowCount++;
+                if (MoeConfig.showID) idRow = rowCount++;
                 settingsSectionRow = rowCount++;
 
                 Set<String> suggestions = getMessagesController().pendingSuggestions;
@@ -5933,7 +5933,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
 
                 settingsSectionRow2 = rowCount++;
-                exteraRow = rowCount++;
+                moeRow = rowCount++;
                 notificationRow = rowCount++;
                 privacyRow = rowCount++;
                 dataRow = rowCount++;
@@ -5975,7 +5975,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (user != null && !TextUtils.isEmpty(user.username)) {
                     usernameRow = rowCount++;
                 }
-                if (ExteraConfig.showID) idRow = rowCount++;
+                if (MoeConfig.showID) idRow = rowCount++;
                 if (phoneRow != -1 || userInfoRow != -1 || usernameRow != -1) {
                     notificationsDividerRow = rowCount++;
                 }
@@ -6028,7 +6028,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     usernameRow = rowCount++;
                 }
             }
-            if (ExteraConfig.showID) idRow = rowCount++;
+            if (MoeConfig.showID) idRow = rowCount++;
             if (infoHeaderRow != -1) {
                 notificationsDividerRow = rowCount++;
             }
@@ -7368,10 +7368,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String abi = "";
                         switch (pInfo.versionCode % 10) {
                             case 1:
-                                abi = "arm64-v8a";
+                                abi = "armeabi-v7a";
                                 break;
                             case 2:
-                                abi = "arm-v7a";
+                                abi = "arm64-v8a";
                                 break;
                             case 3:
                                 abi = "x86";
@@ -7383,8 +7383,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 abi = "universal";
                                 break;
                         }
-                        if (BuildVars.isBetaApp()) cell.setText("extera X β | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
-                            else cell.setText("extera X | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
+                        if (BuildVars.isBetaApp()) cell.setText("Moegram β | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
+                            else cell.setText("Moegram | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
                     } catch (Exception e) {
                         FileLog.e(e);
                     }
@@ -7471,7 +7471,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (position == phoneRow) {
                         String text;
                         final TLRPC.User user = getMessagesController().getUser(userId);
-                        if (!TextUtils.isEmpty(user.phone) && !(ExteraConfig.hidePhoneNumber && user.id == UserConfig.getInstance(currentAccount).getClientUserId())) {
+                        if (!TextUtils.isEmpty(user.phone) && !(MoeConfig.hidePhoneNumber && user.id == UserConfig.getInstance(currentAccount).getClientUserId())) {
                             text = PhoneFormat.getInstance().format("+" + user.phone);
                         } else {
                             text = LocaleController.getString("PhoneHidden", R.string.PhoneHidden);
@@ -7509,7 +7509,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (position == numberRow) {
                         TLRPC.User user = UserConfig.getInstance(currentAccount).getCurrentUser();
                         String value;
-                        if (ExteraConfig.hidePhoneNumber) {
+                        if (MoeConfig.hidePhoneNumber) {
                             value = LocaleController.getString("MobileHidden", R.string.MobileHidden);
                         } else if (user != null && user.phone != null && user.phone.length() != 0) {
                             value = PhoneFormat.getInstance().format("+" + user.phone);
@@ -7652,7 +7652,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         textCell.setColors(null, Theme.key_windowBackgroundWhiteRedText5);
                     } else if (position == languageRow) {
                         textCell.setTextAndIcon(LocaleController.getString("Language", R.string.Language), R.drawable.menu_language, false);
-                    } else if (position == exteraRow) {
+                    } else if (position == moeRow) {
                         textCell.setTextAndIcon(LocaleController.getString("Preferences", R.string.Preferences), R.drawable.menu_settings, true);
                     } else if (position == notificationRow) {
                         textCell.setTextAndIcon(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), R.drawable.menu_notifications, true);
@@ -7834,7 +7834,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         position == languageRow || position == setUsernameRow || position == bioRow ||
                         position == versionRow || position == dataRow || position == chatRow ||
                         position == questionRow || position == devicesRow || position == filtersRow ||
-                        position == faqRow || position == policyRow || position == sendLogsRow || position == sendLastLogsRow || position == exteraRow ||
+                        position == faqRow || position == policyRow || position == sendLogsRow || position == sendLastLogsRow || position == moeRow ||
                         position == clearLogsRow || position == switchBackendRow || position == setAvatarRow || position == addToGroupButtonRow;
             }
             if (holder.itemView instanceof UserCell) {
@@ -7871,7 +7871,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             } else if (position == settingsTimerRow || position == settingsKeyRow || position == reportRow ||
                     position == subscribersRow || position == subscribersRequestsRow || position == administratorsRow || position == blockedUsersRow ||
                     position == addMemberRow || position == joinRow || position == unblockRow ||
-                    position == sendMessageRow || position == notificationRow || position == exteraRow || position == privacyRow ||
+                    position == sendMessageRow || position == notificationRow || position == moeRow || position == privacyRow ||
                     position == languageRow || position == dataRow || position == chatRow ||
                     position == questionRow || position == devicesRow || position == filtersRow ||
                     position == faqRow || position == policyRow || position == sendLogsRow || position == sendLastLogsRow ||
@@ -8840,7 +8840,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             put(++pointer, passwordSuggestionSectionRow, sparseIntArray);
             put(++pointer, settingsSectionRow, sparseIntArray);
             put(++pointer, settingsSectionRow2, sparseIntArray);
-            put(++pointer, exteraRow, sparseIntArray);
+            put(++pointer, moeRow, sparseIntArray);
             put(++pointer, notificationRow, sparseIntArray);
             put(++pointer, languageRow, sparseIntArray);
             put(++pointer, privacyRow, sparseIntArray);

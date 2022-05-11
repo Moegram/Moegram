@@ -166,9 +166,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import com.exteragram.messenger.preferences.MainPreferencesEntry;
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.MonetHelper;
+import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.preferences.MainPreferencesEntry;
+import com.moegram.messenger.extras.MonetHelper;
 
 public class LaunchActivity extends BasePermissionsActivity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate {
     public static boolean isResumed;
@@ -2136,7 +2136,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                                         newContactName = data.getQueryParameter("name");
                                         newContactPhone = data.getQueryParameter("phone");
                                         newContact = true;
-                                    } else if ((url.startsWith("tg:extera") || url.startsWith("tg://extera"))) {
+                                    } else if ((url.startsWith("tg:moe") || url.startsWith("tg://moe"))) {
                                         open_settings = 7;
                                     } else {
                                         unsupportedUrl = url.replace("tg://", "").replace("tg:", "");
@@ -5684,7 +5684,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                         showVoiceChatTooltip(mute ? UndoView.ACTION_VOIP_SOUND_MUTED : UndoView.ACTION_VOIP_SOUND_UNMUTED);
                     }
                 }
-            } else if (!ExteraConfig.disablePlayback && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
+            } else if (!MoeConfig.disablePlayback && (!PhotoViewer.hasInstance() || !PhotoViewer.getInstance().isVisible()) && event.getRepeatCount() == 0) {
                 BaseFragment fragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
                 if (fragment instanceof ChatActivity) {
                     if (((ChatActivity) fragment).maybePlayVisibleVideo()) {

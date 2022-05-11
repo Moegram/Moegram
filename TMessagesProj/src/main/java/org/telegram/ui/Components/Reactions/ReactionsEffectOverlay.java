@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.exteragram.messenger.ExteraConfig;
-
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ImageLocation;
 import org.telegram.messenger.ImageReceiver;
@@ -30,6 +28,8 @@ import org.telegram.ui.Components.ReactionsContainerLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.moegram.messenger.MoeConfig;
 
 public class ReactionsEffectOverlay {
 
@@ -634,7 +634,7 @@ public class ReactionsEffectOverlay {
             currentOverlay.started = true;
             if (currentOverlay.animationType == LONG_ANIMATION && System.currentTimeMillis() - lastHapticTime > 200) {
                 lastHapticTime = System.currentTimeMillis();
-                if (!ExteraConfig.disableVibration) currentOverlay.cell.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                if (!MoeConfig.disableVibration) currentOverlay.cell.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             }
         } else {
             startShortAnimation();
@@ -649,7 +649,7 @@ public class ReactionsEffectOverlay {
             currentShortOverlay.started = true;
             if (currentShortOverlay.animationType == SHORT_ANIMATION && System.currentTimeMillis() - lastHapticTime > 200) {
                 lastHapticTime = System.currentTimeMillis();
-                if (!ExteraConfig.disableVibration) currentShortOverlay.cell.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                if (!MoeConfig.disableVibration) currentShortOverlay.cell.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             }
         }
     }

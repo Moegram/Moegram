@@ -1133,7 +1133,7 @@ public class ChatAttachAlertDocumentLayout extends ChatAttachAlert.AttachAlertLa
 
         ListItem fs;
         try {
-            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "extera X");
+            File telegramPath = new File(ApplicationLoader.applicationContext.getExternalFilesDir(null), "Moegram");
             if (telegramPath.exists()) {
                 fs = new ListItem();
                 fs.title = LocaleController.getString("AppName", R.string.AppName);

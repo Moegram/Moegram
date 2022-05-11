@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class LocaleController {
 
@@ -986,14 +986,14 @@ public class LocaleController {
     private String getStringInternal(String key, String fallback, int res) {
         if (key.equals("AppName")) {
             try {
-                return ApplicationLoader.applicationContext.getString(R.string.exteraAppName);
+                return ApplicationLoader.applicationContext.getString(R.string.MoeAppName);
             } catch (Exception e) {
                 FileLog.e(e);
             }
         }
         if (key.equals("AppNameBeta")) {
             try {
-                return ApplicationLoader.applicationContext.getString(R.string.exteraAppNameBeta);
+                return ApplicationLoader.applicationContext.getString(R.string.MoeAppNameBeta);
             } catch (Exception e) {
                 FileLog.e(e);
             }
@@ -1898,7 +1898,7 @@ public class LocaleController {
     }
 
     public static String formatShortNumber(int number, int[] rounded) {
-        if (ExteraConfig.disableRounding) {
+        if (MoeConfig.disableRounding) {
             if (rounded != null) {
                 rounded[0] = number;
             }

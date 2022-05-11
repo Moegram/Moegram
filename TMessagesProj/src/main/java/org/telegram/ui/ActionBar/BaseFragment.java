@@ -54,8 +54,8 @@ import org.telegram.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.extras.Vibrate;
 
 public abstract class BaseFragment {
 
@@ -195,7 +195,7 @@ public abstract class BaseFragment {
     public void setParentFragment(BaseFragment fragment) {
         setParentLayout(fragment.parentLayout);
         fragmentView = createView(parentLayout.getContext());
-        if (ExteraConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
+        if (MoeConfig.disableVibration) Vibrate.disableHapticFeedback(fragmentView);
     }
 
     protected void setParentLayout(ActionBarLayout layout) {

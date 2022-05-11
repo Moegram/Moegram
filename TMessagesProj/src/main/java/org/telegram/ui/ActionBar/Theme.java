@@ -128,8 +128,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import com.exteragram.messenger.ExteraConfig;
-import com.exteragram.messenger.extras.MonetHelper;
+import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.extras.MonetHelper;
 
 public class Theme {
 
@@ -4576,7 +4576,7 @@ public class Theme {
         defaultColors.put(key_chat_inTextSelectionHighlight, 0x5062A9E3);
         defaultColors.put(key_chat_TextSelectionCursor, 0xFF419FE8);
 
-        if (ExteraConfig.blurForAllThemes) defaultColors.put(key_chat_BlurAlpha, 0xCF000000);
+        if (MoeConfig.blurForAllThemes) defaultColors.put(key_chat_BlurAlpha, 0xCF000000);
             else defaultColors.put(key_chat_BlurAlpha, 0xFF000000);
 
         defaultColors.put(key_statisticChartSignature, 0x7f252529);
@@ -5640,11 +5640,11 @@ public class Theme {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
         int eventType = -1;
-        if ((monthOfYear == 11 && dayOfMonth >= 24 && dayOfMonth <= 31 || monthOfYear == 0 && dayOfMonth == 1) || (ExteraConfig.eventType == 1)) {
+        if ((monthOfYear == 11 && dayOfMonth >= 24 && dayOfMonth <= 31 || monthOfYear == 0 && dayOfMonth == 1) || (MoeConfig.eventType == 1)) {
             eventType = 0;
-        } else if ((monthOfYear == 1 && dayOfMonth == 14) || (ExteraConfig.eventType == 2)) {
+        } else if ((monthOfYear == 1 && dayOfMonth == 14) || (MoeConfig.eventType == 2)) {
             eventType = 1;
-        } else if ((monthOfYear == 9 && dayOfMonth >= 30 || monthOfYear == 10 && dayOfMonth == 1 && hour < 12) || (ExteraConfig.eventType == 3)) {
+        } else if ((monthOfYear == 9 && dayOfMonth >= 30 || monthOfYear == 10 && dayOfMonth == 1 && hour < 12) || (MoeConfig.eventType == 3)) {
             eventType = 2;
         }
         return eventType;

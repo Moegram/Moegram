@@ -76,7 +76,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class ChatEditActivity extends BaseFragment implements ImageUpdater.ImageUpdaterDelegate, NotificationCenter.NotificationCenterDelegate {
 

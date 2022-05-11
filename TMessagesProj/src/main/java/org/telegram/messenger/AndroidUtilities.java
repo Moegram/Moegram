@@ -166,7 +166,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class AndroidUtilities {
     public final static int LIGHT_STATUS_BAR_OVERLAY = 0x0f000000, DARK_STATUS_BAR_OVERLAY = 0x33000000;
@@ -1464,7 +1464,7 @@ public class AndroidUtilities {
 
     public static Typeface getTypeface(String assetPath) {
         synchronized (typefaceCache) {
-            if (ExteraConfig.useSystemFonts) {
+            if (MoeConfig.useSystemFonts) {
                 if (assetPath.contains("medium") && assetPath.contains("italic")) {
                     return Typeface.create("sans-serif-medium", Typeface.ITALIC);
                 }
@@ -1955,7 +1955,7 @@ public class AndroidUtilities {
     }
 
     public static boolean isTablet() {
-        if (ExteraConfig.forceTabletMode != ExteraConfig.TABLET_AUTO) return ExteraConfig.forceTabletMode == ExteraConfig.TABLET_ENABLE;
+        if (MoeConfig.forceTabletMode != MoeConfig.TABLET_AUTO) return MoeConfig.forceTabletMode == MoeConfig.TABLET_ENABLE;
         if (isTablet == null) {
             isTablet = ApplicationLoader.applicationContext != null && ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
         }
@@ -2527,7 +2527,7 @@ public class AndroidUtilities {
         }
         File storageDir = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "extera X");
+            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Moegram");
             if (!storageDir.mkdirs()) {
                 if (!storageDir.exists()) {
                     if (BuildVars.LOGS_ENABLED) {

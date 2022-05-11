@@ -112,7 +112,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class EmojiView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -1967,8 +1967,8 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 } else if (event.getAction() == MotionEvent.ACTION_CANCEL || event.getAction() == MotionEvent.ACTION_UP) {
                     backspacePressed = false;
                     if (!backspaceOnce) {
-                        if (delegate != null && delegate.onBackspace() && !ExteraConfig.disableVibration) {
-                            if (!ExteraConfig.disableVibration) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                        if (delegate != null && delegate.onBackspace() && !MoeConfig.disableVibration) {
+                            if (!MoeConfig.disableVibration) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                         }
                     }
                 }
@@ -3172,8 +3172,8 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             if (!backspacePressed) {
                 return;
             }
-            if (delegate != null && delegate.onBackspace() && !ExteraConfig.disableVibration) {
-                if (!ExteraConfig.disableVibration) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            if (delegate != null && delegate.onBackspace() && !MoeConfig.disableVibration) {
+                if (!MoeConfig.disableVibration) backspaceButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
             }
             backspaceOnce = true;
             postBackspaceRunnable(Math.max(50, time - 100));
@@ -3298,7 +3298,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             }
             stickerSets.add(pack);
         }
-        if (info != null && !ExteraConfig.hideGroupStickers) {
+        if (info != null && !MoeConfig.hideGroupStickers) {
             long hiddenStickerSetId = MessagesController.getEmojiSettings(currentAccount).getLong("group_hide_stickers_" + info.id, -1);
             TLRPC.Chat chat = MessagesController.getInstance(currentAccount).getChat(info.id);
             if (chat == null || info.stickerset == null || !ChatObject.hasAdminRights(chat)) {

@@ -15,7 +15,7 @@ import org.telegram.ui.Components.Rect;
 
 import java.util.UUID;
 
-import com.exteragram.messenger.ExteraConfig;
+import com.moegram.messenger.MoeConfig;
 
 public class EntityView extends FrameLayout {
 
@@ -59,7 +59,7 @@ public class EntityView extends FrameLayout {
 
                 recognizedLongPress = true;
                 if (delegate != null) {
-                    if (!ExteraConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    if (!MoeConfig.disableVibration) performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                     delegate.onEntityLongClicked(EntityView.this);
                 }
             }

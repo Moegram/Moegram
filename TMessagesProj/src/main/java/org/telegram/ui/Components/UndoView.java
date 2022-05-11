@@ -38,8 +38,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Keep;
 
-import com.exteragram.messenger.ExteraConfig;
-
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
@@ -60,6 +58,8 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.PaymentFormActivity;
 
 import java.util.ArrayList;
+
+import com.moegram.messenger.MoeConfig;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class UndoView extends FrameLayout {
@@ -1087,7 +1087,7 @@ public class UndoView extends FrameLayout {
             leftImageView.playAnimation();
             if (hapticDelay > 0) {
                 leftImageView.postDelayed(() -> {
-                    if (!ExteraConfig.disableVibration) leftImageView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+                    if (!MoeConfig.disableVibration) leftImageView.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
                 }, hapticDelay);
             }
         } else if (currentAction == ACTION_PROXIMITY_SET || currentAction == ACTION_PROXIMITY_REMOVED) {

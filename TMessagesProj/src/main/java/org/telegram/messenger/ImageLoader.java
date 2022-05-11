@@ -2062,16 +2062,16 @@ public class ImageLoader {
                     try {
                         if (ApplicationLoader.applicationContext.getExternalMediaDirs().length > 0) {
                             publicMediaDir = ApplicationLoader.applicationContext.getExternalMediaDirs()[0];
-                            publicMediaDir = new File(publicMediaDir, "extera X");
+                            publicMediaDir = new File(publicMediaDir, "Moegram");
                             publicMediaDir.mkdirs();
                         }
                     } catch (Exception e) {
                         FileLog.e(e);
                     }
                     newPath = ApplicationLoader.applicationContext.getExternalFilesDir(null);
-                    telegramPath = new File(newPath, "extera X");
+                    telegramPath = new File(newPath, "Moegram");
                 } else {
-                    telegramPath = new File(path, "extera X");
+                    telegramPath = new File(path, "Moegram");
                 }
                 telegramPath.mkdirs();
 
@@ -2081,7 +2081,7 @@ public class ImageLoader {
                         File dir = dirs.get(a);
                         if (dir.getAbsolutePath().startsWith(SharedConfig.storageCacheDir)) {
                             path = dir;
-                            telegramPath = new File(path, "extera X");
+                            telegramPath = new File(path, "Moegram");
                             telegramPath.mkdirs();
                             break;
                         }
@@ -2090,7 +2090,7 @@ public class ImageLoader {
 
                 if (telegramPath.isDirectory()) {
                     try {
-                        File imagePath = new File(telegramPath, "extera X Images");
+                        File imagePath = new File(telegramPath, "Moegram Images");
                         imagePath.mkdir();
                         if (imagePath.isDirectory() && canMoveFiles(cachePath, imagePath, FileLoader.MEDIA_DIR_IMAGE)) {
                             mediaDirs.put(FileLoader.MEDIA_DIR_IMAGE, imagePath);
@@ -2103,7 +2103,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File videoPath = new File(telegramPath, "extera X Video");
+                        File videoPath = new File(telegramPath, "Moegram Video");
                         videoPath.mkdir();
                         if (videoPath.isDirectory() && canMoveFiles(cachePath, videoPath, FileLoader.MEDIA_DIR_VIDEO)) {
                             mediaDirs.put(FileLoader.MEDIA_DIR_VIDEO, videoPath);
@@ -2116,7 +2116,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File audioPath = new File(telegramPath, "extera X Audio");
+                        File audioPath = new File(telegramPath, "Moegram Audio");
                         audioPath.mkdir();
                         if (audioPath.isDirectory() && canMoveFiles(cachePath, audioPath, FileLoader.MEDIA_DIR_AUDIO)) {
                             AndroidUtilities.createEmptyFile(new File(audioPath, ".nomedia"));
@@ -2130,7 +2130,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File documentPath = new File(telegramPath, "extera X Documents");
+                        File documentPath = new File(telegramPath, "Moegram Documents");
                         documentPath.mkdir();
                         if (documentPath.isDirectory() && canMoveFiles(cachePath, documentPath, FileLoader.MEDIA_DIR_DOCUMENT)) {
                             AndroidUtilities.createEmptyFile(new File(documentPath, ".nomedia"));
@@ -2145,7 +2145,7 @@ public class ImageLoader {
                 }
                 if (publicMediaDir != null && publicMediaDir.isDirectory()) {
                     try {
-                        File imagePath = new File(publicMediaDir, "extera X Images");
+                        File imagePath = new File(publicMediaDir, "Moegram Images");
                         imagePath.mkdir();
                         if (imagePath.isDirectory() && canMoveFiles(cachePath, imagePath, FileLoader.MEDIA_DIR_IMAGE)) {
                             AndroidUtilities.createEmptyFile(new File(imagePath, ".nomedia"));
@@ -2159,7 +2159,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File videoPath = new File(publicMediaDir, "extera X Video");
+                        File videoPath = new File(publicMediaDir, "Moegram Video");
                         videoPath.mkdir();
                         if (videoPath.isDirectory() && canMoveFiles(cachePath, videoPath, FileLoader.MEDIA_DIR_VIDEO)) {
                             AndroidUtilities.createEmptyFile(new File(videoPath, ".nomedia"));

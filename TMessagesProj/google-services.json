@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "850117749574",
-    "project_id": "exterax-14ca1",
-    "storage_bucket": "exterax-14ca1.appspot.com"
+    "project_number": "622398906601",
+    "project_id": "moegram-e5ea2",
+    "storage_bucket": "moegram-e5ea2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:850117749574:android:98e99665e3e654365e5347",
+        "mobilesdk_app_id": "1:622398906601:android:3e803726c158bdd7375078",
         "android_client_info": {
-          "package_name": "exterax.messenger"
+          "package_name": "com.moegram.messenger"
         }
       },
       "oauth_client": [
         {
-          "client_id": "850117749574-p0fncsgjs5t1nvbqm7lbkqpf2q4ig9n0.apps.googleusercontent.com",
+          "client_id": "622398906601-4qp20fervne8ibnrjr36qics7n4s49kh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6mx0EBJK2lQ9cFhzplnrJPXMHGsEdkto"
+          "current_key": "AIzaSyBm6mePqLgkJ55orDImTam9To3bAwSePfk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "850117749574-p0fncsgjs5t1nvbqm7lbkqpf2q4ig9n0.apps.googleusercontent.com",
+              "client_id": "622398906601-4qp20fervne8ibnrjr36qics7n4s49kh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -36,27 +36,27 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:850117749574:android:98e99665e3e654365e5347",
+        "mobilesdk_app_id": "1:622398906601:android:dee94d681dfce497375078",
         "android_client_info": {
-          "package_name": "exterax.messenger.beta"
+          "package_name": "com.moegram.messenger.beta"
         }
       },
       "oauth_client": [
         {
-          "client_id": "850117749574-p0fncsgjs5t1nvbqm7lbkqpf2q4ig9n0.apps.googleusercontent.com",
+          "client_id": "622398906601-4qp20fervne8ibnrjr36qics7n4s49kh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6mx0EBJK2lQ9cFhzplnrJPXMHGsEdkto"
+          "current_key": "AIzaSyBm6mePqLgkJ55orDImTam9To3bAwSePfk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "850117749574-p0fncsgjs5t1nvbqm7lbkqpf2q4ig9n0.apps.googleusercontent.com",
+              "client_id": "622398906601-4qp20fervne8ibnrjr36qics7n4s49kh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

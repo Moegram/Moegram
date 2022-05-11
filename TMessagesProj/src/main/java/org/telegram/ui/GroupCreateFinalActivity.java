@@ -76,7 +76,7 @@ import java.util.concurrent.CountDownLatch;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class GroupCreateFinalActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, ImageUpdater.ImageUpdaterDelegate {
 

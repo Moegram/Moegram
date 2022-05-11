@@ -1099,10 +1099,10 @@ public class SharedConfig {
     public static void checkSaveToGalleryFiles() {
         Utilities.globalQueue.postRunnable(() -> {
             try {
-                File telegramPath = new File(Environment.getExternalStorageDirectory(), "extera X");
-                File imagePath = new File(telegramPath, "extera X Images");
+                File telegramPath = new File(Environment.getExternalStorageDirectory(), "Moegram");
+                File imagePath = new File(telegramPath, "Moegram Images");
                 imagePath.mkdir();
-                File videoPath = new File(telegramPath, "extera X Video");
+                File videoPath = new File(telegramPath, "Moegram Video");
                 videoPath.mkdir();
 
                 if (saveToGallery) {

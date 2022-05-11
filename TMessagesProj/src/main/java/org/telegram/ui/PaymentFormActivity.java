@@ -141,7 +141,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.Scanner;
 
-import com.exteragram.messenger.extras.Vibrate;
+import com.moegram.messenger.extras.Vibrate;
 
 public class PaymentFormActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
