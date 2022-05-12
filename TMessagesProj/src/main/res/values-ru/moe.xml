@@ -55,7 +55,6 @@
     <string name="Media">Медиа</string>
     <string name="RearVideoMessages">Задняя камера в видеосообщениях</string>
     <string name="DisableCamera">Отключить камеру в галерее</string>
-    <string name="DisableProximityEvents">Отключить датчик приближения</string>
     <string name="PauseOnMinimize">Автопауза</string>
     <string name="POMDescription">Останавливает видео, когда девайс блокируется или приложение сворачивается</string>
     <string name="DisablePlayback">Отключить проигрывание</string>

@@ -4865,10 +4865,10 @@ public class NotificationsController extends BaseController {
 
         switch (nightModeFlags) {
             case Configuration.UI_MODE_NIGHT_YES:
-                return 0xffffffff;
+                return 0xffffefef;
             case Configuration.UI_MODE_NIGHT_NO:
-                return 0xff4d4343;
+                return 0xff7c99ac;
         }
-        return 0xff4d4343;
+        return 0xff7c99ac;
     }
 }
