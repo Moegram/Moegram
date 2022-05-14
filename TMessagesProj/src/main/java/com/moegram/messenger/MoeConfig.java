@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.UserConfig;
 
 public class MoeConfig {
 
@@ -58,8 +57,6 @@ public class MoeConfig {
     public static final int TABLET_AUTO = 0;
     public static final int TABLET_ENABLE = 1;
     public static final int TABLET_DISABLE = 2;
-
-    public static long channelToSave = UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId();
 
     private static boolean configLoaded;
 
@@ -119,8 +116,6 @@ public class MoeConfig {
             disableCamera = preferences.getBoolean("disableCamera", false);
             pauseOnMinimize = preferences.getBoolean("pauseOnMinimize", true);
             disablePlayback = preferences.getBoolean("disablePlayback", true);
-
-            channelToSave = preferences.getLong("channelToSave", UserConfig.getInstance(UserConfig.selectedAccount).getClientUserId());
 
             configLoaded = true;
         }
@@ -410,14 +405,6 @@ public class MoeConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("telegramFeatures", telegramFeatures);
-        editor.apply();
-    }
-
-    public static void changeChannelToSave(long id) {
-        channelToSave = id;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putLong("channelToSave", channelToSave);
         editor.apply();
     }
 
