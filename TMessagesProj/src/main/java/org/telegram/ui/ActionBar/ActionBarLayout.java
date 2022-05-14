@@ -623,7 +623,7 @@ public class ActionBarLayout extends FrameLayout {
             previewBackgroundDrawable.draw(canvas);
             if (previewMenu == null) {
                 int x = (getMeasuredWidth() - AndroidUtilities.dp(24)) / 2;
-                int y = (int) (view.getTop() + containerView.getTranslationY() - AndroidUtilities.dp(12 + (Build.VERSION.SDK_INT < 21 ? 20 : 0)));
+                int y = (int) (view.getTop() + containerView.getTranslationY() - AndroidUtilities.dp(0));
                 Theme.moveUpDrawable.setBounds(x, y, x + AndroidUtilities.dp(24), y + AndroidUtilities.dp(24));
                 Theme.moveUpDrawable.draw(canvas);
             }

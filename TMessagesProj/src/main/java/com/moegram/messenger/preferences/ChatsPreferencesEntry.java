@@ -181,6 +181,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
         }
 
         ActionBarMenu menu = actionBar.createMenu();
+
         resetItem = menu.addItem(0, R.drawable.msg_reset);
         resetItem.setContentDescription(LocaleController.getString("Reset", R.string.Reset));
         resetItem.setVisibility(MoeConfig.stickerSize != 14.0f ? View.VISIBLE : View.GONE);
@@ -195,7 +196,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
             });
             animator.start();
         });
-
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
