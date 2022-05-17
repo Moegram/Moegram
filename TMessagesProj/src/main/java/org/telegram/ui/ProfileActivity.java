@@ -7364,27 +7364,26 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     cell.getTextView().setMovementMethod(null);
                     try {
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-                        int code = pInfo.versionCode / 10;
+                        int code = pInfo.versionCode;
                         String abi = "";
                         switch (pInfo.versionCode % 10) {
                             case 1:
-                                abi = "armeabi-v7a";
-                                break;
-                            case 2:
                                 abi = "arm64-v8a";
                                 break;
+                            case 2:
+                                abi = "armeabi-v7a";
+                                break;
                             case 3:
-                                abi = "x86";
+                                abi = "x86_64";
                                 break;
                             case 4:
-                                abi = "x86_64";
+                                abi = "x86";
                                 break;
                             case 9:
                                 abi = "universal";
                                 break;
                         }
-                        if (BuildVars.isBetaApp()) cell.setText("Moegram β | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
-                            else cell.setText("Moegram | v" + BuildVars.BUILD_VERSION_STRING + " (" + code + ")" + "\n" + abi + ", commit ID: " + BuildConfig.COMMIT_ID.substring(0, 7));
+                        cell.setText(LocaleController.formatString("MoeVersion", R.string.MoeVersion, String.format(Locale.US, "v%s (%d)", pInfo.versionName, code), String.format(Locale.US, "%s", abi), String.format(Locale.US, "%s", BuildConfig.COMMIT_ID.substring(0, 7))));
                     } catch (Exception e) {
                         FileLog.e(e);
                     }
