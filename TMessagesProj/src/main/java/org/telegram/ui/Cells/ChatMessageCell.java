@@ -156,7 +156,7 @@ import java.util.Stack;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.moegram.messenger.MoeConfig;
-import com.moegram.messenger.extras.DateOfForwardedMsg;
+import com.moegram.messenger.MoeExtras;
 
 public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate, ImageReceiver.ImageReceiverDelegate, DownloadController.FileDownloadProgressListener, TextSelectionHelper.SelectableView, NotificationCenter.NotificationCenterDelegate {
 
@@ -10645,7 +10645,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     currentForwardNameString = currentForwardName;
                 }
 
-                currentForwardNameString = DateOfForwardedMsg.showForwardDate(messageObject, currentForwardNameString);
+                currentForwardNameString = MoeExtras.showForwardDate(messageObject, currentForwardNameString);
                 forwardedNameWidth = getMaxNameWidth();
                 String forwardedString = getForwardedMessageText(messageObject);
                 if (hasPsaHint) {
@@ -10853,7 +10853,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             currentForwardNameString = currentForwardName;
                         }
 
-                        currentForwardNameString = DateOfForwardedMsg.showForwardDate(messageObject, currentForwardNameString);
+                        currentForwardNameString = MoeExtras.showForwardDate(messageObject, currentForwardNameString);
                         name = getForwardedMessageText(messageObject);
                         String from = LocaleController.getString("From", R.string.From);
                         String fromFormattedString = LocaleController.getString("FromFormatted", R.string.FromFormatted);
