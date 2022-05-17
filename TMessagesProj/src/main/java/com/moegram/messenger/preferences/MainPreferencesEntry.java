@@ -35,10 +35,10 @@ public class MainPreferencesEntry extends BaseFragment {
     private int MoegramRow;
     private int MoegramDividerRow;
 
-    private int categoryHeaderRow;
+    private int categoriesHeaderRow;
     private int appearanceRow;
     private int chatsRow;
-    private int categoryDividerRow;
+    private int categoriesDividerRow;
 
     private int linksHeaderRow;
     private int sourceCodeRow;
@@ -111,10 +111,10 @@ public class MainPreferencesEntry extends BaseFragment {
         MoegramRow = rowCount++;
         MoegramDividerRow = rowCount++;
 
-        categoryHeaderRow = rowCount++;
+        categoriesHeaderRow = rowCount++;
         appearanceRow = rowCount++;
         chatsRow = rowCount++;
-        categoryDividerRow = rowCount++;
+        categoriesDividerRow = rowCount++;
 
         linksHeaderRow = rowCount++;
         channelRow = rowCount++;
@@ -152,11 +152,15 @@ public class MainPreferencesEntry extends BaseFragment {
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             switch (holder.getItemViewType()) {
                 case 1:
-                    holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    if (position == MoegramDividerRow || position == categoriesDividerRow || position == linksDividerRow) {
+                        holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
+                    } else {
+                        holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    }
                     break;
                 case 2:
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
-                    if (position == categoryHeaderRow) {
+                    if (position == categoriesHeaderRow) {
                         headerCell.setText(LocaleController.getString("Categories", R.string.Categories));
                     } else if (position == linksHeaderRow) {
                         headerCell.setText(LocaleController.getString("Links", R.string.Links));
@@ -191,12 +195,6 @@ public class MainPreferencesEntry extends BaseFragment {
             }
         }
 
-        @Override
-        public boolean isEnabled(RecyclerView.ViewHolder holder) {
-            int type = holder.getItemViewType();
-            return type == 3 || type == 4;
-        }
-
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -221,11 +219,18 @@ public class MainPreferencesEntry extends BaseFragment {
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
             return new RecyclerListView.Holder(view);
         }
+
+        @Override
+        public boolean isEnabled(RecyclerView.ViewHolder holder) {
+            int type = holder.getItemViewType();
+            return type == 3 || type == 4;
+        }
+
         @Override
         public int getItemViewType(int position) {
-            if (position == MoegramDividerRow || position == categoryDividerRow || position == linksDividerRow) {
+            if (position == MoegramDividerRow || position == categoriesDividerRow || position == linksDividerRow) {
                 return 1;
-            } else if (position == categoryHeaderRow || position == linksHeaderRow) {
+            } else if (position == categoriesHeaderRow || position == linksHeaderRow) {
                 return 2;
             } else if (position == appearanceRow || position == chatsRow ||
                        position == channelRow || position == groupRow || position == sourceCodeRow) {

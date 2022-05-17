@@ -371,7 +371,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
             switch (MoeConfig.eventType) {
                 case 1:
                     newGroupIcon = R.drawable.menu_groups_ny;
@@ -434,12 +434,16 @@ public class AppearancePreferencesEntry extends BaseFragment {
 
             switch (holder.getItemViewType()) {
                 case 1:
-                    holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    if (position == applicationDividerRow || position == drawerDividerRow || position == generalDividerRow) {
+                        holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider_bottom, Theme.key_windowBackgroundGrayShadow));
+                    } else {
+                        holder.itemView.setBackground(Theme.getThemedDrawable(mContext, R.drawable.greydivider, Theme.key_windowBackgroundGrayShadow));
+                    }
                     break;
                 case 2:
                     HeaderCell headerCell = (HeaderCell) holder.itemView;
                     if (position == applicationHeaderRow) {
-                        headerCell.setText(LocaleController.getString("Appearance", R.string.Appearance));
+                        headerCell.setText(LocaleController.getString("Application", R.string.Application));
                     } else if (position == drawerHeaderRow){
                         headerCell.setText(LocaleController.getString("DrawerOptions", R.string.DrawerOptions));
                     } else if (position == generalHeaderRow) {
@@ -508,12 +512,6 @@ public class AppearancePreferencesEntry extends BaseFragment {
             }
         }
 
-        @Override
-        public boolean isEnabled(RecyclerView.ViewHolder holder) {
-            int type = holder.getItemViewType();
-            return type == 3 || type == 7;
-        }
-
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -541,6 +539,12 @@ public class AppearancePreferencesEntry extends BaseFragment {
             }
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
             return new RecyclerListView.Holder(view);
+        }
+
+        @Override
+        public boolean isEnabled(RecyclerView.ViewHolder holder) {
+            int type = holder.getItemViewType();
+            return type == 3;
         }
 
         @Override
