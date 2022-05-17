@@ -6,7 +6,7 @@
     <string name="MoeVersion" translatable="false">Moegram | %1$s\n%2$s, commit ID: %3$s</string>
     <string name="MutualContact">mutual contact</string>
     <string name="ToBeginning">To beginning</string>
-    <string name="SaveMessage">Save message</string>
+    <string name="SaveMessage">Save Message</string>
 
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>
@@ -15,7 +15,7 @@
 
     <!-- Main Menu (about) -->
     <string name="Links">Links</string>
-    <string name="MoegramDescription">Experimental Telegram client based on official Telegram sources!</string>
+    <string name="MoegramDescription">Moegram is an **UNOFFICIAL** messaging app that uses Telegram\'s API!</string>
     <string name="SourceCode">Source code</string>
     <string name="Channel">Channel</string>
     <string name="Chat">Chat</string>

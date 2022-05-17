@@ -9,7 +9,7 @@
     <string name="SuggestionMessage">Подпишитесь на наш канал, чтобы оставаться в курсе событий и получать новые обновления!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
-    <string name="MoegramDescription">Экспериментальный Telegram-клиент, основанный на официальном исходном коде Telegram!</string>
+    <string name="MoegramDescription">Moegram — это **НЕОФИЦИАЛЬНОЕ** приложение для обмена сообщениями, использующее API Telegram!</string>
     <string name="SourceCode">Исходный код</string>
     <string name="Channel">Канал</string>
     <string name="Chat">Чат</string>
@@ -42,7 +42,7 @@
     <string name="StickerTime">Скрыть время под стикером</string>
     <string name="HideGroupStickers">Скрыть стикеры группы</string>
     <string name="DisableGreetingSticker">Скрыть приветственный стикер</string>
-    <string name="UnlimitedRecentStickers">Неограниченные стикеры</string>
+    <string name="UnlimitedRecentStickers">Неограниченные недавние стикеры</string>
     <string name="StickerSizeDialogMessageReplyTo">гав</string>
     <string name="StickerSizeDialogMessage">вау, это же Марс! (@mars_cat)</string>
     <string name="HideSendAsChannel">Скрыть \"Написать от имени…\"</string>
