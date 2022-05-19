@@ -14902,12 +14902,14 @@ public class MessagesController extends BaseController implements NotificationCe
         if (reasons.isEmpty() || BuildVars.isStandaloneApp()) {
             return null;
         }
-        for (int a = 0, N = reasons.size(); a < N; a++) {
-            TLRPC.TL_restrictionReason reason = reasons.get(a);
-            if ("all".equals(reason.platform) || !BuildVars.isStandaloneApp() && !BuildVars.isBetaApp() && "android".equals(reason.platform)) {
-                return reason.text;
-            }
-        }
+        /* Disable restictions
+         * for (int a = 0, N = reasons.size(); a < N; a++) {
+         *     TLRPC.TL_restrictionReason reason = reasons.get(a);
+         *     if ("all".equals(reason.platform) || !BuildVars.isStandaloneApp() && !BuildVars.isBetaApp() && "android".equals(reason.platform)) {
+         *         return reason.text;
+         *     }
+         *  }
+         */
         return null;
     }
 

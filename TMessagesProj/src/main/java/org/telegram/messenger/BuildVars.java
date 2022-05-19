@@ -31,6 +31,9 @@ public class BuildVars {
     public static String PLAYSTORE_APP_URL = "https://play.google.com/store/apps/details?id=org.telegram.messenger";
 
     static {
+        DEBUG_VERSION = BuildConfig.BUILD_TYPE.equals("debug");
+        DEBUG_PRIVATE_VERSION = BuildConfig.BUILD_TYPE.equals("debug");
+
         APP_ID = Extra.APP_ID; // Obtain your own APP_ID at https://core.telegram.org/api/obtaining_api_id
         APP_HASH = Extra.APP_HASH; // Obtain your own APP_HASH at https://core.telegram.org/api/obtaining_api_id
         SMS_HASH = Extra.SMS_HASH; // Obtain your own SMS_HASH with https://bit.ly/3rxcuTd
