@@ -14,7 +14,7 @@
     <string name="Channel">Канал</string>
     <string name="Chat">Чат</string>
     <string name="Preferences">Настройки Moegram</string>
-    <string name="RestartRequired">Перезагрузите приложение, чтобы изменения вступили в силу.</string>
+    <string name="RestartRequired">Перезагрузите Moegram, чтобы изменения вступили в силу.</string>
     <string name="Categories">Категории</string>
     <string name="Chats">Чаты</string>
     <!-- Appearance -->
@@ -60,9 +60,6 @@
     <string name="DisablePlayback">Отключить проигрывание</string>
     <string name="DPDescription">Отключает автоматическое проигрывание видео при нажатии на кнопку громкости</string>
     <!-- Other -->
-    <string name="EnterID">Введите ID</string>
-    <string name="TrackSaved">Трек сохранен</string>
-    <string name="ChannelToSaveDescription">Введите ID канала/чата/пользователя, куда будет сохраняться музыка</string>
     <string name="ConfirmCall">Подтверждение звонка</string>
     <string name="CallTo">Позвонить **%1$s**?</string>
 </resources>
