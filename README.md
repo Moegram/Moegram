@@ -17,7 +17,7 @@ Experimental **third-party** Telegram client based on [official sources](https:/
 
 - **Moegram** can be built with **Android Studio** or from the command line with **Gradle**:
 ```
-./gradlew assembleAfatRelease
+./gradlew assembleRelease
 ```
 
  ## Thanks to:
