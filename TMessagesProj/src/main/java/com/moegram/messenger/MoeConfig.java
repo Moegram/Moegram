@@ -9,8 +9,6 @@ public class MoeConfig {
 
     private static final Object sync = new Object();
 
-    public static boolean scrollablePreview;
-
     public static boolean useSystemFonts;
     public static boolean blurForAllThemes;
 
@@ -71,8 +69,6 @@ public class MoeConfig {
             }
 
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
-
-            scrollablePreview = preferences.getBoolean("scrollablePreview", true);
 
             useSystemFonts = preferences.getBoolean("useSystemFonts", false);
             blurForAllThemes = preferences.getBoolean("blurForAllThemes", true);
