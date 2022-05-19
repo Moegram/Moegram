@@ -74,6 +74,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+import com.moegram.messenger.MoeExtras;
+
 public class NotificationsController extends BaseController {
 
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
@@ -3699,7 +3701,7 @@ public class NotificationsController extends BaseController {
                     .setGroupSummary(true)
                     .setShowWhen(true)
                     .setWhen(((long) lastMessageObject.messageOwner.date) * 1000)
-                    .setColor(setNotificationColor());
+                    .setColor(MoeExtras.setNotificationColor());
 
             long[] vibrationPattern = null;
             Uri sound = null;
@@ -4419,7 +4421,7 @@ public class NotificationsController extends BaseController {
                     .setContentText(text.toString())
                     .setAutoCancel(true)
                     .setNumber(messageObjects.size())
-                    .setColor(setNotificationColor())
+                    .setColor(MoeExtras.setNotificationColor())
                     .setGroupSummary(false)
                     .setWhen(date)
                     .setShowWhen(true)
@@ -4857,18 +4859,5 @@ public class NotificationsController extends BaseController {
             }
             updateServerNotificationsSettings(dialog_id);
         }
-    }
-
-    private int setNotificationColor() {
-        Configuration configuration = ApplicationLoader.applicationContext.getResources().getConfiguration();
-        int nightModeFlags = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                return 0xffffefef;
-            case Configuration.UI_MODE_NIGHT_NO:
-                return 0xff7c99ac;
-        }
-        return 0xff7c99ac;
     }
 }

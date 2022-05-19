@@ -8,12 +8,33 @@
 
 package com.moegram.messenger;
 
+import android.content.res.Configuration;
+
+import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 
 public class MoeExtras {
-    // Date of forwarded messages
+    // Here is "date of forwarded messages"
     public static String showForwardDate(MessageObject date, CharSequence main) {
         return !MoeConfig.dateOfForwardedMsg ? main.toString() : main + " (" + LocaleController.formatDate(date.messageOwner.fwd_from.date) + ")";
+    }
+
+    // It's a notification icons colors :)
+    public static int setNotificationColor() {
+        Configuration configuration = ApplicationLoader.applicationContext.getResources().getConfiguration();
+        int nightModeFlags = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        int daycolor = BuildVars.isBetaApp() ? 0xff789395 : 0xff7c99ac;
+        int nightcolor = BuildVars.isBetaApp() ? 0xffe5e3c9 : 0xffffefef;
+
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return nightcolor;
+            case Configuration.UI_MODE_NIGHT_NO:
+                return daycolor;
+        }
+        return daycolor;
     }
 }
