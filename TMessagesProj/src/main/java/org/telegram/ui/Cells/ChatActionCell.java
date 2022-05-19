@@ -490,6 +490,13 @@ public class ChatActionCell extends BaseCell implements DownloadController.FileD
                 }
             } else {
                 text = currentMessageObject.messageText;
+                if (currentMessageObject.messageOwner != null) {
+                    if (currentMessageObject.currentEvent != null || currentMessageObject.messageOwner.action != null) {
+                        long date = currentMessageObject.messageOwner.date;
+                        String timestamp = LocaleController.getInstance().formatterDay.format(date * 1000);
+                        text += " (" + timestamp + ")";
+                    }
+                }
             }
         } else {
             text = customText;
