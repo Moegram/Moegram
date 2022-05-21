@@ -3,7 +3,7 @@
  * It's licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
  *
- * Copyright Ivan Korolev, 2022
+ * Copyright Ivan Korolyov, 2022
  */
 
 package com.moegram.messenger;
@@ -27,7 +27,7 @@ public class MoeExtras {
         int nightModeFlags = configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
         int daycolor = BuildVars.isBetaApp() ? 0xff789395 : 0xff7c99ac;
-        int nightcolor = BuildVars.isBetaApp() ? 0xffe5e3c9 : 0xffffefef;
+        int nightcolor = BuildVars.isBetaApp() ? 0xffb4cfb0 : 0xffd3dedc;
 
         switch (nightModeFlags) {
             case Configuration.UI_MODE_NIGHT_YES:
