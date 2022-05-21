@@ -463,6 +463,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private boolean firstLayout = true;
     private boolean invalidateScroll = true;
+    private boolean hidePhoneNumber = false;
     private boolean isQrItemVisible;
 
     PinchToZoomHelper pinchToZoomHelper;
@@ -2670,17 +2671,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return;
             }
             listView.stopScroll();
-            if (position == idRow && did != 0) {
-                try {
-                    android.content.ClipboardManager clipboard = (android.content.ClipboardManager) ApplicationLoader.applicationContext.getSystemService(Context.CLIPBOARD_SERVICE);
-                    android.content.ClipData clip = android.content.ClipData.newPlainText("label", did + "");
-                    clipboard.setPrimaryClip(clip);
-                    Toast.makeText(getParentActivity(), LocaleController.getString("TextCopied", R.string.TextCopied), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    FileLog.e(e);
-                }
-                return;
-            } else if (position == settingsKeyRow) {
+            if (position == settingsKeyRow) {
                 Bundle args = new Bundle();
                 args.putInt("chat_id", DialogObject.getEncryptedChatId(dialogId));
                 presentFragment(new IdenticonActivity(args));
@@ -3009,7 +3000,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 SharedConfig.toggleDisableVoiceAudioEffects();
                             } else if (which == 14) {
                                 SharedConfig.toggleNoStatusBar();
-                                if (getParentActivity() != null && Build.VERSION.SDK_INT >= 21) {
+                                if (getParentActivity() != null) {
                                     if (SharedConfig.noStatusBar) {
                                         getParentActivity().getWindow().setStatusBarColor(0);
                                     } else {
@@ -4091,6 +4082,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
             items.add(LocaleController.getString("Copy", R.string.Copy));
             actions.add(1);
+            if (position == numberRow) {
+                items.add(LocaleController.getString("Hide", R.string.Hide));
+                actions.add(4);
+            }
             builder.setItems(items.toArray(new CharSequence[0]), (dialogInterface, i) -> {
                 i = actions.get(i);
                 if (i == 0) {
@@ -4114,6 +4109,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                 } else if (i == 2 || i == 3) {
                     VoIPHelper.startCall(user, i == 3, userInfo != null && userInfo.video_calls_available, getParentActivity(), userInfo, getAccountInstance());
+                } else if (i == 4) {
+                    hidePhoneNumber = true;
+                    updateListAnimated(false);
                 }
             });
             showDialog(builder.create());
@@ -4166,6 +4164,23 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             builder.setItems(new CharSequence[]{LocaleController.getString("Copy", R.string.Copy), null}, onClickListener);
+            showDialog(builder.create());
+        } else if (position == idRow) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+            ArrayList<CharSequence> items = new ArrayList<>();
+            final ArrayList<Integer> actions = new ArrayList<>();
+            items.add(LocaleController.getString("Copy", R.string.Copy));
+            actions.add(1);
+            builder.setItems(items.toArray(new CharSequence[0]), (dialogInterface, i) -> {
+                i = actions.get(i);
+                if (i == 1) {
+                    try {
+                        BulletinFactory.of(this).createCopyBulletin(LocaleController.getString("TextCopied", R.string.TextCopied)).show();
+                    } catch (Exception e) {
+                        FileLog.e(e);
+                    }
+                }
+            });
             showDialog(builder.create());
         }
         return false;
@@ -5915,7 +5930,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     setAvatarSectionRow = rowCount++;
                 }
                 numberSectionRow = rowCount++;
-                numberRow = rowCount++;
+                numberRow = hidePhoneNumber ? -1 : rowCount++;
                 setUsernameRow = rowCount++;
                 bioRow = rowCount++;
 

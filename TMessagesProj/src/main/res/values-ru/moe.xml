@@ -6,6 +6,7 @@
     <string name="SaveMessage">Сохранить сообщение</string>
     <string name="Enabled">Включено</string>
     <string name="Disabled">Отключено</string>
+    <string name="Hide">Скрыть</string>
     <string name="SuggestionMessage">Подпишитесь на наш канал, чтобы оставаться в курсе событий и получать новые обновления!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
