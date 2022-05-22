@@ -6,7 +6,7 @@
     <string name="MoeVersion" translatable="false">Moegram | %1$s\n%2$s, commit ID: %3$s</string>
     <string name="MutualContact">mutual contact</string>
     <string name="ToBeginning">To beginning</string>
-    <string name="SaveMessage">Save Message</string>
+    <string name="SaveMessage">Save message</string>
 
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>

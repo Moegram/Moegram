@@ -134,7 +134,7 @@ public class AppearancePreferencesEntry extends BaseFragment {
 
                 AlertDialog progressDialog = new AlertDialog(context, 3);
                 progressDialog.show();
-                AndroidUtilities.runOnUIThread(progressDialog::dismiss, 2000);
+                AndroidUtilities.runOnUIThread(progressDialog::dismiss, 500);
 
                 parentLayout.rebuildAllFragmentViews(true, true);
                 listView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
@@ -242,7 +242,6 @@ public class AppearancePreferencesEntry extends BaseFragment {
                     ((TextCheckCell) view).setChecked(MoeConfig.disableRounding);
                 }
                 parentLayout.rebuildAllFragmentViews(false, false);
-                getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
             } else if (position == showIDRow) {
                 MoeConfig.toggleShowID();
                 if (view instanceof TextCheckCell) {

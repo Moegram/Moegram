@@ -85,6 +85,10 @@ android {
         coreLibraryDesugaringEnabled true
     }
 
+    kotlinOptions {
+        jvmTarget = 11
+    }
+
     Properties signingProperties = new Properties()
     if (project.rootProject.file('signing.properties').exists()) {
         signingProperties.load(project.rootProject.file('signing.properties').newDataInputStream())
