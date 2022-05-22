@@ -25,7 +25,6 @@ import org.telegram.ui.ActionBar.SimpleTextView;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.ChatMessageCell;
 
-
 @SuppressWarnings("FieldCanBeLocal")
 public class HintView extends FrameLayout {
 
@@ -35,7 +34,6 @@ public class HintView extends FrameLayout {
 
     private TextView textView;
     private ImageView imageView;
-    private ImageView arrowImageView;
     private ChatMessageCell messageCell;
     private View currentView;
     private AnimatorSet animatorSet;
@@ -110,16 +108,10 @@ public class HintView extends FrameLayout {
             imageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_gifSaveHintText), PorterDuff.Mode.MULTIPLY));
             addView(imageView, LayoutHelper.createFrame(38, 34, Gravity.LEFT | Gravity.TOP, 7, 7, 0, 0));
         }
-
-        arrowImageView = new ImageView(context);
-        arrowImageView.setImageResource(topArrow ? R.drawable.tooltip_arrow_up : R.drawable.tooltip_arrow);
-        arrowImageView.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_chat_gifSaveHintBackground), PorterDuff.Mode.MULTIPLY));
-        addView(arrowImageView, LayoutHelper.createFrame(14, 6, Gravity.LEFT | (topArrow ? Gravity.TOP : Gravity.BOTTOM), 0, 0, 0, 0));
     }
 
     public void setBackgroundColor(int background, int text) {
         textView.setTextColor(text);
-        arrowImageView.setColorFilter(new PorterDuffColorFilter(background, PorterDuff.Mode.MULTIPLY));
         textView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(currentType == 7 || currentType == 8 ? 6 : 3), background));
     }
 
@@ -239,23 +231,19 @@ public class HintView extends FrameLayout {
         } else {
             setTranslationX(0);
         }
-        float arrowX = cell.getLeft() + centerX - left - arrowImageView.getMeasuredWidth() / 2;
-        arrowImageView.setTranslationX(arrowX);
+        float arrowX = cell.getLeft() + centerX - left;
         if (iconX > parentView.getMeasuredWidth() / 2) {
             if (arrowX < AndroidUtilities.dp(10)) {
                 float diff = arrowX - AndroidUtilities.dp(10);
                 setTranslationX(getTranslationX() + diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             }
         } else {
             if (arrowX > getMeasuredWidth() - AndroidUtilities.dp(14 + 10)) {
                 float diff = arrowX - getMeasuredWidth() + AndroidUtilities.dp(14 + 10);
                 setTranslationX(diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             } else if (arrowX < AndroidUtilities.dp(10)) {
                 float diff = arrowX - AndroidUtilities.dp(10);
                 setTranslationX(getTranslationX() + diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             }
         }
 
@@ -400,7 +388,7 @@ public class HintView extends FrameLayout {
             }
         } else {
             if (currentType == TYPE_SEARCH_AS_LIST) {
-                offset = centerX - getMeasuredWidth() / 2 - arrowImageView.getMeasuredWidth();
+                offset = centerX - getMeasuredWidth() / 2;
                 if (offset < 0) {
                     offset = 0;
                 }
@@ -409,26 +397,22 @@ public class HintView extends FrameLayout {
             }
         }
         setTranslationX(offset);
-        float arrowX = centerX - (leftMargin + offset) - arrowImageView.getMeasuredWidth() / 2;
+        float arrowX = centerX - (leftMargin + offset);
         if (currentType == 7) {
             arrowX += AndroidUtilities.dp(2);
         }
-        arrowImageView.setTranslationX(arrowX);
         if (centerX > parentView.getMeasuredWidth() / 2) {
             if (arrowX < AndroidUtilities.dp(10)) {
                 float diff = arrowX - AndroidUtilities.dp(10);
                 setTranslationX(getTranslationX() + diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             }
         } else {
             if (arrowX > getMeasuredWidth() - AndroidUtilities.dp(14 + 10)) {
                 float diff = arrowX - getMeasuredWidth() + AndroidUtilities.dp(14 + 10);
                 setTranslationX(diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             } else if (arrowX < AndroidUtilities.dp(10)) {
                 float diff = arrowX - AndroidUtilities.dp(10);
                 setTranslationX(getTranslationX() + diff);
-                arrowImageView.setTranslationX(arrowX - diff);
             }
         }
     }
