@@ -3,7 +3,7 @@
     <!-- Moegram's Main Strings -->
     <string name="MoeAppName" translatable="false">Moegram</string>
     <string name="MoeAppNameBeta" translatable="false">Moegram β</string>
-    <string name="MoeVersion" translatable="false">Moegram | %1$s\n%2$s, commit ID: %3$s</string>
+    <string name="MoeVersion" translatable="false">Moegram | %1$s\n%2$s, commit ID: %3$s\nbuilt at %4$s</string>
     <string name="MutualContact">mutual contact</string>
     <string name="ToBeginning">To beginning</string>
     <string name="SaveMessage">Save message</string>

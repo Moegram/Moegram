@@ -76,6 +76,7 @@ import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AccountInstance;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
@@ -887,8 +888,14 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
             } else {
                 os2 = "";
             }
+
             if (BuildVars.LOGS_ENABLED) {
-                FileLog.d("OS name " + os1 + " " + os2);
+                FileLog.d("Device info:");
+                FileLog.d("");
+                FileLog.d("Device: " + Build.MANUFACTURER + " " + Build.MODEL);
+                FileLog.d("Version: " + Build.VERSION.RELEASE + " (" + Build.VERSION.SDK_INT + ")");
+                FileLog.d("OS name: " + os1 + " " + os2);
+                FileLog.d("Moegram Version: " + BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")");
             }
             if ((os1.contains("flyme") || os2.contains("flyme")) && Build.VERSION.SDK_INT <= 24) {
                 AndroidUtilities.incorrectDisplaySizeFix = true;
@@ -896,9 +903,7 @@ public class LaunchActivity extends BasePermissionsActivity implements ActionBar
                 view.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener = () -> {
                     int height = view.getMeasuredHeight();
                     FileLog.d("height = " + height + " displayHeight = " + AndroidUtilities.displaySize.y);
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        height -= AndroidUtilities.statusBarHeight;
-                    }
+                    height -= AndroidUtilities.statusBarHeight;
                     if (height > AndroidUtilities.dp(100) && height < AndroidUtilities.displaySize.y && height + AndroidUtilities.dp(100) > AndroidUtilities.displaySize.y) {
                         AndroidUtilities.displaySize.y = height;
                         if (BuildVars.LOGS_ENABLED) {

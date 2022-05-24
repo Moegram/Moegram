@@ -279,6 +279,10 @@ public class ContentPreviewViewer {
                     items.add(LocaleController.getString("SendGifPreview", R.string.SendGifPreview));
                     icons.add(R.drawable.outline_send);
                     actions.add(0);
+
+                    items.add(LocaleController.getString("SendWithoutSound", R.string.SendWithoutSound));
+                    icons.add(R.drawable.input_notify_off);
+                    actions.add(7);
                 }
                 if (delegate.canSchedule()) {
                     items.add(LocaleController.getString("Schedule", R.string.Schedule));
@@ -309,8 +313,8 @@ public class ContentPreviewViewer {
                     if (parentActivity == null) {
                         return;
                     }
-                    if (actions.get(which) == 0) {
-                        delegate.sendGif(currentDocument != null ? currentDocument : inlineResult, parentObject, true, 0);
+                    if (actions.get(which) == 0 || actions.get(which) == 7) {
+                        delegate.sendGif(currentDocument != null ? currentDocument : inlineResult, parentObject, (actions.get(which) == 0), 0);
                     } else if (actions.get(which) == 1) {
                         MediaDataController.getInstance(currentAccount).removeRecentGif(currentDocument);
                         delegate.gifAddedOrDeleted();

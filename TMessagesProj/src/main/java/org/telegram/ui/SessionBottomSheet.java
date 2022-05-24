@@ -77,7 +77,6 @@ public class SessionBottomSheet extends BottomSheet {
         timeView.setGravity(Gravity.CENTER);
         linearLayout.addView(timeView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL, 21, 4, 21, 21));
 
-
         String timeText;
         if ((session.flags & 1) != 0) {
             timeText = LocaleController.getString("Online", R.string.Online);

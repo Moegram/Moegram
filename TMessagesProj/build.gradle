@@ -58,6 +58,7 @@ android {
     compileSdkVersion 32
     buildToolsVersion '32.1.0-rc1'
     ndkVersion "21.4.7075529"
+    namespace 'org.telegram.messenger'
 
     sourceSets.main.jniLibs.srcDirs = ['./jni/']
 
@@ -107,8 +108,6 @@ android {
 
     buildTypes {
         release {
-            debuggable false
-            jniDebuggable false
             if (signingProperties.getProperty("storeFile") != null) {
                 signingConfig signingConfigs.sign
             }
@@ -117,7 +116,8 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
-            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
+            buildConfigField 'String', 'COMMIT_ID', "\"${commitId}\""
+            buildConfigField 'String', 'BUILD_DATE', "\"" + System.currentTimeMillis().toString() + "\""
 
             resValue "string", "AppNameX", "@string/MoeAppName"
             manifestPlaceholders = [
@@ -135,8 +135,9 @@ android {
             multiDexEnabled true
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
-            buildConfigField 'boolean', 'DEBUG_PRIVATE_VERSION', 'true'
-            buildConfigField("String", "COMMIT_ID", "\"${commitId}\"")
+            buildConfigField 'boolean', 'DEBUG_PRIVATE_VERSION', "true"
+            buildConfigField 'String', 'COMMIT_ID', "\"${commitId}\""
+            buildConfigField 'String', 'BUILD_DATE', "\"" + System.currentTimeMillis().toString() + "\""
 
             resValue "string", "AppNameX", "@string/MoeAppNameBeta"
             manifestPlaceholders = [
@@ -186,5 +187,4 @@ android {
     }
 
     dependenciesInfo.includeInApk false
-    namespace 'org.telegram.messenger'
 }

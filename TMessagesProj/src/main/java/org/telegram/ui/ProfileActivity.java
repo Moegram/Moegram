@@ -190,6 +190,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import com.moegram.messenger.MoeConfig;
+import com.moegram.messenger.MoeExtras;
 import com.moegram.messenger.preferences.MainPreferencesEntry;
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, SharedMediaLayout.SharedMediaPreloaderDelegate, ImageUpdater.ImageUpdaterDelegate, SharedMediaLayout.Delegate {
@@ -2940,7 +2941,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 SharedConfig.pauseMusicOnRecord ? LocaleController.getString("DebugMenuDisablePauseMusic", R.string.DebugMenuDisablePauseMusic) : LocaleController.getString("DebugMenuEnablePauseMusic", R.string.DebugMenuEnablePauseMusic),
                                 SharedConfig.smoothKeyboard ? LocaleController.getString("DebugMenuDisableSmoothKeyboard", R.string.DebugMenuDisableSmoothKeyboard) : LocaleController.getString("DebugMenuEnableSmoothKeyboard", R.string.DebugMenuEnableSmoothKeyboard),
                                 BuildVars.DEBUG_PRIVATE_VERSION ? (SharedConfig.disableVoiceAudioEffects ? "Enable voip audio effects" : "Disable voip audio effects") : null,
-                                Build.VERSION.SDK_INT >= 21 ? (SharedConfig.noStatusBar ? "Show status bar background" : "Hide status bar background") : null,
                                 BuildVars.DEBUG_PRIVATE_VERSION ? "Clean app update" : null,
                                 BuildVars.DEBUG_PRIVATE_VERSION ? "Reset suggestions" : null,
                                 BuildVars.DEBUG_PRIVATE_VERSION ? LocaleController.getString(SharedConfig.forceRtmpStream ? R.string.DebugMenuDisableForceRtmpStreamFlag : R.string.DebugMenuEnableForceRtmpStreamFlag) : null,
@@ -3000,13 +3000,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 SharedConfig.toggleDisableVoiceAudioEffects();
                             } else if (which == 14) {
                                 SharedConfig.toggleNoStatusBar();
-                                if (getParentActivity() != null) {
-                                    if (SharedConfig.noStatusBar) {
-                                        getParentActivity().getWindow().setStatusBarColor(0);
-                                    } else {
-                                        getParentActivity().getWindow().setStatusBarColor(0x33000000);
-                                    }
-                                }
                             } else if (which == 15) {
                                 SharedConfig.pendingAppUpdate = null;
                                 SharedConfig.saveConfig();
@@ -7398,7 +7391,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 abi = "universal";
                                 break;
                         }
-                        cell.setText(LocaleController.formatString("MoeVersion", R.string.MoeVersion, String.format(Locale.US, "v%s (%d)", pInfo.versionName, code), String.format(Locale.US, "%s", abi), String.format(Locale.US, "%s", BuildConfig.COMMIT_ID.substring(0, 7))));
+                        cell.setText(LocaleController.formatString("MoeVersion", R.string.MoeVersion, String.format(Locale.US, "v%s (%d)", pInfo.versionName, code), String.format(Locale.US, "%s", abi), String.format(Locale.US, "%s", BuildConfig.COMMIT_ID.substring(0, 7)), String.format(Locale.US, "%s", MoeExtras.buildDate())));
                     } catch (Exception e) {
                         FileLog.e(e);
                     }

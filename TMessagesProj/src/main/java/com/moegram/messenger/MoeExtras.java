@@ -11,14 +11,21 @@ package com.moegram.messenger;
 import android.content.res.Configuration;
 
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MoeExtras {
     // Here is "date of forwarded messages"
     public static String showForwardDate(MessageObject date, CharSequence main) {
-        return !MoeConfig.dateOfForwardedMsg ? main.toString() : main + " (" + LocaleController.formatDate(date.messageOwner.fwd_from.date) + ")";
+        String enabled = main + " (" + LocaleController.formatDate(date.messageOwner.fwd_from.date) + ")";
+        String disabled = main.toString();
+        return !MoeConfig.dateOfForwardedMsg ? disabled : enabled;
     }
 
     // It's a notification icons colors :)
@@ -36,5 +43,12 @@ public class MoeExtras {
                 return daycolor;
         }
         return daycolor;
+    }
+
+    // Date of application build
+    public static Object buildDate() {
+        SimpleDateFormat df = new SimpleDateFormat("dd MMMM yyyy, HH:mm (zzz)", Locale.US);
+        String date = df.format(new Date(Long.parseLong(BuildConfig.BUILD_DATE)));
+        return date;
     }
 }

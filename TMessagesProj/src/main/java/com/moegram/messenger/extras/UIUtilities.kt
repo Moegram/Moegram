@@ -13,6 +13,7 @@ object UIUtilities {
 
     @JvmStatic
     @JvmOverloads
+    @DelicateCoroutinesApi
     fun runOnIoDispatcher(runnable: Runnable, delay: Long = 0) {
         GlobalScope.launch(Dispatchers.IO) {
             delay(delay)
@@ -20,6 +21,7 @@ object UIUtilities {
         }
     }
 
+    @DelicateCoroutinesApi
     fun runOnIoDispatcher(runnable: suspend () -> Unit) {
         GlobalScope.launch(Dispatchers.IO) {
             runnable()
