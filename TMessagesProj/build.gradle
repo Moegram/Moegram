@@ -163,7 +163,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 32
-        versionName "8.7.4.2"
+        versionName "8.7.4.3"
         versionCode = 2640
 
         applicationId "com.moegram.messenger"
