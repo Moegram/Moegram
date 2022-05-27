@@ -297,14 +297,6 @@ public class MoeConfig {
         editor.apply();
     }
 
-    public static void toggleDisableCamera() {
-        disableCamera = !disableCamera;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("disableCamera", disableCamera);
-        editor.apply();
-    }
-
     public static void toggleDisableProximityEvents() {
         disableProximityEvents = !disableProximityEvents;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
@@ -333,6 +325,14 @@ public class MoeConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableSideActions", disableSideActions);
+        editor.apply();
+    }
+
+    public static void toggleDisableCamera() {
+        disableCamera = !disableCamera;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("disableCamera", disableCamera);
         editor.apply();
     }
 

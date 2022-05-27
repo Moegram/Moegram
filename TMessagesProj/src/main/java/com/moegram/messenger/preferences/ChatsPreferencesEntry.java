@@ -70,11 +70,11 @@ public class ChatsPreferencesEntry extends BaseFragment {
 
     private int mediaHeaderRow;
     private int rearVideoMessagesRow;
-    private int disableCameraRow;
     private int disableProximityEventsRow;
     private int pauseOnMinimizeRow;
     private int disablePlaybackRow;
     private int disableSideActionsRow;
+    private int disableCameraRow;
     private int mediaDividerRow;
 
     private UndoView restartTooltip;
@@ -290,11 +290,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(MoeConfig.rearVideoMessages);
                 }
-            } else if (position == disableCameraRow) {
-                MoeConfig.toggleDisableCamera();
-                if (view instanceof TextCheckCell) {
-                    ((TextCheckCell) view).setChecked(MoeConfig.disableCamera);
-                }
             } else if (position == disableProximityEventsRow) {
                 MoeConfig.toggleDisableProximityEvents();
                 if (view instanceof TextCheckCell) {
@@ -317,6 +312,11 @@ public class ChatsPreferencesEntry extends BaseFragment {
                     ((TextCheckCell) view).setChecked(MoeConfig.disableSideActions);
                 }
                 restartTooltip.showWithAction(0, UndoView.ACTION_CACHE_WAS_CLEARED, null, null);
+            } else if (position == disableCameraRow) {
+                MoeConfig.toggleDisableCamera();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(MoeConfig.disableCamera);
+                }
             }
         });
         restartTooltip = new UndoView(context);
@@ -352,11 +352,11 @@ public class ChatsPreferencesEntry extends BaseFragment {
 
         mediaHeaderRow = rowCount++;
         rearVideoMessagesRow = rowCount++;
-        disableCameraRow = rowCount++;
         disableProximityEventsRow = rowCount++;
         pauseOnMinimizeRow = rowCount++;
         disablePlaybackRow = rowCount++;
         disableSideActionsRow = rowCount++;
+        disableCameraRow = rowCount++;
         mediaDividerRow = rowCount++;
 
         if (listAdapter != null) {
@@ -435,8 +435,6 @@ public class ChatsPreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ShowMessageID", R.string.ShowMessageID), MoeConfig.showMessageID, false);
                     } else if (position == rearVideoMessagesRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("RearVideoMessages", R.string.RearVideoMessages), MoeConfig.rearVideoMessages, true);
-                    } else if (position == disableCameraRow) {
-                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableCamera", R.string.DisableCamera), MoeConfig.disableCamera, true);
                     } else if (position == disableProximityEventsRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("DisableProximityEvents", R.string.DisableProximityEvents), MoeConfig.disableProximityEvents, true);
                     } else if (position == pauseOnMinimizeRow) {
@@ -445,8 +443,10 @@ public class ChatsPreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndValueAndCheck(LocaleController.getString("DisablePlayback", R.string.DisablePlayback), LocaleController.getString("DPDescription", R.string.DPDescription), MoeConfig.disablePlayback, true, true);
                     } else if (position == disableSideActionsRow) {
                         textCheckCell.setTextAndValueAndCheck(LocaleController.getString("DisableSideActions", R.string.DisableSideActions), LocaleController.getString("DisableSideActionsDesc", R.string.DisableSideActionsDesc), MoeConfig.disableSideActions, true, false);
+                    } else if (position == disableCameraRow) {
+                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableCamera", R.string.DisableCamera), MoeConfig.disableCamera, true);
                     }
-                    break;
+                break;
             }
         }
 
@@ -491,8 +491,8 @@ public class ChatsPreferencesEntry extends BaseFragment {
                     position == unlimitedRecentStickersRow || position == hideSendAsChannelRow || position == hideKeyboardOnScrollRow ||
                     position == disableReactionsRow || position == disableJumpToNextChannelRow || position == archiveOnPullRow ||
                     position == dateOfForwardedMsgRow || position == showMessageIDRow || position == rearVideoMessagesRow ||
-                    position == disableCameraRow || position == disableProximityEventsRow || position == pauseOnMinimizeRow ||
-                    position == disablePlaybackRow || position == disableSideActionsRow) {
+                    position == disableProximityEventsRow || position == pauseOnMinimizeRow || position == disablePlaybackRow ||
+                    position == disableSideActionsRow || position == disableCameraRow) {
                 return 3;
             } else if (position == stickerSizeRow) {
                 return 4;

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;
+import org.telegram.messenger.BuildConfig;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.R;
@@ -27,6 +28,8 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
 
 import com.moegram.messenger.preferences.cells.MoegramCell;
+
+import java.util.Locale;
 
 public class MainPreferencesEntry extends BaseFragment {
     private int rowCount;
@@ -186,9 +189,9 @@ public class MainPreferencesEntry extends BaseFragment {
                     textDetailCell.setMultilineDetail(true);
                     if (position == MoegramRow) {
                         if (BuildVars.isBetaApp()) {
-                            textDetailCell.setTextAndValueAndIcon("Moegram β | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("MoegramDescription", R.string.MoegramDescription), R.drawable.ic_logo_foreground, false);
+                            textDetailCell.setTextAndValueAndIcon(LocaleController.formatString("MoegramVersion", R.string.MoegramVersion, String.format(Locale.US, "%s", LocaleController.getString("MoeAppName", R.string.MoeAppNameBeta)), String.format(Locale.US, "%s", BuildConfig.VERSION_NAME)), LocaleController.getString("MoegramDescription", R.string.MoegramDescription), R.drawable.ic_logo_foreground, false);
                         } else {
-                            textDetailCell.setTextAndValueAndIcon("Moegram | v" + BuildVars.BUILD_VERSION_STRING, LocaleController.getString("MoegramDescription", R.string.MoegramDescription), R.drawable.ic_logo_foreground, false);
+                            textDetailCell.setTextAndValueAndIcon(LocaleController.formatString("MoegramVersion", R.string.MoegramVersion, String.format(Locale.US, "%s", LocaleController.getString("MoeAppName", R.string.MoeAppName)), String.format(Locale.US, "%s", BuildConfig.VERSION_NAME)), LocaleController.getString("MoegramDescription", R.string.MoegramDescription), R.drawable.ic_logo_foreground, false);
                         }
                     }
                     break;

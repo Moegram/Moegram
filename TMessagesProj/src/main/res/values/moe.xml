@@ -16,6 +16,7 @@
 
     <!-- Main Menu (about) -->
     <string name="Links">Links</string>
+    <string name="MoegramVersion">%1$s | %2$s</string>
     <string name="MoegramDescription">Moegram is an UNOFFICIAL messaging app that uses Telegram\'s API!</string>
     <string name="SourceCode">Source code</string>
     <string name="Channel">Channel</string>
