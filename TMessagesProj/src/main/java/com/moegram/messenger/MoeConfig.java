@@ -49,6 +49,7 @@ public class MoeConfig {
 
     public static boolean rearVideoMessages;
     public static boolean disableCamera;
+    public static boolean disableProximityEvents;
     public static boolean pauseOnMinimize;
     public static boolean disablePlayback;
     public static boolean disableSideActions;
@@ -111,6 +112,7 @@ public class MoeConfig {
 
             rearVideoMessages = preferences.getBoolean("rearVideoMessages", false);
             disableCamera = preferences.getBoolean("disableCamera", false);
+            disableProximityEvents = preferences.getBoolean("disableProximityEvents", false);
             pauseOnMinimize = preferences.getBoolean("pauseOnMinimize", true);
             disablePlayback = preferences.getBoolean("disablePlayback", true);
             disableSideActions = preferences.getBoolean("disableSideActions", false);
@@ -300,6 +302,14 @@ public class MoeConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableCamera", disableCamera);
+        editor.apply();
+    }
+
+    public static void toggleDisableProximityEvents() {
+        disableProximityEvents = !disableProximityEvents;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("disableProximityEvents", disableProximityEvents);
         editor.apply();
     }
 

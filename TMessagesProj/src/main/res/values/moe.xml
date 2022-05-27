@@ -71,6 +71,7 @@
     <string name="Media">Media</string>
     <string name="RearVideoMessages">Rear camera in video messages</string>
     <string name="DisableCamera">Disable instant camera</string>
+    <string name="DisableProximityEvents">Disable proximity events</string>
     <string name="PauseOnMinimize">Autopause</string>
     <string name="POMDescription">Pauses a video playback when device is locked or Moegram is minimized</string>
     <string name="DisablePlayback">Disable playback</string>
