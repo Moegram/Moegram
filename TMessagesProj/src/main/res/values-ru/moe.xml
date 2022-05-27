@@ -10,7 +10,7 @@
     <string name="SuggestionMessage">Подпишитесь на наш канал, чтобы оставаться в курсе событий и получать новые обновления!</string>
     <!-- Main Menu (about) -->
     <string name="Links">Ссылки</string>
-    <string name="MoegramDescription">Moegram — это **НЕОФИЦИАЛЬНОЕ** приложение для обмена сообщениями, использующее API Telegram!</string>
+    <string name="MoegramDescription">Moegram — это НЕОФИЦИАЛЬНОЕ приложение для обмена сообщениями, использующее API Telegram!</string>
     <string name="SourceCode">Исходный код</string>
     <string name="Channel">Канал</string>
     <string name="Chat">Чат</string>
