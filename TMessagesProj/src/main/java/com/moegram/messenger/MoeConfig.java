@@ -51,6 +51,7 @@ public class MoeConfig {
     public static boolean disableCamera;
     public static boolean pauseOnMinimize;
     public static boolean disablePlayback;
+    public static boolean disableSideActions;
 
     public static final int TABLET_AUTO = 0;
     public static final int TABLET_ENABLE = 1;
@@ -112,6 +113,7 @@ public class MoeConfig {
             disableCamera = preferences.getBoolean("disableCamera", false);
             pauseOnMinimize = preferences.getBoolean("pauseOnMinimize", true);
             disablePlayback = preferences.getBoolean("disablePlayback", true);
+            disableSideActions = preferences.getBoolean("disableSideActions", false);
 
             configLoaded = true;
         }
@@ -313,6 +315,14 @@ public class MoeConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disablePlayback", disablePlayback);
+        editor.apply();
+    }
+
+    public static void toggleDisableSideActions() {
+        disableSideActions = !disableSideActions;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("disableSideActions", disableSideActions);
         editor.apply();
     }
 

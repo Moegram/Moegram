@@ -60,6 +60,8 @@
     <string name="POMDescription">Останавливает видео, когда девайс блокируется или приложение сворачивается</string>
     <string name="DisablePlayback">Отключить проигрывание</string>
     <string name="DPDescription">Отключает автоматическое проигрывание видео при нажатии на кнопку громкости</string>
+    <string name="DisableSideActions">Отключить боковые действия</string>
+    <string name="DisableSideActionsDesc">Отключает возможность открытия фото/видео при нажатии на любую из сторон</string>
     <!-- Other -->
     <string name="ConfirmCall">Подтверждение звонка</string>
     <string name="CallTo">Позвонить **%1$s**?</string>

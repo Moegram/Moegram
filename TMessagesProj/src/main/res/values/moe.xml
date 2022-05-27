@@ -75,6 +75,8 @@
     <string name="POMDescription">Pauses a video playback when device is locked or Moegram is minimized</string>
     <string name="DisablePlayback">Disable playback</string>
     <string name="DPDescription">Disables playback when volume button is pressed</string>
+    <string name="DisableSideActions">Disable side actions</string>
+    <string name="DisableSideActionsDesc">Disables ability to open photo/video when pressed to both sides</string>
 
     <!-- Other -->
     <string name="ConfirmCall">Confirm call</string>
