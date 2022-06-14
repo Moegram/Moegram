@@ -46,6 +46,7 @@ public class MoeConfig {
     public static boolean archiveOnPull;
     public static boolean dateOfForwardedMsg;
     public static boolean showMessageID;
+    public static boolean disableArchiveChannelsOnSwipe;
 
     public static boolean rearVideoMessages;
     public static boolean disableCamera;
@@ -109,6 +110,7 @@ public class MoeConfig {
             archiveOnPull = preferences.getBoolean("archiveOnPull", true);
             dateOfForwardedMsg = preferences.getBoolean("dateOfForwardedMsg", false);
             showMessageID = preferences.getBoolean("showMessageID", false);
+            disableArchiveChannelsOnSwipe = preferences.getBoolean("disableArchiveChannelsOnSwipe", false);
 
             rearVideoMessages = preferences.getBoolean("rearVideoMessages", false);
             disableCamera = preferences.getBoolean("disableCamera", false);
@@ -286,6 +288,14 @@ public class MoeConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("showMessageID", showMessageID);
+        editor.apply();
+    }
+
+    public static void toggleDisableArchiveChannelsOnSwipe() {
+        disableArchiveChannelsOnSwipe = !disableArchiveChannelsOnSwipe;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("moeconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("disableArchiveChannelsOnSwipe", disableArchiveChannelsOnSwipe);
         editor.apply();
     }
 

@@ -68,6 +68,7 @@
     <string name="ArchiveOnPull">Open archive on pulldown</string>
     <string name="DateOfForwardedMsg">Show date of forwarded message</string>
     <string name="ShowMessageID">Show message ID</string>
+    <string name="DisableArchiveChannelsOnSwipe">Disable archive channels on swipe</string>
 
     <string name="Media">Media</string>
     <string name="RearVideoMessages">Rear camera in video messages</string>

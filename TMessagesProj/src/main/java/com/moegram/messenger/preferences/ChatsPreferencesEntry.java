@@ -66,6 +66,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
     private int archiveOnPullRow;
     private int dateOfForwardedMsgRow;
     private int showMessageIDRow;
+    private int disableArchiveChannelsOnSwipeRow;
     private int chatDividerRow;
 
     private int mediaHeaderRow;
@@ -285,6 +286,11 @@ public class ChatsPreferencesEntry extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(MoeConfig.showMessageID);
                 }
+            } else if (position == disableArchiveChannelsOnSwipeRow) {
+                MoeConfig.toggleDisableArchiveChannelsOnSwipe();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(MoeConfig.disableArchiveChannelsOnSwipe);
+                }
             } else if (position == rearVideoMessagesRow) {
                 MoeConfig.toggleRearVideoMessages();
                 if (view instanceof TextCheckCell) {
@@ -348,6 +354,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
         archiveOnPullRow = rowCount++;
         dateOfForwardedMsgRow = rowCount++;
         showMessageIDRow = rowCount++;
+        disableArchiveChannelsOnSwipeRow = rowCount++;
         chatDividerRow = rowCount++;
 
         mediaHeaderRow = rowCount++;
@@ -433,6 +440,8 @@ public class ChatsPreferencesEntry extends BaseFragment {
                         textCheckCell.setTextAndCheck(LocaleController.getString("DateOfForwardedMsg", R.string.DateOfForwardedMsg), MoeConfig.dateOfForwardedMsg, true);
                     } else if (position == showMessageIDRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("ShowMessageID", R.string.ShowMessageID), MoeConfig.showMessageID, false);
+                    } else if (position == disableArchiveChannelsOnSwipeRow) {
+                        textCheckCell.setTextAndCheck(LocaleController.getString("DisableArchiveChannelsOnSwipe", R.string.DisableArchiveChannelsOnSwipe), MoeConfig.disableArchiveChannelsOnSwipe, false);
                     } else if (position == rearVideoMessagesRow) {
                         textCheckCell.setTextAndCheck(LocaleController.getString("RearVideoMessages", R.string.RearVideoMessages), MoeConfig.rearVideoMessages, true);
                     } else if (position == disableProximityEventsRow) {
@@ -490,7 +499,7 @@ public class ChatsPreferencesEntry extends BaseFragment {
             } else if (position == hideStickerTimeRow || position == hideGroupStickersRow || position == disableGreetingStickerRow ||
                     position == unlimitedRecentStickersRow || position == hideSendAsChannelRow || position == hideKeyboardOnScrollRow ||
                     position == disableReactionsRow || position == disableJumpToNextChannelRow || position == archiveOnPullRow ||
-                    position == dateOfForwardedMsgRow || position == showMessageIDRow || position == rearVideoMessagesRow ||
+                    position == dateOfForwardedMsgRow || position == showMessageIDRow || position == disableArchiveChannelsOnSwipeRow || position == rearVideoMessagesRow ||
                     position == disableProximityEventsRow || position == pauseOnMinimizeRow || position == disablePlaybackRow ||
                     position == disableSideActionsRow || position == disableCameraRow) {
                 return 3;

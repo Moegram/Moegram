@@ -123,6 +123,12 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             dialogFolderId = params[1];
             dialogFilterId = params[2];
             emptyStub = false;
+            if (drawFolderBackground && dialogFolderId != 0 && dialogFolderId != folderId && MoeConfig.disableArchiveChannelsOnSwipe) {
+                nextChat = null;
+                drawFolderBackground = false;
+                emptyStub = true;
+                return;
+            };
             nextChat = MessagesController.getInstance(currentAccount).getChat(-dialog.id);
             if (nextChat == null) {
                 MessagesController.getInstance(currentAccount).getChat(dialog.id);
@@ -152,7 +158,7 @@ public class ChatPullingDownDrawable implements NotificationCenter.NotificationC
             String str1 = null;
             String str2 = null;
 
-            if (drawFolderBackground && dialogFolderId != folderId && dialogFolderId != 0) {
+            if (drawFolderBackground && dialogFolderId != folderId && dialogFolderId != 0 && !MoeConfig.disableArchiveChannelsOnSwipe) {
                 str1 = LocaleController.getString("SwipeToGoNextArchive", R.string.SwipeToGoNextArchive);
                 str2 = LocaleController.getString("ReleaseToGoNextArchive", R.string.ReleaseToGoNextArchive);
             } else if (drawFolderBackground) {
