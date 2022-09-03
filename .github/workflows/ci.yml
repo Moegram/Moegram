@@ -1,0 +1,64 @@
+name: Building on GitHub
+
+on:
+   push:
+      branches: [ "beta" ]
+   workflow_dispatch:
+
+jobs:
+   build:
+      name: Building...
+      runs-on: ubuntu-latest
+      steps:
+         - name: Send Telegram message on push
+           uses: appleboy/telegram-action@master
+           with:
+              token: ${{ secrets.tgbot }}
+              to: 5466197845
+              format: markdown
+              message: |
+                 🚀 *${{ github.actor }}* created commit "${{ github.event.commits[0].message }}"
+                 
+                 See changes: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+         - name: Checking out sources
+           uses: actions/checkout@v3
+           with:
+              submodules: 'recursive'
+         - name: Preparing JDK
+           uses: actions/setup-java@v3
+           with:
+              distribution: 'adopt'
+              java-version: 17
+         - name: Setting up CMake
+           uses: jwlawson/actions-setup-cmake@v1.12
+           with:
+              cmake-version: '3.22.1'
+         - name: Enabling cache
+           uses: actions/cache@v3.0.8
+           with:
+              path: ~/.gradle
+              key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+              restore-keys: |
+                 ${{ runner.os }}-gradle-
+         - name: Importing API and signing keys
+           run: |
+              echo "${{ secrets.extra }}" | base64 -d > TMessagesProj/src/main/java/com/moegram/messenger/Extra.java
+              echo "${{ secrets.keystore }}" | base64 -d > TMessagesProj/moe.keystore
+              echo "${{ secrets.properties }}" | base64 -d > signing.properties
+         - name: Preparing environment
+           run: |
+              yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+              echo "sdk.dir = /home/runner/Android/Sdk" >> local.properties
+         - name: Building...
+           run: |
+              ./gradlew TMessagesProj:assembleDebug
+         - name: Preparing artifacts
+           run: |
+              echo "armeabi-v7a=$(find TMessagesProj/build/outputs/apk -name '*armeabi-v7a.apk')" >> $GITHUB_ENV
+              echo "x86=$(find TMessagesProj/build/outputs/apk -name '*x86.apk')" >> $GITHUB_ENV
+         - name: Uploading APKs...
+           uses: actions/upload-artifact@v3
+           with:
+              path: |
+                 ${{ env.armeabi-v7a }}
+                 ${{ env.x86 }}
