@@ -143,6 +143,8 @@ android {
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher_beta"
             ]
+            
+            applicationIdSuffix ".beta"
         }
     }
     
